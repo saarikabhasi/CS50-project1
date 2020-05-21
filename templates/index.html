@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+The Book Fair 
+
+{% endblock %}
+
+{% block body %}
+<div class = "container">
+    <div class = "row">
+        <div class="col-md-8">   
+            <form action ="{{ url_for('search') }}" method="post">
+                    <form class ="form-inline" > 
+                        <div class ="searchbar">
+                            <div class = "row">
+                                <input class="form-control form-control-lg" type="text" name = "search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
+                            </div>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input radio-inline" type="radio" name="searchvia" id="all" value="all" checked>
+                            <label class="form-check-label" for="all">
+                            <h4>all</h4>
+                            </label>
+                        </div>
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input radio-inline" type="radio" name="searchvia" id="isbn" value="isbn" >
+                            <label class="form-check-label" for="isbn">
+                            <h4>isbn</h4>
+                            </label>
+                        </div>
+
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input radio-inline" type="radio" name="searchvia" id="title" value="title">
+                            <label class="form-check-label" for="title">
+                            <h4>title</h4>
+                            </label>
+                        </div>
+
+                        <div class="form-check  form-check-inline">
+                            <input class="form-check-input radio-inline" type="radio" name="searchvia" id="author" value="author">
+                            <label class="form-check-label" for="author">
+                            <h4>author</h4>
+                            </label>
+                        </div> 
+                    </form>
+                    <h3>{{search_err}}</h3>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <h2>{{message}}</h2>
+            <form action="{{url_for('logout')}}">
+                <button class = "btn btn-primary">logout</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+<section class = "result">
+    <article class ="search">
+           
+            {% for book in books %}
+            
+            <div class="books">
+                <hr>
+                    <a href="{{url_for('books',b=book[1],booksearchby='title') }}"><h2>{{book[1]}}</h2></a>
+                    <span>
+                        <a href="{{url_for('books',b=book[2],booksearchby='author') }}"><h3> by {{book[2]}}</a> 
+                         published in {{book[3]}}</h3>      
+                        
+                        
+                            
+                        
+                        
+                        <hr>
+                    </span> 
+                
+             </div>
+            {%endfor%}
+            </a>
+            <h4>{{search_err_message}}</h4>
+        
+
+        
+    </article>
+</section>
+
+
+{% endblock %}

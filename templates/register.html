@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+The Book Fair 
+
+{% endblock %}
+
+{% block body %}
+<div class = "card">
+    <div class ="login">
+        <form action = "{{ url_for('login') }}" method="get">
+            <h2> Already have a book fair account?
+            <button class = "btn btn-primary">Sign in</button></h2> 
+        </form>
+    </div> 
+    <hr> 
+    <div class="social">
+        
+            <h2> or</h2><h2><br> Create an account with <br><br></h2>
+           
+            <span>
+                <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+            </span>
+        
+        
+    </div>
+    <div>
+    <hr>
+    <h2>or</h2>
+        <form action="{{ url_for('register') }}" class = "register" method="post">
+            <h2>{{err_msg}}</h2>
+            <div class = "form-group">
+                <label for="name">Name</label>
+                <input type ="text" class="form-control form-control-lg" name = "name" placeholder="Enter your name:" required>
+            </div>
+            <div class = "form-group">
+                <label for = "email_id">Email id</label>
+                <input type = "email" class="form-control form-control-lg" name = "email_id" placeholder="Enter your e-mail id: " id="email_id" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Enter your password:" required>
+            </div>
+            <div class="form-group">
+                <button class = "btn btn-primary">Submit</button>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+The Book Fair
+
+{% endblock %}
+
+{% block body %}
+<div class = "card">
+    {{message}}
+    <form action = "{{ url_for('register') }}" method="get">
+        <fieldset>
+            <legend> 
+                <h2>First time here?  
+                    <button class = "btn btn-primary">Create Account</button> 
+                </h2>
+            </legend>
+        </fieldset>
+    </form>
+   
+    <fieldset>
+        <legend><h2>Sign In </h2></legend>
+    <!-- <h2>Sign In </h2> -->
+        <form action="{{ url_for('login') }}" class = "login " method="post">
+            <div class = "form-group">
+                <!-- <label for = "email_id">Email id</label> -->
+                <fieldset>
+                    <legend>Enter email
+                        <input type = "email" class="form-control form-control-lg" name = "email_id" placeholder="Enter your e-mail id: " id="email_id" aria-describedby="emailHelp" required>
+                </legend>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <!-- <label for="password">Password</label> -->
+                <fieldset>
+                    <legend>Enter Password
+                        <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Enter your password:" required>
+                    </legend>
+                </fieldset>
+            </div>
+        
+            <div class="form-group">
+                <button class = "btn btn-primary">Submit</button>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox"> Remember me</label>  
+            </div>
+            <h2>{{err_msg}}</h2>
+        </form>
+    </fieldset>
+    <div>
+        <fieldset>
+            <legend> 
+                <h2>or login with </h2>
+                    <span>
+                        <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                    </span>
+            </legend>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}
