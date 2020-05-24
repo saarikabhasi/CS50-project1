@@ -1,21 +1,22 @@
 import os
+import re
 import requests
 import json
 import xmltodict
-from flask import Flask, session,render_template,request,redirect,url_for,jsonify
+from flask import Flask, session,render_template,request,redirect,url_for,jsonify,flash
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from markupsafe import escape
+from wtforms import Form, BooleanField, StringField, PasswordField, validators
 
 app = Flask(__name__)
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
     raise RuntimeError("DATABASE_URL is not set")
-if not os.getenv("GR_key"):
-    raise RuntimeError("Good reads key not set")
-    
+
+
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
@@ -24,39 +25,59 @@ Session(app)
 
 # Set up database
 engine = create_engine(os.getenv("DATABASE_URL"))
-key = os.getenv("GR_key")
+gr_key=os.getenv("GR_key")
+
 db = scoped_session(sessionmaker(bind=engine))
 
 
 
 @app.route("/")
 def index():
+    print(f"SESSION DETAILS: {session}")
 
     if 'email_id' in session:
         if session['email_id']:
-            message = 'Logged in as %s' % session['email_id']
-            return render_template ("index.html",message = message)
+            if session['name']:
+                message = 'Logged in as %s' % session['name']
+                return render_template ("index.html",message = message)
         else:
             return render_template("login.html",message="you are not logged in")
     else:
-        return render_template("login.html",message="you are not logged in")
+        return render_template("login.html")
 
 
 @app.route("/register", methods=["GET","POST"])
 def register():
     if 'email_id' in session:
         if session['email_id']:
-            message = 'Logged in as %s' % session['email_id']
-            return render_template ("index.html",message = message)
+            if session['name']:
+                message = 'Logged in as %s' % session['name']
+                return render_template ("index.html",message = message)
 
     if request.method == 'POST':
-        session['email_id'] = request.form.get("email_id")
+        # session['email_id'] = request.form.get("email_id")
         try:
             email_id = request.form.get("email_id")
             password = request.form.get("password")
             name = request.form.get("name")
+            confirm_password = request.form.get("confirmpassword")
+
         except ValueError:
             return render_template("register.html",err_msg="email id or password or name is required")
+        
+        #password length check 
+
+        if not len(password)>=6:
+            err_msg = "Password length must be atleast 6 characters"
+            error ="PASSWORD_LENGTH_ERROR"
+            return render_template("register.html",err_msg=err_msg,type_err_msg= error,email = email_id,name=name)
+        
+        #password match
+
+        if password!=confirm_password:
+            err_msg = "Password did not match"
+            error = 'PASSWORD_NOT_MATCH'
+            return render_template("register.html",err_msg=err_msg,type_err_msg= error, email = email_id,name=name)
 
         if db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).rowcount==0:
         # new user
@@ -64,11 +85,19 @@ def register():
             {"email_id":email_id,"password":password,"name":name})
             
             db.commit()
+            flash(u'Welcome , You were successfully registered. ')
+            session['email_id']=email_id
+            session['name']=name
             return redirect(url_for('index'))
+
         else:
             err_msg = "Sorry,the email address is already registered!"
             session['email_id']=""
-            return render_template("register.html",err_msg=err_msg)
+            session['name']=""
+            err_msg = "Sorry,the email address is already registered!"
+            error = 'email_error'
+           
+            return render_template("register.html",err_msg=err_msg,type_err_msg= error)
     else:
         return render_template("register.html")
         
@@ -77,31 +106,33 @@ def register():
 def login():
     if 'email_id' in session:
         if session['email_id']:
-            message = 'Logged in as %s' % session['email_id']
-            return render_template ("index.html",message = message)
+            if session['name']:
+                message = 'Logged in as %s' % session['name']
+                return render_template ("index.html",message = message)
 
        
             
     if request.method == 'POST':
-        session['email_id'] = request.form["email_id"]
-        try:
-            email_id = request.form["email_id"]
-            password = request.form["password"]
-
-        except ValueError:
-            return render_template("login.html", err_msg="email id and password is required to login")
         
-        user = db.execute("select email_id,password,name from users where email_id=:email_id and password=:password",
-        {"email_id": email_id,"password":password}).fetchall()
+        email_id = request.form["email_id"]
+        password = request.form["password"]
 
-    
-        if len(user) == 0:
-            session['email_id']=""
-            return render_template("login.html",err_msg="Wrong email id or password!")
-        else:     
-            for u in user:
-                message = 'Logged in as %s' % u.name
-                return redirect(url_for('index'))  
+        users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
+        print(f" LOGIN {users}")
+        if len(users)== 0:
+            err_msg = 'user not found'
+            error ="EMAIL_NOT_FOUND"
+            return render_template("login.html",err_msg=err_msg,type_err_msg= error)
+        else:
+            for u in users:
+                if u.email_id == email_id and u.password == password:
+                    session['name']= u.name 
+                    session['email_id']=u.email_id
+                    return redirect(url_for('index'))  
+                else:
+                    err_msg = 'Wrong Password'
+                    error ="WRONG_PASSWORD"
+                    return render_template("login.html",err_msg=err_msg,type_err_msg= error,email = u.email_id)
     else:
 
         return render_template("login.html")
@@ -112,14 +143,16 @@ def login():
 def logout():
 
     session.pop('email_id',None)
-
+    session.pop('name',None)
+    flash(u'You were logged out successfully','success')
     return redirect(url_for('index'))
 
 @app.route("/search",methods=["GET","POST"])
 def search():
     if 'email_id' in session:
         if session['email_id']:
-            message = 'Logged in as %s' % session['email_id']
+            if session['name']:
+                message = 'Logged in as %s' % session['name']
         else:
             return render_template("login.html",message="you are not logged in")   
     
@@ -150,7 +183,7 @@ def search():
                         average.append(avg)
        
                 
-                return render_template("index.html",books=books,reviews = review,message=message)
+                return render_template("index.html",books=books,message=message)
         else:
             return redirect(url_for('index'))
     else:
@@ -163,7 +196,8 @@ def books(b,booksearchby):
     goodreads_numberofrating=[]
     if 'email_id' in session:
         if session['email_id']:
-            message = 'Logged in as %s' % session['email_id']
+            if session['name']:
+                message = 'Logged in as %s' % session['name']
         else:
             return render_template("login.html",message="you are not logged in")
 
@@ -189,19 +223,22 @@ def books(b,booksearchby):
            
             
             average_rating = db.execute("select  avg(reviews.rating) as average_score from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
-            review = db.execute("select contents, rating,email_id from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall() 
+            #review = db.execute("select contents, rating,email_id from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall() 
+            review = db.execute("select contents, rating,reviews.email_id,name from reviews inner join users on users.email_id=reviews.email_id  where isbn =:isbn ", {"isbn":b.isbn}).fetchall() 
             
             avg = average_rating[0][0]
             
             if avg==None:
                 avg=0
             avg=float('%.2f' %(avg))
-            
-
-      
             average.append(avg)
             #book reads api
-            response = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": key, "isbns": b.isbn})
+            if not os.getenv("GR_key"):
+                raise RuntimeError("Good reads key not set")
+
+            gr_key=os.getenv("GR_key")
+
+            response = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": gr_key, "isbns": b.isbn})
             data =response.json()
            
             if response.status_code != 200:
@@ -214,12 +251,15 @@ def books(b,booksearchby):
         return render_template("login.html",message="you are not logged in")
 
 
+        
+
 @app.route("/review/<string:isbn>",methods=["GET","POST"])
 def review(isbn):
     if 'email_id' in session:
         if session['email_id']:
-            user_email = session['email_id']
-            message = 'Logged in as %s' % user_email
+            if session['name']:
+                user_email = session['email_id']
+                message = 'Logged in as %s' % session['name']
         else:
             return render_template("login.html",message="you are not logged in")
 
@@ -250,11 +290,11 @@ def review(isbn):
                         rev= db.execute("insert into reviews(contents,isbn,email_id) values (:contents,:isbn,:email_id)",{"contents":allreviews["review"],"isbn":isbn,"email_id":user_email})
                         
                         db.commit()
-                        return render_template("book.html",review_sucess = "you have sucessfully submitted your review")
+                        return render_template("book.html",review_sucess = "you have sucessfully submitted your review",message=message)
                     else:
                         return render_template("book.html",bookerr = "Validation required",message =message)
             else:
-                return render_template("book.html", reviewerr = "You already gave a review")
+                return render_template("book.html", reviewerr = "You already gave a review",message =message)
         else:
             return render_template("login.html",message= " please create an account first")
     else: 
@@ -273,4 +313,32 @@ def book_api(isbn):
     
     
     
+    #Good reads api
+    # key: nzzBzMdHyfJ8LHJuj1w38Q
+    # secret: M4pWj5YVrrUIIMGfEkI7hpXNbbuVnUcqPfmCTleaA
+   
     
+    #res = requests.get(url = "https://www.goodreads.com/search/index.xml" , params={"q":query,"page":all,"key": "nzzBzMdHyfJ8LHJuj1w38Q", "search": searchby})
+    #print(f"{res.status_code}")
+    #if res.status_code != 200:
+      #raise Exception("ERROR: API request unsuccessful.")
+    #try:
+        #data= xmltodict.parse(res.content)
+        
+        #resp = json.dumps(data)
+        # print(f"response:{resp}")
+
+        #d = data["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["title"]
+       
+        #dj = json.dumps(d,sort_keys = True, indent = 4, separators = (',', ': '))  
+  
+
+        
+       # return render_template("index.html",dj=dj)
+    # except ValueError:
+    #      print("Response content is not valid JSON")
+    #      print(f"Value err : {res.json()}")
+
+
+    
+
