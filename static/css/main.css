@@ -1,16 +1,10 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 body{
     
-    
-}
-h1{
-    font-size: 50px;
     font-family: Roboto;
-    font-weight: 300;
-    color: rgb(84, 82, 82);
-    background: rgb(245, 245, 222);
-    text-align: left;
 }
+
+
 h2{
     color: rgb(84, 82, 82);
     font-size: 25px;
@@ -40,6 +34,17 @@ h2{
 .card div{ 
     width:90%;
     height:30%;
+}
+.card h1{
+    font-size: 50px;
+    font-family: Roboto;
+    font-weight: 300;
+    color: rgb(84, 82, 82);
+    background: rgb(247, 247, 245);
+    text-align: center;
+    height: 100px;
+    margin-top: 10px;
+    position: relative;
 }
 .card div h2{
     text-align: center;
