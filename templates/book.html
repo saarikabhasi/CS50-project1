@@ -15,8 +15,7 @@ The Book Fair
                         <h3>{{reviewerr}}</h3>
                         
                         <h2> {{review_sucess}}</h2>
-                        <h3><a href= "{{ url_for('search') }}">Go back to main page</a></h3>
-                        
+
                         {% for details in book %}
                         
                             <div class="books">
@@ -43,8 +42,8 @@ The Book Fair
                                             {% for review in review %}
                                                 <hr>
                                                 <h4>{{review[0]}}</h4>
-                                                <h4>{{review[1]}}</h4>
-                                                <h4>{{review[2]}}</h4>
+                                                <h4>Rating: {{review[1]}}</h4>
+                                                <h4> By :{{review[3]}}</h4>
 
                                              {%endfor%}
                                              <hr>
@@ -72,7 +71,7 @@ The Book Fair
                                                 <fieldset>
                                                   
                                                 
-                                                    <h3><textarea name="review" rows="10" cols="100" placeholder="Start writing your review about the book"></textarea></h3>
+                                                    <h3><textarea name="review" rows="10" cols="100" placeholder="Start writing your review about the book" ></textarea></h3>
 
                                                 <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit" style="margin-left: 100px;">Submit</button>
                                             </fieldset>
