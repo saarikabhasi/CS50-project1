@@ -18,29 +18,47 @@ h2{
     color: rgb(84, 82, 82);
     font-size: 15px;
 }
-.card{
+.card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    width:50%;
+    width:500px;
     height:50%;
-    float:center;
-    clear: both;
-    left:30%;
     
+   
+    /* clear: both; */
+    
+}
+div#signIn{
+    margin-left: 25%;
+    width:600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 500px;
+    clear: both;
+}
+div#register{
+    margin-left: 25%;
+    width:600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    /* height: 550px; */
+    clear: both;
+        
+        
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card div{ 
-    width:90%;
+    width:100%;
     height:30%;
 }
 .card h1{
     font-size: 50px;
     font-family: Roboto;
     font-weight: 300;
-    color: rgb(84, 82, 82);
-    background: rgb(247, 247, 245);
+    color: rgb(131, 9, 9);
+    background: rgb(225, 225, 225);
     text-align: center;
     height: 100px;
     margin-top: 10px;
@@ -51,14 +69,16 @@ h2{
     color: rgb(84, 82, 82);
     font-size: 25px;
 }
-.login h2{
-    color:red;
+
+.login input{
+    font-size: 17px;
 }
-div .register h2{
-    color:red;
+
+.register input{
+    font-size: 17px;
 }
 .btn{
-    background: skyblue;
+    background: rgb(0, 118, 244);
     font-size: 20px;
 }
 .btn:hover{
@@ -76,6 +96,9 @@ div .register h2{
 .searchbar input{
 height: 40px;
 width:  500px;
+margin-top: 20px;
+margin-bottom: 20px;
+margin-right: 20px;
 
 
 }
@@ -83,6 +106,9 @@ width:  500px;
     height: 40px;
     width:100px;
     margin-left: 20px;
+    top: 30%;
+    margin-bottom: 20px;
+    margin-right: 20px;
 } 
 .search{
     text-align: left;
@@ -90,7 +116,10 @@ width:  500px;
     margin-left: 70px;
 }
 
-
+/* register */
+.form-group{
+    text-align: left;
+}
 
 
 
@@ -121,7 +150,12 @@ width:  500px;
  float: right; 
 }
 
-
+/* book.html */
+section .card  {
+    float:left ;
+    clear:both;
+    
+}
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
@@ -131,3 +165,16 @@ width:  500px;
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: rgb(133, 255, 172);  } 
+/* index.html*/
+.col-lg-12 h1{
+    color: rgb(131, 9, 9); 
+    background: rgb(225, 225, 225); 
+    height: 100px; 
+    text-align: center; 
+    font-size: 50px;
+    font-weight:300;
+}
+/* 
+.searchbar{
+    margin-top: 10px;
+} */
