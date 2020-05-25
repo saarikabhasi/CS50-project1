@@ -68,16 +68,16 @@ def register():
         #password length check 
 
         if not len(password)>=6:
-            err_msg = "Password length must be atleast 6 characters"
+            password_length_err_msg = "Password length must be atleast 6 characters"
             error ="PASSWORD_LENGTH_ERROR"
-            return render_template("register.html",err_msg=err_msg,type_err_msg= error,email = email_id,name=name)
+            return render_template("register.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,name=name)
         
         #password match
 
         if password!=confirm_password:
-            err_msg = "Password did not match"
+            confirm_password_err_msg = "Password did not match"
             error = 'PASSWORD_NOT_MATCH'
-            return render_template("register.html",err_msg=err_msg,type_err_msg= error, email = email_id,name=name)
+            return render_template("register.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,name=name)
 
         if db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).rowcount==0:
         # new user
@@ -91,13 +91,13 @@ def register():
             return redirect(url_for('index'))
 
         else:
-            err_msg = "Sorry,the email address is already registered!"
+            
             session['email_id']=""
             session['name']=""
-            err_msg = "Sorry,the email address is already registered!"
+            email_address_not_available_err_msg = "Sorry,the email address is already registered!"
             error = 'email_error'
            
-            return render_template("register.html",err_msg=err_msg,type_err_msg= error)
+            return render_template("register.html",err_msg=email_address_not_available_err_msg,type_err_msg= error)
     else:
         return render_template("register.html")
         
@@ -120,9 +120,9 @@ def login():
         users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         print(f" LOGIN {users}")
         if len(users)== 0:
-            err_msg = 'user not found'
+            email_not_found = 'user not found'
             error ="EMAIL_NOT_FOUND"
-            return render_template("login.html",err_msg=err_msg,type_err_msg= error)
+            return render_template("login.html",err_msg=email_not_found,type_err_msg= error)
         else:
             for u in users:
                 if u.email_id == email_id and u.password == password:
@@ -130,9 +130,9 @@ def login():
                     session['email_id']=u.email_id
                     return redirect(url_for('index'))  
                 else:
-                    err_msg = 'Wrong Password'
+                    wrong_password = 'Wrong Password'
                     error ="WRONG_PASSWORD"
-                    return render_template("login.html",err_msg=err_msg,type_err_msg= error,email = u.email_id)
+                    return render_template("login.html",err_msg=wrong_password,type_err_msg= error,email = u.email_id)
     else:
 
         return render_template("login.html")
