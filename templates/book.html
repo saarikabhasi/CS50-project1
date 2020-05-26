@@ -16,8 +16,12 @@
 </div>
 <div class = "container"   >
     <div class="row">
-        <div class="col-md-12" id="useraccount">
+        <div class="col-md-12" id="useraccount" >
             <h2 >{{account_details}}</h2>
+            <div class="detail">
+                <form action="{{url_for('myreviews')}}">
+                    <button class = "btn btn-primary">myreviews</button>
+                </form>
             <form action="{{url_for('logout')}}">
                 <button class = "btn btn-primary">logout</button>
             </form>

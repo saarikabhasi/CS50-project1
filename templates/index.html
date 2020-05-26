@@ -61,10 +61,20 @@
             </form>
         </div>
         <div class="col-md-4" id="account">
+            
             <h2>{{account_details}}</h2>
-            <form action="{{url_for('logout')}}">
-                <button class = "btn btn-primary">logout</button>
-            </form>
+            
+           
+                <div class="detail">
+                    
+                    <form action="{{url_for('myreviews')}}">
+                        <button class = "btn btn-primary">myreviews</button>
+                    </form>
+            
+                    <form action="{{url_for('logout')}}">
+                        <button class = "btn btn-primary">logout</button>
+                    </form>
+                </div>
         </div>   
     </div>
 </div>
