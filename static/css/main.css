@@ -116,11 +116,11 @@ div#register{
 /* book.html*/
 
 #aboutbook h1{
-    color: rgb(84, 82, 82);
+    color: rgb(50, 50, 50);
     font-size: 24px;
     text-align: left;
     /* padding: 50px; */
-    margin: 20px;
+    /* margin: 20px; */
 }
 #aboutbook  h2{
     color: black;
@@ -141,7 +141,21 @@ span.name{
     
     
 } 
-
+.hr_divide_heading{
+    border: 3px solid rgb(84, 82, 82);;
+    border-radius: 100px;
+}
+.hr_divide_separator{
+    border: 1px solid rgb(84, 82, 82);;
+    
+}
+.reviewabook h2{
+     
+    padding-bottom: 20px; 
+}
+.reviewabook{
+    margin-bottom: 100px;
+}
 h3.notfound{
     color: rgb(235, 36, 1);
 } 
