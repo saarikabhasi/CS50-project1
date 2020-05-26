@@ -14,13 +14,19 @@
  
         <div class="col-md-8 ">   
             <form action ="{{ url_for('search') }}" method="post">
-                    <form class ="form-inline" > 
-                        <div class ="searchbar">
-                            <div class = "row">
+                <form class ="form-inline" > 
+                    <div class =" container searchbar"> 
+                        <div class = "row">
+                            <div class="col-lg-9 ">
                                 <input class="form-control form-control-lg" type="text" name = "search" placeholder="Search" aria-label="Search">
+                            </div>
+                            <div class="col-lg-3 ">
                                 <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit">Search</button>
+                        
                             </div>
                         </div>
+                    </div> 
+                    <div class="row searchoption">   
                         <div class="form-check  form-check-inline">
                             <input class="form-check-input radio-inline" type="radio" name="searchvia" id="all" value="all" checked>
                             <label class="form-check-label" for="all">
@@ -46,12 +52,14 @@
                             <label class="form-check-label" for="author">
                             <h4>author</h4>
                             </label>
-                        </div> 
-                    </form>
+                        </div>
+                    </div>
+                
+                </form>
                     <h3>{{search_err}}</h3>
             </form>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="account">
             <h2>{{message}}</h2>
             <form action="{{url_for('logout')}}">
                 <button class = "btn btn-primary">logout</button>
