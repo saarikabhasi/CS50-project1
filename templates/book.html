@@ -6,128 +6,144 @@
 {% endblock %}
 
 {% block body %}
-    <div class = "container">
-        <div class = "row">
-            <div class="col-lg-12 ">
-                <h1>The Book Fair </h1>
-            </div>
-            <div class="col-md-8">   
-                <section>
-                    <article>
-                        <h4>{{bookerr}}</h4>
-                        <h3>{{reviewerr}}</h3>
-                        
-                        <h2> {{review_sucess}}</h2>
+
+<div class="container" id="logo">
+    <div class= "row">
+        <div class="col-md-12">
+            <h1>The Book Fair </h1>
+        </div>
+    </div>
+</div>
+<div class = "container"   >
+    <div class="row">
+        <div class="col-md-12" id="useraccount">
+            <h2 >{{account_details}}</h2>
+            <form action="{{url_for('logout')}}">
+                <button class = "btn btn-primary">logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class = "container" >
+    <div class = "row" id = "bookdetails">
+
+        <div class="col-md-12" >   
+            <section>
+                <article>
+                    <h4>{{bookerr}}</h4>
+                    <h3>{{reviewerr}}</h3>
+                    
+                    <h2> {{review_sucess}}</h2>
 
 
 
-                        {% for details in book %}
+                    {% for details in book %}
+                            
+                        <div id="aboutbook">
+                                    
+                            <div class="title">
                                 
-                            <div id="aboutbook">
-                                        
-                                <div class="title">
-                                   
-                                        <h1>{{details[1]}}
-                                        
-                                           <h2>- by {{details[2]}} - published in {{details[3]}}.</h2></h1>
-                                             
-                                </div>
+                                    <h1>{{details[1]}}
+                                    
+                                        <h2>- by {{details[2]}} - published in {{details[3]}}.</h2></h1>
+                                            
+                            </div>
                                 
-                                <hr class="hr_divide_heading"> 
+                            <hr class="hr_divide_separator"> 
                                     
                                 
                                
                                 
-                                <div class = "ratings">
-                                    <!-- <h2> REVIEWS</h2> -->
-                                    
-                                    <h2><i class= "fa fa-star"></i> from <b>'The Book Fair'</b></h2>
-                                    {% if average_rating[loop.index0] == 0 %}
-                                        {% if booksearchby == 'title' %}
-                                            <h3 class="notfound">  No ratings yet. <span>Be first to give one</span></h3>
-                                          
-                                        {% else %}
-                                            <h3 class="notfound">   No ratings yet</h3>
-                                        {% endif%}
-                                    {% else %}
-                                            <h3>{{average_rating[loop.index0]}}</h3>
-                                    {% endif %}
-                                    
-                                    
-                                    
-                                    {% for review in review %}
-                                    
-                                        <h2 >  By : <span class= "name"><b>{{review[3]}}</b></span></h2>
-                                            
-
-                                            <h3>Rated: {{review[1]}}</h3>
-
-                                        
-                                        <h3>comments: {{review[0]}}</h3>
-                                        
-                                        
-                                    {% endfor %}
-                                    <hr>
-                                    
-                                    <h2> <i class= "fa fa-star"></i>  from <b>' The Good Reads website' </b></h2>
-                                        
+                            <div class = "ratings">
+                                <!-- <h2> REVIEWS</h2> -->
                                 
-                                    {% if goodreads_numberofrating[loop.index0] == 0 %}
-                                        <h3> Looks like no one has given rating in Good Reads </h3>
+                                <h2><i class= "fa fa-star"></i> from <b>'The Book Fair'</b></h2>
+                                {% if average_rating[loop.index0] == 0 %}
+                                    {% if booksearchby == 'title' %}
+                                        <h3 class="notfound">  No ratings yet. <span>Be first to give one</span></h3>
+                                        
                                     {% else %}
-                                        <h3>Average Rating: {{goodreads_avg[loop.index0]}}</h3>
-                                        <h3> Number of Rating: {{goodreads_numberofrating[loop.index0]}}</h3>
-                                    {% endif %}
-                                </div> 
-                            </div>   
-                            <hr class="hr_divide_separator">
-                            <div class=" reviewabook">
-                                {% if booksearchby == 'title'  %}
-                                    <h2 >Write a Review</h2>
-                                            
-                                            <form action="{{url_for('review',isbn=details[0])}}" method ="post">
-                                                <fieldset>
-                                                    <h3><textarea name="review" rows="10" cols="70" placeholder="Write your review here" ></textarea></h3>
-                                                </fieldset>
-                                                <div class="container ">
-                                                    <div class="row">
-                                                        <div class="col-md-8"> 
-                                                            <fieldset form="form1" class="rating">
-                                                                
-                                                                <input type="radio" id="5star" name="rating" value="5" /><label class = "full" for="5star" ></label>
-                                                                <input type="radio" id="4halfstar" name="rating" value="4.5" /><label class="half" for="4halfstar" ></label>
-                                                                <input type="radio" id="4star" name="rating" value="4" /><label class = "full" for="4star" ></label>
-                                                                <input type="radio" id="3halfstar" name="rating" value="3.5" /><label class="half" for="3halfstar" ></label>
-                                                                <input type="radio" id="3star" name="rating" value="3" /><label class = "full" for="3star" ></label>
-                                                                <input type="radio" id="2halfstar" name="rating" value="2.5" /><label class="half" for="2halfstar"></label>
-                                                                <input type="radio" id="2star" name="rating" value="2" /><label class = "full" for="2star" ></label>
-                                                                <input type="radio" id="1halfstar" name="rating" value="1.5" /><label class="half" for="1halfstar" ></label>
-                                                                <input type="radio" id="1star" name="rating" value="1" /><label class = "full" for="1star" ></label>
-                                                                <input type="radio" id="halfstar" name="rating" value="0.5" /><label class="half" for="halfstar"></label>
-                                                            
-                                                            </fieldset>
-                                                        </div>
+                                        <h3 class="notfound">   No ratings yet</h3>
+                                    {% endif%}
+                                {% else %}
+                                        <h3>{{average_rating[loop.index0]}}</h3>
+                                {% endif %}
+                                
+                                
+                                
+                                {% for review in review %}
+                                
+                                    <h2 >  By : <span class= "name"><b>{{review[3]}}</b></span></h2>
+                                        
 
-                                                        <div class="col-md-4"> 
-                                                            <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit" style="margin-left: 100px; margin-bottom:100px">Submit</button>
-                                                        </div>
+                                        <h3>Rated: {{review[1]}}</h3>
+
+                                    
+                                    <h3>comments: {{review[0]}}</h3>
+                                    
+                                    
+                                {% endfor %}
+                                <hr>
+                                
+                                <h2> <i class= "fa fa-star"></i>  from <b>' The Good Reads website' </b></h2>
+                                    
+                            
+                                {% if goodreads_numberofrating[loop.index0] == 0 %}
+                                    <h3> Looks like no one has given rating in Good Reads </h3>
+                                {% else %}
+                                    <h3>Average Rating: {{goodreads_avg[loop.index0]}}</h3>
+                                    <h3> Number of Rating: {{goodreads_numberofrating[loop.index0]}}</h3>
+                                {% endif %}
+                            </div> 
+                        </div>   
+                        <hr class="hr_divide_heading">
+                        <div class=" reviewabook">
+                            {% if booksearchby == 'title'  %}
+                                <h2 >Write a Review</h2>
+                                        
+                                        <form action="{{url_for('review',isbn=details[0])}}" method ="post">
+                                            <fieldset>
+                                                <div>
+                                                    <h3>
+                                                        <textarea name="review" placeholder="Write your review here" ></textarea>
+                                                    </h3>
+                                                </div>
+                                            </fieldset>
+                                            <div class="container ">
+                                                <div class="row">
+                                                    <div class="col-md-8"> 
+                                                        <fieldset form="form1" class="rating">
+                                                            
+                                                            <input type="radio" id="5star" name="rating" value="5" /><label class = "full" for="5star" ></label>
+                                                            <input type="radio" id="4halfstar" name="rating" value="4.5" /><label class="half" for="4halfstar" ></label>
+                                                            <input type="radio" id="4star" name="rating" value="4" /><label class = "full" for="4star" ></label>
+                                                            <input type="radio" id="3halfstar" name="rating" value="3.5" /><label class="half" for="3halfstar" ></label>
+                                                            <input type="radio" id="3star" name="rating" value="3" /><label class = "full" for="3star" ></label>
+                                                            <input type="radio" id="2halfstar" name="rating" value="2.5" /><label class="half" for="2halfstar"></label>
+                                                            <input type="radio" id="2star" name="rating" value="2" /><label class = "full" for="2star" ></label>
+                                                            <input type="radio" id="1halfstar" name="rating" value="1.5" /><label class="half" for="1halfstar" ></label>
+                                                            <input type="radio" id="1star" name="rating" value="1" /><label class = "full" for="1star" ></label>
+                                                            <input type="radio" id="halfstar" name="rating" value="0.5" /><label class="half" for="halfstar"></label>
+                                                        
+                                                        </fieldset>
+                                                    </div>
+
+                                                    <div class="col-md-4" id="submit"  > 
+                                                        <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit" >Submit</button>
                                                     </div>
                                                 </div>
-                                            </form>
-                                                
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                    </article>
-                </section>
-            </div>
-                <div class="col-md-4">
-                    <h2>{{message}}</h2>
-                    <form action="{{url_for('logout')}}">
-                        <button class = "btn btn-primary">logout</button>
-                    </form>
-                </div>
-            
+                                            </div>
+                                        </form>
+                                            
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </article>
+            </section>
         </div>
+
+
+            
     </div>
+</div>
 {% endblock %}

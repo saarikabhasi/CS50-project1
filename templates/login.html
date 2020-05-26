@@ -24,7 +24,7 @@
         <legend >
             <h2 class="card-title">Sign In </h2>
         
-            <form action="{{ url_for('login') }}" class = "login card-body" method="post"> 
+            <form action="{{ url_for('login') }}" class = " card-body" method="post"> 
                 <div class = "form-group ">
                     {% if type_err_msg != "EMAIL_NOT_FOUND" %}  
                         <fieldset>
@@ -34,7 +34,7 @@
                     {%endif%}
                             <legend><h3>Enter your email address</h3>
                                 {% if type_err_msg != "WRONG_PASSWORD"%}
-                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Enter your e-mail id: " id="email_id" aria-describedby="emailHelp" required >
+                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Email address" id="email_id" aria-describedby="emailHelp" required >
                                 {%else %}
                                 <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder= {{email}} id="email_id" aria-describedby="emailHelp" value = {{email}} required >
                                 {%endif%}
@@ -50,7 +50,7 @@
                             <p style="color:red">{{err_msg}}</p>
                         {%endif%}   
                                 <legend><h3>Enter your password</h3>
-                                    <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Enter your password:" required>
+                                    <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>
                                 </legend>
                             </fieldset>
                     </div>

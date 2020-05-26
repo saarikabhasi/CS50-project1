@@ -15,14 +15,14 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             <div class=flashes>
-                 {% for category,message in messages %}
+                 {% for category,mesg in messages %}
                     {% if category == 'Error'%}
 
-                        <h2 style="color: red;">{{category}}:{{ message }}</h2>
+                        <h2 style="color: red;">{{category}}:{{ mesg }}</h2>
                     {%elif  category == 'Warning'%}
-                    <h2 style="color: orange;">{{category}}:{{ message }}</h2>
+                    <h2 style="color: orange;">{{category}}:{{ mesg}}</h2>
                     {% else %}
-                    <h4 style="color: green; text-align:center">{{ message }}</h4>
+                    <h2 style="color: green; text-align:center">{{ mesg }}</h2>
                     {%endif%}
 
                 {% endfor %}
