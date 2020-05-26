@@ -307,7 +307,31 @@ def book_api(isbn):
     rating['average_score'] =float('%.2f' %(rating['average_score']))
     return jsonify(rating)
     
+@app.route("/myreviews")
+def myreviews():
+    if 'email_id' in session:
+        if session['email_id']:
+            if session['name']:
+                user_email=session['email_id']
+                message = 'Logged in as %s' % session['name']
+        else:
+            return render_template("login.html",message="you are not logged in")
+
+        allreviews = db.execute("select reviews.isbn,rating,contents,title from reviews inner join books on books.isbn=reviews.isbn  where email_id=:email_id",{"email_id":user_email}).fetchall()
+        if len(allreviews) ==0:
+            no_reviews_found_msg = "No reviews found"
+            return render_template("index.html",err_msg=no_reviews_found_msg)
+        else:
+            print(f"{allreviews}")
+           
+            return render_template("myreviews.html",reviews=allreviews,account_details=message)
+    else: 
+        return render_template("login.html",message="you are not logged in")
+
+        
     
+    
+
     
     
 
