@@ -2,49 +2,42 @@
 body{
     
     font-family: Roboto;
+    position:relative;
+    width: 100%;
+    height: 100%;   
+}
+.txt_center{
+    text-align: center;
 }
 
+/* Button */
+.btn{
+    background: rgb(0, 118, 244);
+    font-size: 20px;
+}
+.btn:hover{
+    background: green;
+    
+}
+.btn-primary{
+    font-size: 20px;
 
-h2{
+}
+/* .form-group label{
     color: rgb(84, 82, 82);
     font-size: 25px;
-}
-
-.form-group label{
-    color: rgb(84, 82, 82);
-    font-size: 25px;
-}
-.checkbox label {
+} 
+ .checkbox label {
     color: rgb(84, 82, 82);
     font-size: 15px;
-}
+} */
+
+/* card */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+    transition: 0s;
     width:500px;
     height:50%;
-    
-   
-    /* clear: both; */
-    
-}
-div#signIn{
-    margin-left: 25%;
-    width:600px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 500px;
-    clear: both;
-}
-div#register{
-    margin-left: 25%;
-    width:600px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    /* height: 550px; */
-    clear: both;
-        
-        
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -70,66 +63,163 @@ div#register{
     font-size: 25px;
 }
 
-.login input{
+
+/* login page */
+
+div#signIn{
+    margin-left: 25%;
+    width:600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 500px;
+    clear: both;
+}
+#signIn h2{
+    color: rgb(84, 82, 82);
+    font-size: 25px;
+}
+
+#signIn h3{
+    font-size: 19px;
+}
+#signIn input{
     font-size: 17px;
 }
 
-.register input{
+/* register page */
+div#register{
+    margin-left: 25%;
+    width:600px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    clear: both;      
+}
+
+#register input{
     font-size: 17px;
 }
-.btn{
-    background: rgb(0, 118, 244);
-    font-size: 20px;
+
+#register h2{
+    color: rgb(84, 82, 82);
+    font-size: 25px;
 }
-.btn:hover{
-    background: green;
-    
-}
-.social .btn{
-    background: rgb(244, 244, 247);
-    font-size: 20px;
-}
-.social .btn:hover{
-    background: green;
-    
+#register h3{
+    font-size: 19px;
 }
 
-.searchbar button{
-    height: 40px;
-    width:100px;
-    margin-left: 20px;
-    top: 30%;
-    margin-bottom: 20px;
-    margin-right: 20px;
-} 
-.search{
-    text-align: left;
-    display: grid;
-    margin-left: 100px;
-}
-
-/* register */
 .form-group{
     text-align: left;
 }
 
-/* book.html*/
+/* common logo and account details styles for book page and index page */
+#logo h1{
+    color: rgb(131, 9, 9); 
+    background: rgb(225, 225, 225); 
+    height: 100px; 
+    text-align: center; 
+    font-size: 50px;
+    font-weight:300;
 
+}
+
+#account {
+    text-align: center;
+    color: rgb(84, 82, 82);
+    font-size: 25px;
+    margin-top: 20px;
+}
+div#account {
+    
+    display: inline-block;
+}
+
+
+/* index.html */
+.searchbar{
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-gap: 20px;
+    padding: 20px;
+}
+.searchbar input{
+    height: 40px;
+    width:  100%;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.searchbar .btn{
+    top:20px;  
+    margin-top: -20px;
+    margin-left: 0px;
+    float: right;
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+.searchoption{
+    margin-top: 0px;
+    margin-left: 20px;
+}
+.searchoption h4 {
+    font-size: 20px;
+}
+
+
+
+.searchresult{
+    text-align: left;
+    display: grid;
+    margin-left: 110px;
+    margin-top: 20px;
+}
+.searchresult h4{
+    color: rgb(235, 36, 1);
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#eachbooks h2{
+    color: rgb(84, 82, 82);
+    font-size: 25px;
+}
+#eachbooks h3{
+    font-size: 19px;
+}
+
+
+
+
+
+/* book.html*/
+#useraccount{
+    text-align: right;
+    color: rgb(84, 82, 82);
+    font-size: 25px;
+    margin-top: 20px;
+}
+div#useraccount {
+    
+    display: inline-block;
+}
+#bookdetails{
+    width:100%;
+}
 #aboutbook h1{
     color: rgb(50, 50, 50);
-    font-size: 24px;
+    font-size: 25px;
     text-align: left;
-    /* padding: 50px; */
-    /* margin: 20px; */
+
 }
-#aboutbook  h2{
+#aboutbook h2{
     color: black;
     font-size: 18px;
     text-align: left;
     margin-left: 50px;
     padding: 10px;
 }
- #aboutbook .ratings h2{
+#aboutbook .ratings h2{
     margin-left: 0px;
   
 } 
@@ -153,6 +243,12 @@ span.name{
      
     padding-bottom: 20px; 
 }
+
+
+.reviewabook textarea{
+    width: 100%;
+    height: 200px;
+ }
 .reviewabook{
     margin-bottom: 100px;
 }
@@ -166,6 +262,11 @@ h4.ratings{
     margin-left: 0px;
     color:black;
 } 
+#submit{
+    margin-left: 400px; 
+    margin-bottom:100px;
+    margin-top:-40px;
+}
 
 
 /*star*/
@@ -196,46 +297,165 @@ h4.ratings{
 
 
 
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: rgb(10, 80, 38);  } /* hover previous stars in list */
+.rating > input:checked ~ label, 
+.rating:not(:checked) > label:hover, 
+.rating:not(:checked) > label:hover ~ label { color: rgb(10, 80, 38);  } 
 
-.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked + label:hover, 
 .rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > label:hover ~ input:checked ~ label, 
 .rating > input:checked ~ label:hover ~ label { color: rgb(245, 238, 36);  } 
+ 
 
-/* index.html*/
 
-.col-lg-12 h1{
-    color: rgb(131, 9, 9); 
-    background: rgb(225, 225, 225); 
-    height: 100px; 
-    text-align: center; 
-    font-size: 50px;
-    font-weight:300;
+/* media queries */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) 
+and (-webkit-min-device-pixel-ratio: 1) { 
+
+
+
 }
-.searchbar input{
-    height: 40px;
-    width:  500px;
-    margin-top: 20px;
-    margin-bottom: 0px;
-    margin-right: 20px;
-    font-size: 20px;
-}
-.searchbar .col-lg-3{
-    top:-60px;  
-    margin-top: 20px;
-    margin-left: 550px;
-}
- .row  .searchoption{
-    margin-top: -20px;
-    margin-left: 20px;
-}
-.searchoption h4 {
-font-size: 20px;
-}
-div#account {
+@media only screen and (max-width: 600px) {
+    .btn{
+
+        font-size: 14px;
+    }
+    .btn-primary{
+        font-size: 14px;
+        
+    }
+    .card {
+        transition: 0s;
+        
+    }
+    .card h1{
+        font-size: 50px;
+        height: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    div#signIn{
+        margin-left: 0%;
+        width:100%;
+
+
+    }
+
+    #signIn h2{
+        color: rgb(84, 82, 82);
+        font-size: 20px;
+    }
     
-    display: inline-block;
-}
+    #signIn h3{
+        font-size: 15px;
+    }
+    #signIn input{
+        font-size: 13px;
+    }
+
+
+    /*register page */
+    div#register{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        /* height: 550px; */
+        clear: both;
+            
+            
+    }
+    #register input{
+        font-size: 13px;
+    }
+    #register h3{
+        font-size: 15px;
+    }
+
+    /*index page */
+
+    #logo h1{
+ 
+        height: 100%; 
+        text-align: center;
+        margin-top: 10px; 
+        width: 100%;
+
+    }
+    
+    #account {
+        text-align: center;
+        color: rgb(84, 82, 82);
+        font-size: 20px;
+        
+    }
+
+    .searchbar input{
+        height: 30px;
+        font-size: 17px;
+    }
+    .searchbar .btn{
+        height: 30px;
+    }
+    .searchoption h4 {
+        font-size: 17px;
+    }
+    
+
+    .searchresult{
+        margin-left: 35px;
+    }
+    .searchresult h4{
+        font-size: 18px;
+
+    }
+    #eachbooks h2{
+        font-size: 23px;
+    }
+    #eachbooks h3{
+        font-size: 17px
+    }
+
+    /*book review */
+
+    #useraccount{
+        text-align: center;
+        font-size: 20px;
+
+    }
+
+    #aboutbook{
+        margin-top: 20px;
+        width: 100%;
+    }
+    #aboutbook h1{
+        font-size: 23px;
+    }
+    #aboutbook h2{
+        font-size: 16px;
+    }
+
+    #aboutbook .ratings h3{
+        margin-left: 50px;
+    } 
+    .hr_divide_heading{
+        border: 2px solid rgb(84, 82, 82);;
+        border-radius: 100px;
+    }
+    .hr_divide_separator{
+        border: 1px solid rgb(84, 82, 82);;
+        
+    }
+    #submit{
+        margin-left: 200px; 
+        margin-bottom:100px;
+        
+    }
+
+
+    
+
+
+    
+  }
