@@ -108,7 +108,7 @@ def login():
         if session['email_id']:
             if session['name']:
                 message = 'Logged in as %s' % session['name']
-                return render_template ("index.html",message = message)
+                return render_template ("index.html",account_details = message)
 
        
             
@@ -120,7 +120,7 @@ def login():
         users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         print(f" LOGIN {users}")
         if len(users)== 0:
-            email_not_found = 'user not found'
+            email_not_found = 'User not found'
             error ="EMAIL_NOT_FOUND"
             return render_template("login.html",err_msg=email_not_found,type_err_msg= error)
         else:
@@ -163,7 +163,8 @@ def search():
             searchby = request.form['searchvia']
 
             if query == "":
-                return render_template("index.html",search_err="No results",message=message)
+                error ="No results"
+                return render_template("index.html",error = error, account_details=message)
         
             else:
                 q = f"%{query}%".upper()
@@ -172,7 +173,8 @@ def search():
 
                 average=[]
                 if len(books) == 0:
-                    return render_template("index.html",search_err_message="No results",message=message)
+                    error ="No books     found"
+                    return render_template("index.html",error=error,account_details=message)
                 for b in books:
 
                     average_rating = db.execute("select cast (avg(rating) AS DECIMAL(10,2)) from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
@@ -183,7 +185,7 @@ def search():
                         average.append(avg)
        
                 
-                return render_template("index.html",books=books,message=message)
+                return render_template("index.html",books=books,account_details=message)
         else:
             return redirect(url_for('index'))
     else:
@@ -206,47 +208,46 @@ def books(b,booksearchby):
         if booksearchby =="title":
 
             book = db.execute("select isbn,title,author,year from books where upper(title)=:title",{"title":b}).fetchall()
-           
+            print(f"from books table: search results {book}")
         elif booksearchby == "author":
             
             book = db.execute("select isbn,title,author,year from books where upper(author)=:author",{"author":b}).fetchall()
         else:
-            return render_template("index.html",search_err= "Internal error",message=message)
+            return render_template("index.html",search_err= "Internal error",account_details=message)
 
         if len(book) == 0:
-            return render_template("index.html",search_err= "Internal error",message=message)
+            return render_template("index.html",search_err= "Internal error",account_details=message)
         
         #get reviews for that book
         
         for b in book:
-
-           
-            
             average_rating = db.execute("select  avg(reviews.rating) as average_score from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
-            #review = db.execute("select contents, rating,email_id from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall() 
             review = db.execute("select contents, rating,reviews.email_id,name from reviews inner join users on users.email_id=reviews.email_id  where isbn =:isbn ", {"isbn":b.isbn}).fetchall() 
-            
+            print(f"from books table: avg rating and  review{average_rating}{review} isbn {b.isbn}")
             avg = average_rating[0][0]
             
             if avg==None:
                 avg=0
             avg=float('%.2f' %(avg))
             average.append(avg)
+
             #book reads api
             if not os.getenv("GR_key"):
                 raise RuntimeError("Good reads key not set")
 
             gr_key=os.getenv("GR_key")
-
             response = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": gr_key, "isbns": b.isbn})
-            data =response.json()
+            
+            
            
             if response.status_code != 200:
                 raise Exception("ERROR: API request unsuccessful.")
             else:
+                data =response.json()
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
-        return render_template("book.html",book =book,booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,message=message)
+
+        return render_template("book.html",book =book,booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
@@ -290,11 +291,11 @@ def review(isbn):
                         rev= db.execute("insert into reviews(contents,isbn,email_id) values (:contents,:isbn,:email_id)",{"contents":allreviews["review"],"isbn":isbn,"email_id":user_email})
                         
                         db.commit()
-                        return render_template("book.html",review_sucess = "you have sucessfully submitted your review",message=message)
+                        return render_template("book.html",review_sucess = "you have sucessfully submitted your review",account_details=message)
                     else:
-                        return render_template("book.html",bookerr = "Validation required",message =message)
+                        return render_template("book.html",bookerr = "Validation required",account_details =message)
             else:
-                return render_template("book.html", reviewerr = "You already gave a review",message =message)
+                return render_template("book.html", reviewerr = "You already gave a review",account_details =message)
         else:
             return render_template("login.html",message= " please create an account first")
     else: 
@@ -313,32 +314,5 @@ def book_api(isbn):
     
     
     
-    #Good reads api
-    # key: nzzBzMdHyfJ8LHJuj1w38Q
-    # secret: M4pWj5YVrrUIIMGfEkI7hpXNbbuVnUcqPfmCTleaA
-   
-    
-    #res = requests.get(url = "https://www.goodreads.com/search/index.xml" , params={"q":query,"page":all,"key": "nzzBzMdHyfJ8LHJuj1w38Q", "search": searchby})
-    #print(f"{res.status_code}")
-    #if res.status_code != 200:
-      #raise Exception("ERROR: API request unsuccessful.")
-    #try:
-        #data= xmltodict.parse(res.content)
-        
-        #resp = json.dumps(data)
-        # print(f"response:{resp}")
-
-        #d = data["GoodreadsResponse"]["search"]["results"]["work"][0]["best_book"]["title"]
-       
-        #dj = json.dumps(d,sort_keys = True, indent = 4, separators = (',', ': '))  
-  
-
-        
-       # return render_template("index.html",dj=dj)
-    # except ValueError:
-    #      print("Response content is not valid JSON")
-    #      print(f"Value err : {res.json()}")
-
-
     
 
