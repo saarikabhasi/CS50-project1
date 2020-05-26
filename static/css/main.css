@@ -93,15 +93,7 @@ div#register{
     background: green;
     
 }
-.searchbar input{
-height: 40px;
-width:  500px;
-margin-top: 20px;
-margin-bottom: 20px;
-margin-right: 20px;
 
-
-}
 .searchbar button{
     height: 40px;
     width:100px;
@@ -113,7 +105,7 @@ margin-right: 20px;
 .search{
     text-align: left;
     display: grid;
-    margin-left: 70px;
+    margin-left: 100px;
 }
 
 /* register */
@@ -121,10 +113,48 @@ margin-right: 20px;
     text-align: left;
 }
 
+/* book.html*/
+
+#aboutbook h1{
+    color: rgb(84, 82, 82);
+    font-size: 24px;
+    text-align: left;
+    /* padding: 50px; */
+    margin: 20px;
+}
+#aboutbook  h2{
+    color: black;
+    font-size: 18px;
+    text-align: left;
+    margin-left: 50px;
+    padding: 10px;
+}
+ #aboutbook .ratings h2{
+    margin-left: 0px;
+  
+} 
+span.name{
+    text-transform: uppercase;
+}
+#aboutbook .ratings h3{
+    margin-left: 50px;
+    
+    
+} 
+
+h3.notfound{
+    color: rgb(235, 36, 1);
+} 
+h3.notfound span{
+    color: black
+} 
+h4.ratings{
+    margin-left: 0px;
+    color:black;
+} 
 
 
-
-/****** Style Star Rating  *****/
+/*star*/
 
 .rating { 
   border: none;
@@ -150,22 +180,19 @@ margin-right: 20px;
  float: right; 
 }
 
-/* book.html */
-section .card  {
-    float:left ;
-    clear:both;
-    
-}
+
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label { color: rgb(10, 80, 38);  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: rgb(133, 255, 172);  } 
+.rating > input:checked ~ label:hover ~ label { color: rgb(245, 238, 36);  } 
+
 /* index.html*/
+
 .col-lg-12 h1{
     color: rgb(131, 9, 9); 
     background: rgb(225, 225, 225); 
@@ -174,7 +201,27 @@ section .card  {
     font-size: 50px;
     font-weight:300;
 }
-/* 
-.searchbar{
-    margin-top: 10px;
-} */
+.searchbar input{
+    height: 40px;
+    width:  500px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.searchbar .col-lg-3{
+    top:-60px;  
+    margin-top: 20px;
+    margin-left: 550px;
+}
+ .row  .searchoption{
+    margin-top: -20px;
+    margin-left: 20px;
+}
+.searchoption h4 {
+font-size: 20px;
+}
+div#account {
+    
+    display: inline-block;
+}
