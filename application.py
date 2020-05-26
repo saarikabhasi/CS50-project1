@@ -1,14 +1,11 @@
 import os
-import re
 import requests
 import json
-import xmltodict
 from flask import Flask, session,render_template,request,redirect,url_for,jsonify,flash
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
-from markupsafe import escape
-from wtforms import Form, BooleanField, StringField, PasswordField, validators
+
 
 app = Flask(__name__)
 
@@ -33,13 +30,12 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    print(f"SESSION DETAILS: {session}")
 
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
                 message = 'Logged in as %s' % session['name']
-                return render_template ("index.html",message = message)
+                return render_template ("index.html",account_details = message)
         else:
             return render_template("login.html",message="you are not logged in")
     else:
@@ -55,7 +51,6 @@ def register():
                 return render_template ("index.html",message = message)
 
     if request.method == 'POST':
-        # session['email_id'] = request.form.get("email_id")
         try:
             email_id = request.form.get("email_id")
             password = request.form.get("password")
@@ -65,7 +60,7 @@ def register():
         except ValueError:
             return render_template("register.html",err_msg="email id or password or name is required")
         
-        #password length check 
+
 
         if not len(password)>=6:
             password_length_err_msg = "Password length must be atleast 6 characters"
@@ -118,7 +113,7 @@ def login():
         password = request.form["password"]
 
         users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
-        print(f" LOGIN {users}")
+        
         if len(users)== 0:
             email_not_found = 'User not found'
             error ="EMAIL_NOT_FOUND"
@@ -144,7 +139,7 @@ def logout():
 
     session.pop('email_id',None)
     session.pop('name',None)
-    flash(u'You were logged out successfully','success')
+    flash(u'Logged out successfully')
     return redirect(url_for('index'))
 
 @app.route("/search",methods=["GET","POST"])
@@ -173,7 +168,7 @@ def search():
 
                 average=[]
                 if len(books) == 0:
-                    error ="No books     found"
+                    error ="No books found"
                     return render_template("index.html",error=error,account_details=message)
                 for b in books:
 
@@ -208,7 +203,7 @@ def books(b,booksearchby):
         if booksearchby =="title":
 
             book = db.execute("select isbn,title,author,year from books where upper(title)=:title",{"title":b}).fetchall()
-            print(f"from books table: search results {book}")
+            
         elif booksearchby == "author":
             
             book = db.execute("select isbn,title,author,year from books where upper(author)=:author",{"author":b}).fetchall()
@@ -223,7 +218,7 @@ def books(b,booksearchby):
         for b in book:
             average_rating = db.execute("select  avg(reviews.rating) as average_score from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
             review = db.execute("select contents, rating,reviews.email_id,name from reviews inner join users on users.email_id=reviews.email_id  where isbn =:isbn ", {"isbn":b.isbn}).fetchall() 
-            print(f"from books table: avg rating and  review{average_rating}{review} isbn {b.isbn}")
+            
             avg = average_rating[0][0]
             
             if avg==None:
@@ -259,7 +254,7 @@ def review(isbn):
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
-                user_email = session['email_id']
+                user_email=session['email_id']
                 message = 'Logged in as %s' % session['name']
         else:
             return render_template("login.html",message="you are not logged in")
@@ -281,7 +276,7 @@ def review(isbn):
                 if 'rating' in allreviews.keys():
                     rev= db.execute("insert into reviews(contents,rating,isbn,email_id) values (:contents,:rating,:isbn,:email_id)",{"contents":allreviews["review"],"rating":allreviews["rating"],"isbn":isbn,"email_id":user_email})
                     db.commit()
-                    return render_template("book.html",review_sucess = "you have sucessfully submitted your review")
+                    return render_template("book.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
                 
 
                 else:
@@ -291,7 +286,7 @@ def review(isbn):
                         rev= db.execute("insert into reviews(contents,isbn,email_id) values (:contents,:isbn,:email_id)",{"contents":allreviews["review"],"isbn":isbn,"email_id":user_email})
                         
                         db.commit()
-                        return render_template("book.html",review_sucess = "you have sucessfully submitted your review",account_details=message)
+                        return render_template("book.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
                     else:
                         return render_template("book.html",bookerr = "Validation required",account_details =message)
             else:
