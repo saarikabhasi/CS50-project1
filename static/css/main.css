@@ -123,15 +123,23 @@ div#register{
 }
 
 #account {
-    text-align: center;
+    text-align: right;
     color: rgb(84, 82, 82);
     font-size: 25px;
     margin-top: 20px;
+    margin-left: 100px;
 }
 div#account {
     
     display: inline-block;
+    margin-left: 0px;
 }
+/* div#account h2{
+    
+
+
+} */
+
 
 
 /* index.html */
@@ -166,6 +174,24 @@ div#account {
     font-size: 20px;
 }
 
+.detail{
+    display: grid;
+    grid-template-columns: auto auto ;
+    grid-gap: 20px;
+    padding: 20px;
+    margin-left:50%;
+
+}
+
+div#details{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-left: 70%;
+
+
+}
 
 
 .searchresult{
@@ -179,7 +205,13 @@ div#account {
     font-size: 20px;
     margin-top: 20px;
 }
+#eachbooks h1{
+    color: rgb(84, 82, 82);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0px;
 
+}
 #eachbooks h2{
     color: rgb(84, 82, 82);
     font-size: 25px;
@@ -189,7 +221,21 @@ div#account {
 }
 
 
-
+/*myreviews */
+.myreview{
+   
+    margin:20px;
+}
+.myreview span{
+    margin-left: 50px;
+      
+} 
+.myreview ol {
+    margin-bottom: 50px;
+}
+.myreview dd {
+    margin-bottom: 20px;
+}
 
 
 /* book.html*/
@@ -385,9 +431,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
     }
     
     #account {
-        text-align: center;
+        text-align: right;
         color: rgb(84, 82, 82);
         font-size: 20px;
+
         
     }
 
@@ -410,6 +457,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
         font-size: 18px;
 
     }
+    #eachbooks h1{
+        font-size: 25px;
+    }
+
     #eachbooks h2{
         font-size: 23px;
     }
@@ -439,6 +490,21 @@ and (-webkit-min-device-pixel-ratio: 1) {
     #aboutbook .ratings h3{
         margin-left: 50px;
     } 
+    .detail{
+        display:inline-grid;
+        
+    
+    }
+    /*myreview*/
+    div#details{
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+        margin-left: 0;
+    
+    
+    }
     .hr_divide_heading{
         border: 2px solid rgb(84, 82, 82);;
         border-radius: 100px;
