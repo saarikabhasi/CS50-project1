@@ -30,8 +30,8 @@
         <div class="col-md-12" >   
             <section>
                 <article>
-                    <h4>{{bookerr}}</h4>
-                    <h3>{{reviewerr}}</h3>
+                    <h2>{{bookerr}}</h2>
+                    <h2>{{reviewerr}}</h2>
                     
                     <h2> {{review_sucess}}</h2>
 
@@ -66,7 +66,7 @@
                                         <h3 class="notfound">   No ratings yet</h3>
                                     {% endif%}
                                 {% else %}
-                                        <h3>{{average_rating[loop.index0]}}</h3>
+                                        <h3> Average Rating: {{average_rating[loop.index0]}}</h3>
                                 {% endif %}
                                 
                                 
