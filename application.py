@@ -188,7 +188,7 @@ def search():
         return render_template("login.html",message="you are not logged in")
 
 @app.route("/books/<string:b>/<booksearchby>",methods=["GET"])
-def books(b,booksearchby):
+def books(b,booksearchby):  
     average = []
     goodreads_avg=[]
     goodreads_numberofrating=[]
@@ -199,8 +199,9 @@ def books(b,booksearchby):
         else:
             return render_template("login.html",message="you are not logged in")
 
-
+        
         b = f"{b}".upper()
+        
         if booksearchby =="title":
 
             book = db.execute("select isbn,title,author,year from books where upper(title)=:title",{"title":b}).fetchall()
@@ -243,7 +244,7 @@ def books(b,booksearchby):
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
 
-        return render_template("book.html",book =book,booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
+        return render_template("book.html",book =book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
@@ -289,7 +290,7 @@ def review(isbn):
                         db.commit()
                         return render_template("book.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
                     else:
-                        return render_template("book.html",bookerr = "Validation required",account_details =message)
+                        return render_template("book.html",emptyreview = "You cannot give an empty rating and comment",account_details =message)
             else:
                 return render_template("book.html", reviewerr = "You already gave a review",account_details =message)
         else:
@@ -324,7 +325,7 @@ def myreviews():
         allreviews = db.execute("select reviews.isbn,rating,contents,title from reviews inner join books on books.isbn=reviews.isbn  where email_id=:email_id",{"email_id":user_email}).fetchall()
         if len(allreviews) ==0:
             no_reviews_found_msg = "No reviews found"
-            return render_template("index.html", account_details=message,err_msg=no_reviews_found_msg)
+            return render_template("myreviews.html", account_details=message,err_msg=no_reviews_found_msg)
         else:
             print(f"{allreviews}")
            
