@@ -69,12 +69,15 @@
                     
                     <form action="{{url_for('myreviews')}}">
                         <button class = "btn btn-primary">myreviews</button>
+                        
                     </form>
             
                     <form action="{{url_for('logout')}}">
                         <button class = "btn btn-primary">logout</button>
                     </form>
+                   
                 </div>
+                <h3 class="notfound">{{err_msg}}</h3>
         </div>   
     </div>
 </div>
