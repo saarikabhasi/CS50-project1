@@ -23,14 +23,7 @@ body{
     font-size: 20px;
 
 }
-/* .form-group label{
-    color: rgb(84, 82, 82);
-    font-size: 25px;
-} 
- .checkbox label {
-    color: rgb(84, 82, 82);
-    font-size: 15px;
-} */
+
 
 /* card */
 .card {
@@ -110,35 +103,56 @@ div#register{
 .form-group{
     text-align: left;
 }
+/*layout.html*/ 
 
-/* common logo and account details styles for book page and index page */
+
+/* logo */
+div#logo {
+    
+    margin:2px;
+}
 #logo h1{
     color: rgb(131, 9, 9); 
     background: rgb(225, 225, 225); 
-    height: 100px; 
+    height: 150px; 
     text-align: center; 
     font-size: 50px;
     font-weight:300;
+    padding:30px;
+    width: 100%; 
+
+
+}
+/* user account details styles */
+.detail{
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+    float: right;
+    
 
 }
 
-#account {
-    text-align: right;
+
+
+#useraccount{
     color: rgb(84, 82, 82);
     font-size: 25px;
     margin-top: 20px;
-    margin-left: 100px;
 }
-div#account {
-    
-    display: inline-block;
-    margin-left: 0px;
+
+div#useraccount .row {
+    display: flex;
+    flex-wrap: wrap;
 }
-/* div#account h2{
-    
+div#useraccount .column {
+    flex: 25%;
+    padding: 20px;
+    margin-left: 30px;
+  }
 
 
-} */
 
 
 
@@ -174,30 +188,13 @@ div#account {
     font-size: 20px;
 }
 
-.detail{
-    display: grid;
-    grid-template-columns: auto auto ;
-    grid-gap: 20px;
-    padding: 20px;
-    margin-left:50%;
 
-}
-
-div#details{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
-    padding: 10px;
-    margin-left: 70%;
-
-
-}
 
 
 .searchresult{
     text-align: left;
     display: grid;
-    margin-left: 110px;
+    margin-left: 40px;
     margin-top: 20px;
 }
 .searchresult h4{
@@ -225,9 +222,12 @@ div#details{
 .myreview{
    
     margin:20px;
+    margin-left:0px;
+    text-align: left ;
 }
 .myreview span{
     margin-left: 50px;
+
       
 } 
 .myreview ol {
@@ -238,24 +238,17 @@ div#details{
 }
 
 
-/* book.html*/
-#useraccount{
-    text-align: right;
-    color: rgb(84, 82, 82);
-    font-size: 25px;
-    margin-top: 20px;
-}
-div#useraccount {
-    
-    display: inline-block;
-}
+/*book.html*/
+
 #bookdetails{
     width:100%;
 }
-#aboutbook h1{
+
+#aboutbook  h1{
     color: rgb(50, 50, 50);
     font-size: 25px;
     text-align: left;
+    text-decoration: none;
 
 }
 #aboutbook h2{
@@ -277,6 +270,8 @@ span.name{
     
     
 } 
+
+/*hr styling*/
 .hr_divide_heading{
     border: 3px solid rgb(84, 82, 82);;
     border-radius: 100px;
@@ -298,7 +293,7 @@ span.name{
 .reviewabook{
     margin-bottom: 100px;
 }
-h3.notfound{
+.notfound{
     color: rgb(235, 36, 1);
 } 
 h3.notfound span{
@@ -355,12 +350,7 @@ h4.ratings{
 
 
 /* media queries */
-@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) 
-and (-webkit-min-device-pixel-ratio: 1) { 
 
-
-
-}
 @media only screen and (max-width: 600px) {
     .btn{
 
@@ -421,22 +411,6 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
     /*index page */
 
-    #logo h1{
- 
-        height: 100%; 
-        text-align: center;
-        margin-top: 10px; 
-        width: 100%;
-
-    }
-    
-    #account {
-        text-align: right;
-        color: rgb(84, 82, 82);
-        font-size: 20px;
-
-        
-    }
 
     .searchbar input{
         height: 30px;
@@ -468,13 +442,22 @@ and (-webkit-min-device-pixel-ratio: 1) {
         font-size: 17px
     }
 
-    /*book review */
+    /*layout.html */
 
     #useraccount{
         text-align: center;
         font-size: 20px;
 
     }
+    div#useraccount .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    div#useraccount .column {
+        flex: 25%;
+        padding: 10px;
+        margin-left: 50px;
+      }
 
     #aboutbook{
         margin-top: 20px;
@@ -490,21 +473,15 @@ and (-webkit-min-device-pixel-ratio: 1) {
     #aboutbook .ratings h3{
         margin-left: 50px;
     } 
+     /*layout*/
     .detail{
         display:inline-grid;
         
-    
+        grid-gap: 5px;
+        padding: 5px;
     }
-    /*myreview*/
-    div#details{
-        display: inline-grid;
-        grid-template-columns: auto auto;
-        grid-gap: 10px;
-        padding: 10px;
-        margin-left: 0;
-    
-    
-    }
+
+   
     .hr_divide_heading{
         border: 2px solid rgb(84, 82, 82);;
         border-radius: 100px;
