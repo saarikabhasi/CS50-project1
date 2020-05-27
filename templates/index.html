@@ -61,6 +61,15 @@ The Book Fair
 
 <section>
     <article class = "searchresult">
+        <div class="searchmessages">
+            
+            {% if search_msg_no_results != "" %}
+            <h2>{{search_msg}} <span><b>{{bookname}}</b></span> </h2>
+                <h3 class="notfound">{{search_msg_no_results}} <span><b>{{query}}</b></span></h3>
+            {%endif %}
+            <h4>{{error}}</h4>
+        </div>
+
         {% for book in books %}
             <div id="eachbooks">
                 <a href="{{url_for('books',b=book[1],booksearchby='title') }}"><h2>{{book[1]}}</h2></a>
@@ -72,7 +81,7 @@ The Book Fair
              </div>
         {%endfor%}
            
-        <h4>{{error}}</h4>
+       
         
 
         
