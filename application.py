@@ -162,8 +162,9 @@ def search():
                 return render_template("index.html",error = error, account_details=message)
         
             else:
+                query=query.strip()
                 q = f"%{query}%".upper()
-
+            
                 books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q,"title":q, "author" :q}).fetchall() 
 
                 average=[]
@@ -299,12 +300,15 @@ def review(isbn):
 
 @app.route("/api/<isbn>",methods=["GET"])
 def book_api(isbn):
-    book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books inner join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn,title,author,year",{"isbn":isbn}).fetchone()
-    
+    print(type(isbn))
+    #book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books inner join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn,title,author,year",{"isbn":isbn}).fetchone()
+    book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books left join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn",{"isbn":isbn}).fetchone()
     if book == None:
         return jsonify({"error": "Invalid isbn number", "status_code":404}),404
+
     rating=dict(book.items())
-    rating['average_score'] =float('%.2f' %(rating['average_score']))
+    if rating['average_score'] != None:
+        rating['average_score'] =float('%.2f' %(rating['average_score']))    
     return jsonify(rating)
     
 @app.route("/myreviews")
@@ -320,7 +324,7 @@ def myreviews():
         allreviews = db.execute("select reviews.isbn,rating,contents,title from reviews inner join books on books.isbn=reviews.isbn  where email_id=:email_id",{"email_id":user_email}).fetchall()
         if len(allreviews) ==0:
             no_reviews_found_msg = "No reviews found"
-            return render_template("index.html",err_msg=no_reviews_found_msg)
+            return render_template("index.html", account_details=message,err_msg=no_reviews_found_msg)
         else:
             print(f"{allreviews}")
            
