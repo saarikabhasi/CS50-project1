@@ -12,33 +12,9 @@
     </head>
     <body>
 
-        <div id="logo">         
-            <h1> {% block heading %} {% endblock %}</h1>
-        </div>
+
         
-        <div class = "container"  id="useraccount">
-            <div class="row">
-                <div class="column" >
-                    
-                    <div class="detail">
-                        <form action="{{url_for('index')}}">
-                            <button class = "btn btn-primary">home</button>
-                            
-                        </form>
-                        <form action="{{url_for('myreviews')}}">
-                            <button class = "btn btn-primary">myreviews</button>
-                            
-                        </form>
-                       
-                    <form action="{{url_for('logout')}}">
-                        <button class = "btn btn-primary">logout</button>
-                    </form>
-                   
-                </div>
-                <h2>{{account_details}}</h2>
-                 
-            </div>
-        </div>
+        
         {% with mesg= get_flashed_messages() %}
             {% if mesg %}
                 <div class=flashes>

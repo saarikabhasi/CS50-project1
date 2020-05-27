@@ -1,55 +1,34 @@
 {% extends "layout.html" %}
 {% block heading %}
 
-<!-- The Book Fair  -->
+The Book Fair 
 
 {% endblock %}
 
 {% block body %}
 
-<div class="container" id="logo">
-    <div class= "row">
-        <div class="col-md-12">
-            <h1>The Book Fair </h1>
-        </div>
-    </div>
-</div>
-<div class = "container"   >
-    <div class="row">
-        <div class="col-md-12" id="useraccount" >
-            <h2 >{{account_details}}</h2>
-            <div class="detail">
-                <form action="{{url_for('myreviews')}}">
-                    <button class = "btn btn-primary">myreviews</button>
-                </form>
-            <form action="{{url_for('logout')}}">
-                <button class = "btn btn-primary">logout</button>
-            </form>
-        </div>
-    </div>
-</div>
 <div class = "container" >
     <div class = "row" id = "bookdetails">
 
         <div class="col-md-12" >   
             <section>
                 <article>
-                    <h2>{{bookerr}}</h2>
-                    <h2>{{reviewerr}}</h2>
+                    <h2 class="notfound txt_center">{{emptyreview}}</h2>
+                    <h2 class="notfound txt_center">{{reviewerr}}</h2>
                     
                     <h2> {{review_sucess}}</h2>
 
-
+                    
 
                     {% for details in book %}
-                            
+                    
                         <div id="aboutbook">
-                                    
+                            
                             <div class="title">
-                                
-                                    <h1>{{details[1]}}
+                                   
+                                    <h1>{{details[1]}} </h1>
                                     
-                                        <h2>- by {{details[2]}} - published in {{details[3]}}.</h2></h1>
+                                        <h2>- by {{details[2]}} published in {{details[3]}}.</h2>
                                             
                             </div>
                                 

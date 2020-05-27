@@ -1,41 +1,30 @@
 {% extends "layout.html" %}
 {% block heading %}
-<!-- 
-The Book Fair  -->
+
+The Book Fair  
 
 {% endblock %}
 
 {% block body %}
-<div class="container" id="logo">
+<!-- <div class="container" id="logo">
     <div class= "row">
         <div class="col-md-12">
             <h1>The Book Fair </h1>
         </div>
     </div>
-</div>
+</div> -->
  
 <div class="myreview" id="eachbooks">
     <h1> REVIEWS</h1>
-    <div class ="col-lg-12" id="useraccount">
-            
-        <h2 >{{account_details}}</h2>
-        <div id="details">
-            
-            <form action="{{url_for('myreviews')}}">
-                <button class = "btn btn-primary">myreviews</button>
-            </form>
-    
-            <form action="{{url_for('logout')}}">
-                <button class = "btn btn-primary">logout</button>
-            </form>
-        </div>
-    </div>  
+    <h3 class="notfound txt_center" style="margin-top:20px">{{err_msg}}</h3>
+
     {% for review in reviews %}
     <ol>
         <dl>
             <dt>
                 <h2>{{loop.index }}.
-                <a href="{{url_for('books',b= review.title,booksearchby='title') }}">
+                    
+                <a href="{{url_for('books',b=review.title,booksearchby='title') }}">
                    {{review.title}}</h2></a> 
               
             
