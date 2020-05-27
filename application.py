@@ -301,7 +301,7 @@ def review(isbn):
 
 @app.route("/api/<isbn>",methods=["GET"])
 def book_api(isbn):
-    print(type(isbn))
+   
     #book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books inner join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn,title,author,year",{"isbn":isbn}).fetchone()
     book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books left join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn",{"isbn":isbn}).fetchone()
     if book == None:
@@ -327,7 +327,7 @@ def myreviews():
             no_reviews_found_msg = "No reviews found"
             return render_template("myreviews.html", account_details=message,err_msg=no_reviews_found_msg)
         else:
-            print(f"{allreviews}")
+            
            
             return render_template("myreviews.html",reviews=allreviews,account_details=message)
     else: 
