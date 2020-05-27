@@ -27,7 +27,6 @@ gr_key=os.getenv("GR_key")
 db = scoped_session(sessionmaker(bind=engine))
 
 
-
 @app.route("/")
 def index():
 
@@ -111,7 +110,8 @@ def login():
         
         email_id = request.form["email_id"]
         password = request.form["password"]
-
+        
+        
         users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         
         if len(users)== 0:
@@ -163,9 +163,24 @@ def search():
         
             else:
                 query=query.strip()
-                q = f"%{query}%".upper()
-            
-                books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q,"title":q, "author" :q}).fetchall() 
+                q1 = f"%{query}%".upper()
+                search_msg= "Showing results"
+                search_msg_no_results =""
+
+                books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q1,"title":q1, "author" :q1}).fetchall() 
+
+                if len(books)== 0:
+                    search_msg_no_results +='No results found for'
+                    q2=""
+                    if len(query)>0:
+                        q2=query[0]
+                        for i in range(1,len(query)):
+                            q2+="%"
+                        q2 = f"{q2}".upper()
+
+                        books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q2,"title":q2, "author" :q2}).fetchall() 
+                    
+                
 
                 average=[]
                 if len(books) == 0:
@@ -174,14 +189,14 @@ def search():
                 for b in books:
 
                     average_rating = db.execute("select cast (avg(rating) AS DECIMAL(10,2)) from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
- 
 
+                    bookname =b.title
                     avg =average_rating[0][0]
                     if avg!=None:
                         average.append(avg)
-       
-                
-                return render_template("index.html",books=books,account_details=message)
+    
+            
+                    return render_template("index.html",books=books,account_details=message,search_msg=search_msg,search_msg_no_results=search_msg_no_results,query=query,bookname=bookname)
         else:
             return redirect(url_for('index'))
     else:
@@ -237,14 +252,12 @@ def books(b,booksearchby):
             
             
            
-            if response.status_code != 200:
-                raise Exception("ERROR: API request unsuccessful.")
-            else:
+            if response.status_code == 200:
                 data =response.json()
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
 
-        return render_template("book.html",book =book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
+        return render_template("book.html",book =book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message,goodreads_responsecode=response.status_code)
     else:
         return render_template("login.html",message="you are not logged in")
 
@@ -309,7 +322,10 @@ def book_api(isbn):
 
     rating=dict(book.items())
     if rating['average_score'] != None:
-        rating['average_score'] =float('%.2f' %(rating['average_score']))    
+        rating['average_score'] =float('%.2f' %(rating['average_score']))  
+    
+    if rating['average_score'] == None:
+        rating['average_score']=0
     return jsonify(rating)
     
 @app.route("/myreviews")
