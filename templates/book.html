@@ -69,7 +69,8 @@ The Book Fair
                                 <hr>
                                 
                                 <h2> <i class= "fa fa-star"></i>  from <b>' The Good Reads website' </b></h2>
-                                    {%if goodreads_responsecode !=200 %}
+                                    
+                                    {%if goodreads_numberofrating[loop.index0] == null %}
                                         <h3 class="notfound"> Ratings not found in Good Reads </h3>
                                     {% else %}
                                         <h3>Average Rating: {{goodreads_avg[loop.index0]}}</h3>
