@@ -330,8 +330,8 @@ def books(b,booksearchby):
                 data =response.json()
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
-
-        return render_template("book.html",book =book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message,goodreads_responsecode=response.status_code)
+    
+        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
