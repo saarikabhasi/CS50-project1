@@ -9,6 +9,9 @@ body{
 .txt_center{
     text-align: center;
 }
+.center{
+    float:center;
+}
 
 /* Button */
 .btn{
@@ -90,6 +93,16 @@ div#signIn{
     text-align: center;
     padding: 10px;
     font-size: 25px;
+}
+/*verify account*/
+
+button.btn.btn-primary.verifysubmit {
+    margin-top: 30px;
+    position: relative;
+    text-align: center;
+    margin-left: 40%;
+    margin-bottom: 30px;
+    margin-right: 40%;
 }
 /* register page */
 div#register{
