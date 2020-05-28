@@ -53,8 +53,8 @@
                 <div class="form-group forgotpassword">
                     <button class = "btn btn-primary " >Submit</button>
                 
-                {% if type_err_msg != "WRONG_PASSWORD" %}
-                <a href="{{ url_for('oldpassword') }}" class = " btn-lg  btn-light btn-outline-info" ><h4>Forgot password</h4></a>
+                {% if type_err_msg == "WRONG_PASSWORD" %}
+                <a href="{{ url_for('verifyaccount') }}" class = " btn-lg  btn-light btn-outline-info" ><h4>Forgot password</h4></a>
                 {%endif%}
 
 

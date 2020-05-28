@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class = "card" id = "verfypassword">
+<div class = "card" id = "signIn">
     <div class= "card-header"><h1>The Book Fair</h1></div>
     <form action = "{{ url_for('register') }}" method="get">
         <fieldset>
@@ -17,7 +17,7 @@
     <fieldset class="card-body">
         <legend >
             <h2 class="card-title"> Verify your account </h2>
-            <form action="{{ url_for('oldpassword') }}" class = " card-body" method="post"> 
+            <form action="{{ url_for('verifyaccount') }}" class = " card-body" method="post"> 
                 <div class = "form-group ">
                     {% if type_err_msg != "EMAIL_NOT_FOUND" %}  
                         <fieldset>
@@ -34,20 +34,9 @@
                             </legend>
                         </fieldset>
                 </div>
-                <div class="form-group">
-                    {% if type_err_msg != "WRONG_PASSWORD" %}
-                        <fieldset>
-                    {%else%}
-                        <fieldset class="has-error">
-                        <p style="color:red">{{err_msg}}</p>
-                    {%endif%}   
-                            <legend><h3>Enter your password</h3>
-                                <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>
-                            </legend>
-                        </fieldset>
-                </div>
-                <div class="form-group forgotpassword">
-                    <button class = "btn btn-primary " >Submit</button>
+
+                <div class="form-group ">
+                    <button class = "btn btn-primary verifysubmit">Submit</button>
                 </div>
                     
             </form>
