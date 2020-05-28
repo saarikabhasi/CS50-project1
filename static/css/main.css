@@ -78,7 +78,19 @@ div#signIn{
 #signIn input{
     font-size: 17px;
 }
-
+#signIn .forgotpassword{
+    text-align: center;
+    display: grid;
+    grid-template-columns: 40% auto ;
+    grid-gap: 10px;
+    
+    
+}
+.btn-lg{
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+}
 /* register page */
 div#register{
     margin-left: 25%;
@@ -196,7 +208,18 @@ div#useraccount .column {
     display: grid;
     margin-left: 40px;
     margin-top: 20px;
+    
 }
+.searchmessages h2{
+    
+    font-size: 25px;
+    margin-top: 20px;  
+}
+.searchmessages h3 {
+    font-size: 20px;
+    margin-top: 20px;  
+}
+
 .searchresult h4{
     color: rgb(235, 36, 1);
     font-size: 20px;
@@ -426,6 +449,16 @@ h4.ratings{
 
     .searchresult{
         margin-left: 35px;
+        
+    }
+    .searchmessages h2{
+    
+        font-size: 20px;
+        
+    }
+    .searchmessages h3 {
+        font-size: 18px;
+        
     }
     .searchresult h4{
         font-size: 18px;
