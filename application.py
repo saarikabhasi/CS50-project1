@@ -133,42 +133,36 @@ def login():
         return render_template("login.html")
 
 
-@app.route("/oldpassword",methods=["GET","POST"])
-def oldpassword():
+@app.route("/verifyaccount",methods=["GET","POST"])
+def verifyaccount():
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
                 message = 'Logged in as %s' % session['name']
                 return render_template ("index.html",account_details = message)
-    print(request.method)
+
     if request.method == 'POST':
         try:
             email_id = request.form.get("email_id")
-            old_password = request.form.get("password")
         except ValueError:
-            return render_template("oldaccount.html",err_msg="email id or password is required")
+            return render_template("oldaccount.html",err_msg="email id is required")
 
-        user  = db.execute("select email_id,password from users where email_id=:email_id",{"email_id": email_id}).fetchall()
+        user  = db.execute("select * from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         if len(user)== 0:
             email_not_found = 'Email address not found'
             error ="EMAIL_NOT_FOUND"
             return render_template("oldaccount.html",err_msg=email_not_found,type_err_msg=error)
         else:
             for u in user:
-                if u.email_id == email_id and u.password == old_password:
-                    old_password_msg = "Change your password"
-                    error= "CHANGE_PASSWORD"
-                    return render_template("change_password.html",err_msg=old_password_msg,type_err_msg=error,email = email_id)
-                else:
-                    wrong_password = 'Wrong Password'
-                    error ="WRONG_PASSWORD"
-
-                    return render_template("oldaccount.html",err_msg=wrong_password,type_err_msg=error,email = email_id)
+                if u.email_id==email_id:
+                    verification_status = 1
+                    flash(u'Account verified sucessfully.')
+                    return render_template("change_password.html",email=email_id,verification_status=1)
     else:
         return render_template("oldaccount.html")
 
-@app.route("/changepassword",methods=["GET","POST"])
-def changepassword():
+@app.route("/changepassword/<int:verification_status>",methods=["GET","POST"])
+def changepassword(verification_status):
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
@@ -183,30 +177,31 @@ def changepassword():
             confirm_password = request.form.get("confirmpassword")
 
         except ValueError:
-            return render_template("change_password.html",err_msg="email id or password is required")
+            return render_template("change_password.html",err_msg="email id or password is required",verification_status=verification_status)
         
         user = db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).fetchall()
 
         if len(user) == 0:
             email_not_found = 'Email Address not found'
             error ="EMAIL_NOT_FOUND"
-            return render_template("change_password.html",err_msg=email_not_found,type_err_msg= error)
+            return render_template("change_password.html",err_msg=email_not_found,type_err_msg= error,verification_status=verification_status)
 
         if not len(new_password)>=6:
             password_length_err_msg = "Password length must be atleast 6 characters"
             error ="PASSWORD_LENGTH_ERROR"
-            return render_template("change_password.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id)
+            return render_template("change_password.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,verification_status=verification_status)
         
         if new_password!=confirm_password:
             confirm_password_err_msg = "Password did not match"
             error = 'PASSWORD_NOT_MATCH'
-            return render_template("change_password.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id) 
+            return render_template("change_password.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,verification_status=verification_status) 
 
 
         
         for u in user:
             if u.email_id == email_id:
-                db.execute("insert into users(email_id,password) values (:email_id,:password) select email_id from users where email_id =:email_id",{"email_id":email_id, "password":new_password})
+               
+                db.execute("update  users set password=:password where email_id=:email_id",{"password":new_password,"email_id":email_id})
                 db.commit()
                 flash(u'Welcome ,You changed your password successfully')
                 return render_template("login.html")
