@@ -1,0 +1,57 @@
+{% extends "baselayout.html" %}
+
+{% block body %}
+
+<div class = "card" id = "verfypassword">
+    <div class= "card-header"><h1>The Book Fair</h1></div>
+    <form action = "{{ url_for('register') }}" method="get">
+        <fieldset>
+            <legend class="card-body"> 
+                <h2 class="card-title">Sign in instead?
+                    
+                    <button class = "btn btn-primary">Sign in</button> 
+                </h2>
+            </legend>
+        </fieldset>
+    </form>
+    <fieldset class="card-body">
+        <legend >
+            <h2 class="card-title"> Verify your account </h2>
+            <form action="{{ url_for('oldpassword') }}" class = " card-body" method="post"> 
+                <div class = "form-group ">
+                    {% if type_err_msg != "EMAIL_NOT_FOUND" %}  
+                        <fieldset>
+                    {%else%}
+                        <fieldset class="has-error">
+                        <p style="color:red">{{err_msg}}</p>
+                    {%endif%}
+                            <legend><h3>Enter your email address</h3>
+                                {% if type_err_msg != "WRONG_PASSWORD"%}
+                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Example: name@xyz.com" id="email_id" aria-describedby="emailHelp" required >
+                                {%else %}
+                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder= {{email}} id="email_id" aria-describedby="emailHelp" value = {{email}} required >
+                                {%endif%}
+                            </legend>
+                        </fieldset>
+                </div>
+                <div class="form-group">
+                    {% if type_err_msg != "WRONG_PASSWORD" %}
+                        <fieldset>
+                    {%else%}
+                        <fieldset class="has-error">
+                        <p style="color:red">{{err_msg}}</p>
+                    {%endif%}   
+                            <legend><h3>Enter your password</h3>
+                                <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>
+                            </legend>
+                        </fieldset>
+                </div>
+                <div class="form-group forgotpassword">
+                    <button class = "btn btn-primary " >Submit</button>
+                </div>
+                    
+            </form>
+        </legend> 
+    </fieldset>
+</div>
+{% endblock %}

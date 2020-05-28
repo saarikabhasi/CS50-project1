@@ -42,9 +42,9 @@
                         {%endif%}
                                 <legend><h3>Enter your email address</h3>
                                     {% if type_err_msg=="PASSWORD_LENGTH_ERROR" or type_err_msg=="PASSWORD_NOT_MATCH"%}
-                                        <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Email address: " id="email_id" aria-describedby="emailHelp" value = {{email}}  required >
+                                        <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Email address" id="email_id" aria-describedby="emailHelp" value = {{email}}  required >
                                     {%else %}
-                                        <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Email address " id="email_id" aria-describedby="emailHelp" required >
+                                        <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="name@xyz.com" id="email_id" aria-describedby="emailHelp" required >
                                     {%endif%}
                                 </legend>
                             </fieldset>
