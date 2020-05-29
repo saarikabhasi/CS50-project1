@@ -17,6 +17,7 @@
     <fieldset class="card-body">
         <legend >
             <h2 class="card-title"> Verify your account </h2>
+            
             <form action="{{ url_for('verifyaccount') }}" class = " card-body" method="post"> 
                 <div class = "form-group ">
                     {% if type_err_msg != "EMAIL_NOT_FOUND" %}  
@@ -25,14 +26,32 @@
                         <fieldset class="has-error">
                         <p style="color:red">{{err_msg}}</p>
                     {%endif%}
-                            <legend><h3>Enter your email address</h3>
-                                {% if type_err_msg != "WRONG_PASSWORD"%}
-                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Example: name@xyz.com" id="email_id" aria-describedby="emailHelp" required >
+                            <legend><h3>Enter your email address</h3> 
+                                {% if type_err_msg!="EMAIL_NOT_FOUND"  and type_err_msg=="NAME_NOT_FOUND"  %}  
+                                    <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder={{email}} id="email_id" value = {{email}} aria-describedby="emailHelp" required >
                                 {%else %}
-                                <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder= {{email}} id="email_id" aria-describedby="emailHelp" value = {{email}} required >
-                                {%endif%}
+                                    <input type = "email" class="form-control form-control-lg " name = "email_id" placeholder="Example: name@xyz.com" id="email_id" aria-describedby="emailHelp" required >
+                                {% endif %}
+                                
                             </legend>
                         </fieldset>
+                </div>
+                <div class = "form-group">
+                    {% if type_err_msg!="NAME_NOT_FOUND"%}
+                        <fieldset>
+                    {% else %}
+                    <fieldset class="has-error">
+                    <p style="color:red">{{err_msg}}</p>
+                    {% endif %}
+                        <legend><h3>Enter name </h3>
+                            {% if type_err_msg=="EMAIL_NOT_FOUND"  and type_err_msg!="NAME_NOT_FOUND"  %}
+                                <input type = "text" class="form-control form-control-lg " name = "name" placeholder={{name}}  aria-labelledby="username" value = {{name}} required >
+                            {% else %}
+                                <input type = "text" class="form-control form-control-lg " name = "name" placeholder="Name"  aria-labelledby="username" required >
+                            {%endif%}
+                          
+                        </legend>
+                    </fieldset>
                 </div>
 
                 <div class="form-group ">

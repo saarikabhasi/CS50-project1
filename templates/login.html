@@ -25,7 +25,7 @@
                         <fieldset>
                     {%else%}
                         <fieldset class="has-error">
-                        <p style="color:red">{{err_msg}}</p>
+                        <p>{{err_msg}}</p>
                     {%endif%}
                             <legend><h3>Enter your email address</h3>
                                 {% if type_err_msg != "WRONG_PASSWORD"%}
@@ -42,7 +42,7 @@
                             <fieldset>
                         {%else%}
                             <fieldset class="has-error">
-                            <p style="color:red">{{err_msg}}</p>
+                            <p>{{err_msg}}</p>
                         {%endif%}   
                                 <legend><h3>Enter your password</h3>
                                     <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>

@@ -12,6 +12,9 @@ body{
 .center{
     float:center;
 }
+p{
+    color:red;
+}
 
 /* Button */
 .btn{
@@ -97,11 +100,11 @@ div#signIn{
 /*verify account*/
 
 button.btn.btn-primary.verifysubmit {
-    margin-top: 30px;
+    margin-top: 0px;
     position: relative;
     text-align: center;
     margin-left: 40%;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     margin-right: 40%;
 }
 /* register page */

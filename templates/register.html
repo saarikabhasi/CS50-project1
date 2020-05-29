@@ -36,7 +36,7 @@
                     <div class = "form-group">
                         {% if type_err_msg == "email_error" %}  
                             <fieldset class="has-error">
-                                <p style="color:red">{{err_msg}}</p>
+                                <p>{{err_msg}}</p>
                         {%else%}
                             <fieldset>
                         {%endif%}
@@ -53,7 +53,7 @@
                         {% if type_err_msg == "PASSWORD_LENGTH_ERROR"  or type_err_msg == "PASSWORD_NOT_MATCH"%}
                             <fieldset class="has-error">
                                 {% if type_err_msg == "PASSWORD_LENGTH_ERROR" %}
-                                    <p style="color:red">{{err_msg}}</p>
+                                    <p>{{err_msg}}</p>
                                 {%endif%}
                         {% else %}
                             <fieldset>
@@ -67,7 +67,7 @@
                     
                         {% if type_err_msg == "PASSWORD_NOT_MATCH"%}
                             <fieldset class="has-error">
-                                <p style="color:red">{{err_msg}}</p>
+                                <p>{{err_msg}}</p>
                                 
                         {% else %}
                             <fieldset>

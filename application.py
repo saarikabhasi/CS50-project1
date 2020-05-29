@@ -147,22 +147,29 @@ def verifyaccount():
                 return render_template ("index.html",account_details = message)
 
     if request.method == 'POST':
+
         try:
             email_id = request.form.get("email_id")
+            user_name = request.form.get("name")
         except ValueError:
-            return render_template("oldaccount.html",err_msg="email id is required")
+            return render_template("oldaccount.html",err_msg="email id and user name is required")
 
         user  = db.execute("select * from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         if len(user)== 0:
             email_not_found = 'Email address not found'
             error ="EMAIL_NOT_FOUND"
-            return render_template("oldaccount.html",err_msg=email_not_found,type_err_msg=error)
+            return render_template("oldaccount.html",err_msg=email_not_found,type_err_msg=error,name=user_name)
         else:
             for u in user:
-                if u.email_id==email_id:
+                if u.email_id==email_id and u.name==user_name:
                     verification_status = 1
                     flash(u'Account verified sucessfully.')
                     return render_template("change_password.html",email=email_id,verification_status=1)
+                else:
+                    verification_status = 0
+                    user_name_not_matched = 'User name not found'
+                    error = 'NAME_NOT_FOUND'
+                    return render_template("oldaccount.html",err_msg=user_name_not_matched,type_err_msg=error,email=email_id)
     else:
         return render_template("oldaccount.html")
 
