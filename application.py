@@ -5,6 +5,8 @@ from flask import Flask, session,render_template,request,redirect,url_for,jsonif
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from werkzeug.security import generate_password_hash,check_password_hash
+
 
 
 app = Flask(__name__)
@@ -75,8 +77,11 @@ def register():
 
         if db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).rowcount==0:
         # new user
+
+            hash_password = generate_password_hash(password,"sha256")  
+             
             db.execute("insert into users(email_id,password,name) values (:email_id,:password, :name)",
-            {"email_id":email_id,"password":password,"name":name})
+            {"email_id":email_id,"password":hash_password ,"name":name})
             
             db.commit()
             flash(u'Welcome , You were successfully registered. ')
@@ -120,7 +125,7 @@ def login():
             return render_template("login.html",err_msg=email_not_found,type_err_msg= error)
         else:
             for u in users:
-                if u.email_id == email_id and u.password == password:
+                if u.email_id == email_id and (check_password_hash(u.password, password)):
                     session['name']= u.name 
                     session['email_id']=u.email_id
                     return redirect(url_for('index'))  
@@ -200,8 +205,8 @@ def changepassword(verification_status):
         
         for u in user:
             if u.email_id == email_id:
-               
-                db.execute("update  users set password=:password where email_id=:email_id",{"password":new_password,"email_id":email_id})
+                hash_password = generate_password_hash(new_password,"sha256") 
+                db.execute("update  users set password=:password where email_id=:email_id",{"password":hash_password,"email_id":email_id})
                 db.commit()
                 flash(u'Welcome ,You changed your password successfully')
                 return render_template("login.html")
