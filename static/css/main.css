@@ -6,9 +6,9 @@ body{
     width: 100%;
     height: 100%;   
 }
-.txt_center{
+/* .txt_center{
     text-align: center;
-}
+} */
 .center{
     float:center;
 }
@@ -83,6 +83,7 @@ div#signIn{
 } 
 button#createaccount{
     float: right;
+
 }
 #signIn h3{
     font-size: 19px;
@@ -427,7 +428,7 @@ h4.ratings{
 
     #signIn h2{
         color: rgb(84, 82, 82);
-        font-size: 20px;
+        font-size: 25px;
     }
     
     #signIn h3{
