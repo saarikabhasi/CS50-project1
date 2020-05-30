@@ -7,9 +7,15 @@
     <form action = "{{ url_for('register') }}" method="get">
         <fieldset>
             <legend class="card-body"> 
-                <h2 class="card-title">First time here? 
-                    
-                    <button class = "btn btn-primary">Create Account</button> 
+                <h2 class="card-title">
+                    <div class>
+                        <a class ="btn-link " data-toggle="collapse" href="#createaccount" role="button" aria-expanded="false" aria-controls="createaccount">
+                        First time here? 
+                        </a>
+                        <span>
+                            <button class = "btn btn-primary btn-sm collapse" id="createaccount">Create Account</button> 
+                        </span>
+                    </div>
                 </h2>
             </legend>
         </fieldset>

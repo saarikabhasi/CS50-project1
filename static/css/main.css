@@ -31,7 +31,11 @@ p{
 
 }
 
-
+.btn-link {
+    font-weight: 400;
+    color: rgb(84, 82, 82);
+    text-decoration: none;
+}
 /* card */
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -76,8 +80,10 @@ div#signIn{
 #signIn h2{
     color: rgb(84, 82, 82);
     font-size: 25px;
+} 
+button#createaccount{
+    float: right;
 }
-
 #signIn h3{
     font-size: 19px;
 }

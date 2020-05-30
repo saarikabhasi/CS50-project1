@@ -8,9 +8,15 @@
     <form action = "{{ url_for('login') }}" method="get">
         <fieldset>
             <legend class="card-body"> 
-                <h2 class="card-title">Already have a book fair account?
-                    
-                    <button class = "btn btn-primary">Sign in</button> 
+                <h2 class="card-title">
+                    <div class>
+                        <a class ="btn-link " data-toggle="collapse" href="#createaccount" role="button" aria-expanded="false" aria-controls="createaccount">
+                            Already have a book fair account?
+                        </a>
+                        <span>
+                            <button class = "btn btn-primary collapse" id="createaccount">Sign in</button> 
+                        </span>
+                    </div>
                 </h2>
             </legend>
         </fieldset>
