@@ -14,6 +14,7 @@ body{
 }
 p{
     color:red;
+    font-size: 1.2rem;
 }
 
 /* Button */
@@ -69,8 +70,7 @@ div#signIn{
     margin-left: 25%;
     width:600px;
     margin-top: 50px;
-    margin-bottom: 50px;
-    height: 500px;
+    margin-bottom: 0px;
     clear: both;
 }
 #signIn h2{
@@ -285,20 +285,21 @@ div#useraccount .column {
 
 #aboutbook  h1{
     color: rgb(50, 50, 50);
-    font-size: 25px;
+    font-size: 2rem;
     text-align: left;
     text-decoration: none;
 
 }
 #aboutbook h2{
     color: black;
-    font-size: 18px;
+    font-size: 1.4rem;
     text-align: left;
     margin-left: 50px;
     padding: 10px;
 }
 #aboutbook .ratings h2{
     margin-left: 0px;
+    font-size: 1.4rem;
   
 } 
 span.name{
@@ -306,6 +307,7 @@ span.name{
 }
 #aboutbook .ratings h3{
     margin-left: 50px;
+    font-size: 1.25rem;
     
     
 } 
