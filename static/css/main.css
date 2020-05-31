@@ -76,7 +76,7 @@ div#signIn{
     margin-top: 50px;
     margin-bottom: 0px;
     clear: both;
-    height: 700px; 
+    /* height: 700px;  */
 }
 #signIn h2{
     color: rgb(84, 82, 82);
