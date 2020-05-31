@@ -76,6 +76,7 @@ div#signIn{
     margin-top: 50px;
     margin-bottom: 0px;
     clear: both;
+    height: 700px; 
 }
 #signIn h2{
     color: rgb(84, 82, 82);
@@ -120,7 +121,8 @@ div#register{
     width:600px;
     margin-top: 50px;
     margin-bottom: 50px;
-    clear: both;      
+    clear: both;  
+       
 }
 
 #register input{
