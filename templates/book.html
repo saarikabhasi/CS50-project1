@@ -18,17 +18,36 @@ The Book Fair
                     
                     <h2> {{review_sucess}}</h2>
 
-                    
+                    <img src ="../static/Goodreads.jpg" alt="goodreads-logo" width="200" height="45">
 
                     {% for details in book %}
                     
                         <div id="aboutbook">
                             
                             <div class="title">
-                                   
-                                    <h1>{{details[1]}} </h1>
+                                <h1>{{details[1]}} </h1>
+                                {%if googlebookimage[loop.index0] == null %}
+                                    <img src="" alt="Book thumbail">
+                                {%else%}
+                                    <img src = {{googlebookimage[loop.index0]}} alt="Book thumbail">
+                                {%endif%}
+
+                                    
                                     
                                         <h2>- by {{details[2]}} published in {{details[3]}}.</h2>
+                                        
+                                        {%if googlebookdescription[loop.index0] == null %}
+                                        <h3 class="notfound"> No Description found on Google books not found</h3>
+                                        {% else %}
+                                        
+                                        <h3>Description from <b>' The Google Books' </b><i class= "fab fa-google"></i></h3>
+
+                                            
+                                        <h4>{{googlebookdescription[loop.index0]}}</h4>
+                                        
+                                        
+                                        {% endif %}
+                                
                                             
                             </div>
                                 
@@ -40,7 +59,7 @@ The Book Fair
                             <div class = "ratings">
                                 <!-- <h2> REVIEWS</h2> -->
                                 
-                                <h2><i class= "fa fa-star"></i> from <b>'The Book Fair'</b></h2>
+                                <h2><i class= "fas fa-star"></i> from <b>'The Book Fair'</b></h2>
                                 {% if average_rating[loop.index0] == 0 %}
                                     {% if booksearchby == 'title' %}
                                         <h3 class="notfound">  No ratings yet. <span>Be first to give one</span></h3>
@@ -68,7 +87,7 @@ The Book Fair
                                 {% endfor %}
                                 <hr>
                                 
-                                <h2> <i class= "fa fa-star"></i>  from <b>' The Good Reads website' </b></h2>
+                                <h2> <i class= "fas fa-star"></i>  from <b>' The Good Reads website' </b></h2>
                                     
                                     {%if goodreads_numberofrating[loop.index0] == null %}
                                         <h3 class="notfound"> Ratings not found in Good Reads </h3>
@@ -76,6 +95,15 @@ The Book Fair
                                         <h3>Average Rating: {{goodreads_avg[loop.index0]}}</h3>
                                         <h3> Number of Rating: {{goodreads_numberofrating[loop.index0]}}</h3>
                                     {% endif %}
+                                <h2> <i class= "fab fa-google"></i>  from <b>' The Google Books' </b></h2>
+                                    
+                                    {%if googlebooknumberofrating[loop.index0] == null %}
+                                        <h3 class="notfound"> Ratings not found in Google Books </h3>
+                                    {% else %}
+                                        <h3>Average Rating: {{googlebookavg[loop.index0]}}</h3>
+                                        <h3> Number of Rating: {{googlebooknumberofrating[loop.index0]}}</h3>
+                                    {% endif %}
+                                
                             </div> 
                         </div>   
                         <hr class="hr_divide_heading">

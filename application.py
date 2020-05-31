@@ -293,6 +293,10 @@ def books(b,booksearchby):
     average = []
     goodreads_avg=[]
     goodreads_numberofrating=[]
+    googlebookdescription=[]
+    googlebookimage=[]
+    googlebooknumberofrating=[]
+    googlebookavg=[]
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
@@ -342,8 +346,25 @@ def books(b,booksearchby):
                 data =response.json()
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
+            
+            # Google books
+
+            googleBooksearch= "https://www.googleapis.com/books/v1/volumes?q=" + f"{b.isbn}" + "+" + "isbn"
+            googleBookresponse=requests.get(googleBooksearch)
+
+            if googleBookresponse.status_code == 200:
+                googleBookdata =googleBookresponse.json()
+                #description
+                googlebookdescription.append(googleBookdata["items"][0]["volumeInfo"]["description"])
+                #image
+                googlebookimage.append(googleBookdata["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"])
+                #ratings
+                googlebookavg.append(googleBookdata["items"][0]["volumeInfo"]["averageRating"])
+                googlebooknumberofrating.append(googleBookdata["items"][0]["volumeInfo"]["ratingsCount"])
+           
+                
     
-        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating,account_details=message)
+        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
