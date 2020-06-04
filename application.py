@@ -297,6 +297,7 @@ def books(b,booksearchby):
     googlebookimage=[]
     googlebooknumberofrating=[]
     googlebookavg=[]
+    goodreadslinks=[]
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
@@ -346,6 +347,8 @@ def books(b,booksearchby):
                 data =response.json()
                 goodreads_avg.append(data['books'][0]['average_rating'])
                 goodreads_numberofrating.append(data['books'][0] ['work_ratings_count'])
+                goodreadslink = "https://www.goodreads.com/search?utf8=%E2%9C%93&q="+ f"{b.title}"
+                goodreadslinks.append(goodreadslink)
             
             # Google books
 
@@ -363,8 +366,8 @@ def books(b,booksearchby):
                 googlebooknumberofrating.append(googleBookdata["items"][0]["volumeInfo"]["ratingsCount"])
            
                 
-    
-        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,account_details=message)
+        
+        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,lenreview = len(review),average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
