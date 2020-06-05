@@ -23,25 +23,34 @@ The Book Fair
                         <div id="aboutbook">
                             
                             <div class="title">
-                                <h1>{{details[1]}} </h1>
                                 
-                                {%if googlebookimage[loop.index0] == "null" %}
-                                
-                                    <img src="" alt="Book thumbail">
-                                {%else%}
-                                    <img src = {{googlebookimage[loop.index0]}} alt="Book thumbail">
-                                {%endif%}
-                                <h2>By {{details[2]}} </h2>
-                                {% if booksearchby == 'author'  %}
-                                <h2> Published in : {{details[3]}}</h2>
-                                {%endif%}
+                                <div class="container">
+                                    <h1>{{details[1]}} </h1>
+                                    <div class="row">
+                                        
+                                        <div class="col-md-4">
+                                            {%if googlebookimage[loop.index0] == "null" %}
+                                            
+                                                <img src="" alt="Book thumbail">
+                                            {%else%}
+                                                <img src = {{googlebookimage[loop.index0]}} alt="Thumbail">
+                                            {%endif%}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h2>By {{details[2]}} </h2>
+                                            {% if booksearchby == 'author'  %}
+                                            <h2> Published in : {{details[3]}}</h2>
+                                            {%endif%}
+                                        </div>
+                                </div>
+                                </div>
                             </div>
                             
                             
                                 <div class="header">
                                     {% if booksearchby == 'title'  %}
                                     <hr>
-                                        <ul >
+                                        <ul class="sectionbar">
                                             <li>
                                                 <a href="#overview">Overview</a>
                                                 <a href ="#Reviews">Book reviews</a>
@@ -86,11 +95,74 @@ The Book Fair
                                     
                                     <div class = "ratings" id="Reviews">
                                         <hr class="hr_divide_separator"> 
-                                        <caption> Reviews</caption>  
-                                        <table>
+                                        <div class="container-fluid  px-lg-5">
+                                            <div class="row mx-lg-n5">
+                                                <div class="col-lg-4 py-3 px-lg-5 ">
+                                                    <div class="card">
+                                                        <!-- <img src = "{{ url_for('static', filename='thebookfair.png') }}" class="card-img-top" alt="thebookfair-logo" > -->
+                                                        <div class="card-body">
+                                                            <h2 class="card-title"><a href ="#"> The Book Fair</a></h2>
+                                                            {% if average_rating[loop.index0] == 0 %}
+                                                                {% if booksearchby == 'title' %}
+                                                                    <h3 class="notfound card-text">  No ratings. <span>Be first to give one</span></h3>
+                                                                {% else %}
+                                                                    <h3 class="notfound card-text">   No ratings found.</h3>
+                                                                {% endif%}
+                                                            {% else %}
+                                                                <h3 class="card-text"> Average Rating: {{average_rating[loop.index0]}}</h3>
+                                                                <h3 class="card-text">  Number of Rating: {{review|length}}</h3>
+                                                            {% endif %}
+                                                     
+                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 py-3 px-lg-5 ">
+                                                    <div class="card">
+                                                        <!-- <img src = "{{ url_for('static', filename='Goodreads.jpg') }}" class="card-img-top" alt="thegoodreads-logo" >  -->
+                                                        <div class="card-body">
+                                                            <h2 class="card-title"><a href ="{{goodreadslinks[loop.index0]}}">Good Reads </a></h2>
+
+                                                            {%if goodreads_numberofrating[loop.index0] == null %}
+                                                                <h3 class="notfound card-text"> No ratings found.</h3>
+                                                            {% else %}
+                                                                <h3 class="card-text" >Average Rating: {{goodreads_avg[loop.index0]}}</h3>
+                                                                <h3 class="card-text"> Number of Rating: {{goodreads_numberofrating[loop.index0]}}</h3>
+                                                            {% endif %}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 py-3 px-lg-5 ">
+                                                    <div class ="card ">
+                                                        <!-- <img src ="{{ url_for('static', filename='googlebooks.png') }}" class="card-img-top" alt="googlebooks-logo"> -->
+                                                        <div class="card-body">
+                                                            {% if googlebooklinks[loop.index0] == "#" %}
+                                                            <h2 class="card-title"> <a href ="{{googlebooklinks[loop.index0]}}"> Google Books </a></h2>
+                                                            <p class="notfound card-title"> The book fair is not able to find googbooks link</p>
+                                                            {%else%}
+                                                            <h2 class="card-title"> <a href ="{{googlebooklinks[loop.index0]}}"> Google Books </a></h2>
+                                                            {%endif%}
+                                                            {%if googlebooknumberofrating[loop.index0] == "null" %}
+                                                            <h3 class="notfound card-text">  No ratings found. </h3>
+                                                        {% else %}
+                                                            <h3 class="card-text" >Average Rating: {{googlebookavg[loop.index0]}}</h3>
+                                                            <h3 class="card-text" >Number of Rating: {{googlebooknumberofrating[loop.index0]}}</h3>
+                                                        {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <table>
+                                            <tr >
+                                                <th colspan="3">
+                                                    <h1><b>Reviews</b></h1>
+                                                </th>
+                                            </tr>
                                             <tr>
                                                 <th>
-                                                    <img src ="{{ url_for('static', filename='thebookfair.png') }}" alt="goodreads-logo" >
+                                                    <img src ="{{ url_for('static', filename='thebookfair.png') }}" alt="thebookfair-logo" >
                                                 </th>
                                                 <th>
                                                     <img src ="{{ url_for('static', filename='Goodreads.jpg') }}" alt="goodreads-logo" >
@@ -147,12 +219,12 @@ The Book Fair
                                                 </td>
                                             </tr>
                                             
-                                        </table>
+                                        </table> -->
                                
                                         
                                         {% if booksearchby == 'title' %}
                                             <hr class="hr_divide_separator"> 
-                                            <h2> <b>Reviews by 'The Books Reads Readers'</b></h2>
+                                            <h2> <b>Reviews by 'The Book Fair Readers'</b></h2>
                                         
                                             <div class="bookreaders">
                                                 {% if review is defined and review|length %}
