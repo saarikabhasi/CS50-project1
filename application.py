@@ -404,7 +404,7 @@ def books(b,booksearchby):
                     googlebookpublisher.append("null")
 
                 #googlebookid
-                if "id" in googleBookdata:
+                if "id" in googleBookdata["items"][0]:
 
                     googlebookid=googleBookdata["items"][0]["id"]
                     googlebooklink = "https://books.google.com/books?id="+ f"{googlebookid}"

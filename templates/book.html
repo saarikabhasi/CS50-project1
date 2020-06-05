@@ -108,8 +108,12 @@ The Book Fair
                                                     <h2> <a href ="{{goodreadslinks[loop.index0]}}">Good Reads </a></h2>
                                                 </td>
                                                 <td>
-                                                    
+                                                    {% if googlebooklinks[loop.index0] == "#" %}
                                                     <h2> <a href ="{{googlebooklinks[loop.index0]}}"> Google Books </a></h2>
+                                                    <p class="notfound"> The book fair is not able to find googbooks link</p>
+                                                    {%else%}
+                                                    <h2> <a href ="{{googlebooklinks[loop.index0]}}"> Google Books </a></h2>
+                                                    {%endif%}
                                                 </td>
                                             </tr>
                                             <tr>
