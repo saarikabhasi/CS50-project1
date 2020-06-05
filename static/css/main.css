@@ -303,23 +303,79 @@ div#useraccount .column {
     color: black;
     font-size: 1.4rem;
     text-align: left;
-    margin-left: 50px;
+    margin-left: 0px;
     padding: 10px;
 }
+
+#aboutbook .header ul{
+    list-style-type:none;
+    background-color: rgba(233, 233, 233, 0.995);
+    
+ }
+
+
+#aboutbook .header li a{
+    display: inline-flex;
+    color: rgb(84, 82, 82);;
+    padding:1rem;
+    text-align: center;
+   
+
+}
+#aboutbook .header .border{
+    width:100%;
+    
+}
+#aboutbook table{
+    width:100%;
+}
+#aboutbook table,th,td{
+    border:0px solid black;
+    text-align: center;
+    padding:10px;
+    margin: 10px;
+    
+    
+}
+#aboutbook th img{
+
+    width:80%;
+    height:20%;
+    position: relative;
+}
+#aboutbook caption { 
+    
+}
+
 #aboutbook .ratings h2{
     margin-left: 0px;
     font-size: 1.4rem;
+    text-align: center;
+    
   
 } 
+
+#aboutbook .ratings h2 a{
+    color: black;
+}
+
+#aboutbook .bookreaders h2{
+    text-align: left;
+}
+#aboutbook .bookreaders h3{
+    margin-left:7% !important;
+}
 span.name{
     text-transform: uppercase;
 }
 #aboutbook .ratings h3{
-    margin-left: 50px;
+    margin-left: 0px;
     font-size: 1.25rem;
     
     
 } 
+
+
 
 /*hr styling*/
 .hr_divide_heading{
@@ -530,6 +586,21 @@ h4.ratings{
         font-size: 16px;
     }
 
+    #aboutbook table,th,td{
+        border:1px solid black;
+        text-align: center;
+        padding:10px;
+        margin: 10px;
+        
+        position: relative; 
+        
+    }
+    #aboutbook th img{
+        width:80%;
+        height:20%;
+        position: relative;
+        
+    }
     #aboutbook .ratings h3{
         margin-left: 50px;
     } 

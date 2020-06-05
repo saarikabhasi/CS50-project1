@@ -298,6 +298,8 @@ def books(b,booksearchby):
     googlebooknumberofrating=[]
     googlebookavg=[]
     goodreadslinks=[]
+    googlebookpublisher=[]
+    googlebooklinks=[]
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
@@ -357,17 +359,61 @@ def books(b,booksearchby):
 
             if googleBookresponse.status_code == 200:
                 googleBookdata =googleBookresponse.json()
+
+                googlebookDict = googleBookdata["items"][0]["volumeInfo"]
+                
                 #description
-                googlebookdescription.append(googleBookdata["items"][0]["volumeInfo"]["description"])
+
+                if "description" in googlebookDict:
+                    description=googlebookDict["description"]
+                    googlebookdescription.append(description)
+                else:
+                    googlebookdescription.append("null")
+                   
                 #image
-                googlebookimage.append(googleBookdata["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"])
+                if "imageLinks" in googlebookDict:
+                    if "thumbnail" in googlebookDict["imageLinks"]:
+                        googlebookimage.append(googlebookDict["imageLinks"]["thumbnail"])
+                    elif "smallThumbnail" in googlebookDict["imageLinks"]:
+                        googlebookimage.append(googlebookDict["imageLinks"]["smallThumbnail"])
+                    else:
+                        googlebookimage.append("null")
+
+                else:
+                    googlebookimage.append("null")
+
                 #ratings
-                googlebookavg.append(googleBookdata["items"][0]["volumeInfo"]["averageRating"])
-                googlebooknumberofrating.append(googleBookdata["items"][0]["volumeInfo"]["ratingsCount"])
-           
+                if "averageRating" in googlebookDict:
+                    googlebookavg.append(googlebookDict["averageRating"])
+                else:
+                    googlebookavg.append("null")
+                
+                if "ratingsCount" in googlebookDict:
+                    googlebooknumberofrating.append(googlebookDict["ratingsCount"])
+                else:
+                    googlebooknumberofrating.append("null")
+                
+
+                #publisher
+               
+ 
+                if "publisher" in googlebookDict:
+                    
+                    googlebookpublisher.append(googlebookDict["publisher"])
+                else:
+                    googlebookpublisher.append("null")
+
+                #googlebookid
+                if "id" in googleBookdata:
+
+                    googlebookid=googleBookdata["items"][0]["id"]
+                    googlebooklink = "https://books.google.com/books?id="+ f"{googlebookid}"
+                    googlebooklinks.append(googlebooklink)
+                else:
+                    googlebooklinks.append("#")
                 
         
-        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,lenreview = len(review),average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,account_details=message)
+        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,lenreview = len(review),average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,googlebookpublisher=googlebookpublisher,googlebooklinks=googlebooklinks,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
