@@ -9,6 +9,10 @@ body{
 .fa-google{
     color: rgb(0, 28, 139);
 }
+.fa-star,.fa-star-half{
+    color: rgb(255, 158, 13);
+   
+}
 /* .txt_center{
     text-align: center;
 } */

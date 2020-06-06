@@ -20,12 +20,44 @@ The Book Fair
                     
                 <a href="{{url_for('books',b=review.title,booksearchby='title') }}">
                    {{review.title}}</h2></a> 
-              
-            
-                <h3 class= "ratings"> My Rating: {{review.rating}}</h3>
+                
+                <h3>
+                    {%if review.rating != None %}
+                        {% for num in range(0,review.rating|round(0,'floor') |int)%}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+
+                        {% if review.rating|round(0,'ceil') - review.rating|float >= 0.5 %}
+                            <i class="fas fa-star-half"></i>
+                        {% endif%}
+                        {% if 5 - review.rating >=1 %}
+                            {% for num in range(0,5 - review.rating|round(0,'ceil')|int)%}
+                        <i class=" fas fa-star" style="color: rgb(203, 202, 202);"></i>
+                            {%endfor%}
+                        {%endif%}
+                        <h3 class= "ratings"> My Rating: {{review.rating}}</h3>
+                    {%else %}
+                        
+                        {% for num in range(0,5)%}
+                            <i class="fas fa-star" style="color: rgb(203, 202, 202);"></i>
+                        {% endfor %}
+                    {%endif%}
+                    </h3>
+
+                                          
+                </h3>
+                
             </dt>
             <dd>
-                <h3> Comments: <br><span>{{review.contents}}</span></h3>
+                <h3> Comments: <br>
+                    <span>
+                        {%if review.contents|length != 0 %}
+                            {{review.contents}}
+                        {%else%}
+                            None
+                        {%endif%}
+                </span>
+            </h3>
             </dd>
             <hr class="hr_divide_separator">
         </dl>
