@@ -58,7 +58,7 @@ The Book Fair
                                             </li>
                                         </ul>
                                         
-                                        <h2>About This book </h2>
+                                        <h2 class="mx-auto "><strong>About This book</strong> </h2>
                                         <div class="border border-secondary" id="overview">
                                             
                                             <ul>
@@ -68,21 +68,23 @@ The Book Fair
                                                 <li>   
                                                     {% if googlebookpublisher[loop.index0] == "null" %}
                                                     
-                                                        <h2>Publisher: <span class="lead notfound"> No publisher found on google books</span> </h2>
+                                                        <h2 class="text-uppercase">Publisher: <span class="lead notfound"> No publisher found on google books</span> </h2>
                                                     {%else%}
-                                                        <h2>Publisher: <span class="lead">{{googlebookpublisher[loop.index0]}} - From Google Books<i class= "fab fa-google"></i> </span> </h2>
+                                                        <h2 class="text-uppercase">Publisher:  <span class="lead text-capitalize">{{googlebookpublisher[loop.index0]}} </span>
+                                                            
+                                                        <span class="lead text-lowercase "><i class= "fab fa-google"></i> </span></h2>    
                                                     {%endif%}
                                                 </li> 
                                                 <li>
-                                                    <h2> Published in : <span class="lead">{{details[3]}}.</span></h2>
+                                                    <h2 class="text-uppercase"> Published in : <span class="lead text-lowercase">{{details[3]}}</span></h2>
                                                 </li>
                                                 <li>
                                                     {%if googlebookdescription[loop.index0] == "null" %}
-                                                    <h2> Description: - From Google Books<i class= "fab fa-google"></i> </h2>
+                                                    <h2 class="text-uppercase"> Description: from Google Books<i class= "fab fa-google"></i> </h2>
                                                     <h2><span class="lead notfound"> No Description found on Google books not found</h2>
                                                     {% else %}
-                                                    <h2> Description: <span class="lead">- From Google Books<i class= "fab fa-google"></i> </span> </h2>
-                                                    <h2> <span class="lead">{{googlebookdescription[loop.index0]}}</h2>
+                                                    <h2 class="text-uppercase"> Description: <span class="lead text-lowercase"><i class= "fab fa-google"></i> </span> </h2>
+                                                    <h2> <span class="lead ">{{googlebookdescription[loop.index0]}}</h2>
                                                     {% endif %}
                                                 </li>
                                             </ul>
@@ -94,7 +96,7 @@ The Book Fair
                                     
                                     
                                     <div class = "ratings" id="Reviews">
-                                        <hr class="hr_divide_separator"> 
+                                        <!-- <hr class="hr_divide_separator">  -->
                                         <div class="container-fluid  px-lg-5">
                                             <div class="row mx-lg-n5">
                                                 <div class="col-lg-4 py-3 px-lg-5 ">
@@ -224,14 +226,14 @@ The Book Fair
                                         
                                         {% if booksearchby == 'title' %}
                                             <hr class="hr_divide_separator"> 
-                                            <h2> <b>Reviews by 'The Book Fair Readers'</b></h2>
+                                            <h2 class="mx-auto"> <b>Reviews by 'The Book Fair Readers'</b></h2>
                                         
                                             <div class="bookreaders">
                                                 {% if review is defined and review|length %}
                                                     {% for review in review %}
                                                         <h2> <i class="fas fa-book-reader"></i>  <span class= "name"><b>{{review[3]}}</b></span></h2>
                                                         <h3> <i class="fas fa-star"></i>{{review[1]}}</h3>
-                                                        <h3> <i class="fas fa-comment"></i> {{review[0]}}</h3>
+                                                        <h3 class="text-justify"> <i class="fas fa-comment"></i> {{review[0]}}</h3>
                                                     {% endfor %}
                                                 {%else%}
                                                     <h3 class="notfound">  No ratings found. </h3>
@@ -277,7 +279,7 @@ The Book Fair
                                                     </div>
 
                                                     <div class="col-md-4" id="submit"  > 
-                                                        <button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit" >Submit</button>
+                                                        <button class="btn btn-primary btn-rounded btn-sm my-0" type="submit" >Submit</button>
                                                     </div>
                                                 </div>
                                             </div>
