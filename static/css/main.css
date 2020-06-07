@@ -512,7 +512,7 @@ h4.ratings{
 .rating > input { display: none; } 
 .rating > label:before { 
   margin: 5px;
-  font-size:1.5rem;
+  font-size:1.7rem;
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";
@@ -943,11 +943,7 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 /* Landscape */
-@media only screen 
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) 
-and (orientation: landscape) 
-and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 
@@ -1041,6 +1037,208 @@ and (orientation: landscape) {
 and (min-device-width: 414px) 
 and (max-device-width: 736px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
+    .card {
+        width:100%;
+        height:100%; 
+    }
+    .card h1{
+        font-size: 5rem;
+        height: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+    #logo h1{
+        color: rgb(131, 9, 9); 
+        /* background: rgb(225, 225, 225);  */
+        height: 15%; 
+        text-align: center; 
+        font-size: 50px;
+        font-weight:300;
+        padding:30px;
+        width: 100%; 
+    
+    
+    }
+
+    /*verify account*/
+
+    button.btn.btn-primary.verifysubmit {
+        margin-top: 0px;
+        position: relative;
+        text-align: center;
+        margin-left: 40%;
+        margin-bottom: 0px;
+        margin-right: 40%;
+        font-size: 1.45rem;
+    }
+    /* register page */
+
+    div#register{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        height: 100%;
+        clear: both;  
+           
+    }
+
+
+    #register input{
+        font-size: 1.5rem;
+    }
+
+    #register h2{
+     
+        font-size: 2rem;
+    }
+    #register h3{
+        font-size: 1.7rem;
+    }
+
+    /*signIn*/
+    #signIn a.btn-link{
+        font-size: 2rem;
+    }
+
+    button#createaccount{
+        float: right;
+        font-size: 1.45rem;
+    
+    }
+
+    div#signIn{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        clear: both;
+        height: 100%; 
+    }
+    #signIn h2{
+        color: rgb(84, 82, 82);
+        font-size: 2rem;
+    } 
+
+    #signIn h3{
+        font-size: 1.7rem;
+    }
+    #signIn input{
+        font-size: 1.5rem;
+    }
+
+    .btn-lg{
+        font-size: 2rem;
+    }
+    /*book.html*/
+
+    
+    #aboutbook h2{
+        color: black;
+        font-size: 1.5rem;
+        text-align: left;
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    #aboutbook .header  ul{
+        list-style-type:none;
+       
+        
+     }
+    #aboutbook .header h2{
+        font-size:1.4rem;
+    }
+    
+    
+    #aboutbook .header li a{
+
+        font-size: 1.4rem;
+       
+    
+    }
+    #aboutbook .header .border{
+        width:100%;
+        
+    }
+
+    
+    #aboutbook table{
+        width:100%;
+    }
+
+    #aboutbook .card{
+        width:15rem;
+        height: 12rem;
+        display: grid;
+    
+    }
+    #aboutbook .card h2{
+        text-align: center;
+    
+    }
+
+    /* #aboutbook table,th{
+        border:0px solid black;
+        text-align: center;
+        padding:2%;
+        margin: 2%;
+        
+        
+    }
+    #aboutbook th img{
+    
+        width:100%;
+        height:20%;
+        position: relative;
+    } */
+
+    
+    #aboutbook .ratings h2{
+        margin-left: 0px;
+        font-size: 1.4rem;
+        text-align: justify;
+        
+      
+    } 
+
+    
+    /* #aboutbook .ratings h2 a{
+        color: black;
+    } */
+    
+    #aboutbook .bookreaders h2{
+        text-align: left;
+    }
+    #aboutbook .bookreaders h3{
+        margin-left:7% !important;
+    }
+    span.name{
+        text-transform: uppercase;
+    }
+    #aboutbook .ratings h3{
+        margin-left: 0px;
+        font-size: 1.25rem;
+        text-align: justify;
+        
+        
+    } 
+    .reviewabook h2{
+     
+        padding-bottom: 20px; 
+        font-size: 1.4rem;
+    }
+    
+    
+    .reviewabook textarea{
+        width: 100%;
+        height: 200px;
+     }
+    .reviewabook{
+        margin-bottom: 100px;
+    }
+    
+
 
 }
 
