@@ -84,10 +84,8 @@ def register():
             {"email_id":email_id,"password":hash_password ,"name":name})
             
             db.commit()
-            flash(u'Welcome , You were successfully registered. ')
-            session['email_id']=email_id
-            session['name']=name
-            return redirect(url_for('index'))
+            flash(u'Welcome , You were successfully registered. Please Login  ')
+            return render_template("login.html")
 
         else:
             
