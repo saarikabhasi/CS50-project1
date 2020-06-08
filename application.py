@@ -150,26 +150,26 @@ def verifyaccount():
             email_id = request.form.get("email_id")
             user_name = request.form.get("name")
         except ValueError:
-            return render_template("oldaccount.html",err_msg="email id and user name is required")
+            return render_template("authenticate.html",err_msg="email id and user name is required")
 
         user  = db.execute("select * from users where email_id=:email_id",{"email_id": email_id}).fetchall()
         if len(user)== 0:
             email_not_found = 'Email address not found'
             error ="EMAIL_NOT_FOUND"
-            return render_template("oldaccount.html",err_msg=email_not_found,type_err_msg=error,name=user_name)
+            return render_template("authenticate.html",err_msg=email_not_found,type_err_msg=error,name=user_name)
         else:
             for u in user:
                 if u.email_id==email_id and u.name==user_name:
                     verification_status = 1
                     flash(u'Account verified sucessfully.')
-                    return render_template("change_password.html",email=email_id,verification_status=1)
+                    return render_template("passwordchange.html",email=email_id,verification_status=1)
                 else:
                     verification_status = 0
                     user_name_not_matched = 'User name not found'
                     error = 'NAME_NOT_FOUND'
-                    return render_template("oldaccount.html",err_msg=user_name_not_matched,type_err_msg=error,email=email_id)
+                    return render_template("authenticate.html",err_msg=user_name_not_matched,type_err_msg=error,email=email_id)
     else:
-        return render_template("oldaccount.html")
+        return render_template("authenticate.html")
 
 @app.route("/changepassword/<int:verification_status>",methods=["GET","POST"])
 def changepassword(verification_status):
@@ -187,24 +187,24 @@ def changepassword(verification_status):
             confirm_password = request.form.get("confirmpassword")
 
         except ValueError:
-            return render_template("change_password.html",err_msg="email id or password is required",verification_status=verification_status)
+            return render_template("passwordchange.html",err_msg="email id or password is required",verification_status=verification_status)
         
         user = db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).fetchall()
 
         if len(user) == 0:
             email_not_found = 'Email Address not found'
             error ="EMAIL_NOT_FOUND"
-            return render_template("change_password.html",err_msg=email_not_found,type_err_msg= error,verification_status=verification_status)
+            return render_template("passwordchange.html",err_msg=email_not_found,type_err_msg= error,verification_status=verification_status)
 
         if not len(new_password)>=6:
             password_length_err_msg = "Password length must be atleast 6 characters"
             error ="PASSWORD_LENGTH_ERROR"
-            return render_template("change_password.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,verification_status=verification_status)
+            return render_template("passwordchange.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,verification_status=verification_status)
         
         if new_password!=confirm_password:
             confirm_password_err_msg = "Password did not match"
             error = 'PASSWORD_NOT_MATCH'
-            return render_template("change_password.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,verification_status=verification_status) 
+            return render_template("passwordchange.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,verification_status=verification_status) 
 
 
         
@@ -216,7 +216,7 @@ def changepassword(verification_status):
                 flash(u'Welcome ,You changed your password successfully')
                 return render_template("login.html")
     else:
-       return render_template("change_password.html")
+       return render_template("passwordchange.html")
 
 @app.route("/logout")
 def logout():
