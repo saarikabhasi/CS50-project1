@@ -447,7 +447,7 @@ def review(isbn):
                 if 'rating' in allreviews.keys():
                     rev= db.execute("insert into reviews(contents,rating,isbn,email_id) values (:contents,:rating,:isbn,:email_id)",{"contents":allreviews["review"],"rating":allreviews["rating"],"isbn":isbn,"email_id":user_email})
                     db.commit()
-                    return render_template("book.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
+                    return render_template("message.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
                 
 
                 else:
@@ -457,11 +457,11 @@ def review(isbn):
                         rev= db.execute("insert into reviews(contents,isbn,email_id) values (:contents,:isbn,:email_id)",{"contents":allreviews["review"],"isbn":isbn,"email_id":user_email})
                         
                         db.commit()
-                        return render_template("book.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
+                        return render_template("message.html",review_sucess = "You have sucessfully submitted your review",account_details =message)
                     else:
-                        return render_template("book.html",emptyreview = "You cannot give an empty rating and comment",account_details =message)
+                        return render_template("message.html",emptyreview = "You cannot give an empty rating and comment",account_details =message)
             else:
-                return render_template("book.html", reviewerr = "You already gave a review",account_details =message)
+                return render_template("message.html", reviewerr = "You already gave a review",account_details =message)
         else:
             return render_template("login.html",message= " please create an account first")
     else: 

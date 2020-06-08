@@ -20,9 +20,11 @@
 
     
         <div id="logo">         
-            <h1> {% block heading %} {% endblock %}</h1>
+            <h1 class="text-monospace"> {% block heading %} {% endblock %}</h1>
         </div>
         <header class="global-header flex-row d-flex bd-highlight mb-3">
+
+            
             <div class="container-left  justify-content-start  ">
                 <div class="nav  nav-tabs" id="useraccount">
                 
@@ -94,10 +96,14 @@
                 </div>
             {%endif%}
         {% endwith %}
+  
         {%block body %}
+
         {% endblock %}
-        <div id ="footer">
-            <p> &#169;Created by Nair Saarika Bhasi&#169;</p>
-        </div>
+     
+        <footer id ="footer">
+      
+            <p> &#169; Created by Nair Saarika Bhasi </p>
+       </footer>
     </body>
 </html>

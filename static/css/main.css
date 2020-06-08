@@ -5,7 +5,7 @@ body{
     position:relative;
     width: 100%;
     height: 100%; 
-    background-color:rgba(249, 249, 249, 0.865);
+    background-color:rgba(255, 255, 255);
 }
 .fa-google{
     color: rgb(0, 28, 139);
@@ -27,14 +27,14 @@ p{
 /* Button */
 .btn{
     background: rgb(0, 118, 244);
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 .btn:hover{
     background: green;
     
 }
 .btn-primary{
-    font-size: 20px;
+    font-size: 1.3rem;
 
 }
 
@@ -61,17 +61,20 @@ p{
 .card h1{
     font-size: 50px;
     font-family: Roboto;
-    font-weight: 600;
-    color:#c53211;
+    font-weight: 300;
     text-align: center;
-    height: 100px;
+    height: 5%;
     margin-top: 10px;
     position: relative;
+    color:rgb(60, 95, 171);
 }
 .card div h2{
     text-align: center;
     color: rgb(84, 82, 82);
     font-size: 25px;
+}
+.card-header{
+    background-color: white;
 }
 
 
@@ -87,7 +90,7 @@ div#signIn{
 }
 #signIn h2{
     color: rgb(84, 82, 82);
-    font-size: 25px;
+    font-size: 1.4rem;
 } 
 button#createaccount{
     float: right;
@@ -95,17 +98,17 @@ button#createaccount{
 }
 
 #signIn a.btn-link{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color:rgb(84, 82, 82);
    
     text-decoration-line: underline;
 
 }
 #signIn h3{
-    font-size: 19px;
+    font-size: 1.2rem;
 }
 #signIn input{
-    font-size: 17px;
+    font-size: 1rem;
 }
 #signIn .forgotpassword{
     text-align: center;
@@ -118,7 +121,7 @@ button#createaccount{
 .btn-lg{
     text-align: center;
     padding: 10px;
-    font-size: 25px;
+    font-size: 1.5rem;
 }
 /*verify account*/
 
@@ -164,13 +167,17 @@ div#register{
 /*layout.html*/ 
 
 #footer p {
-    color: rgb(84, 82, 82);
-   text-align: center;
-   margin-top: 20%;
-   font-size: 1.2rem;
-   height: 5rem;
-   padding:2rem;
-   background-color: rgb(255, 200, 170);
+     color: rgb(54, 120, 99);
+    text-align: center;
+    font-size: 1.4rem;
+    height: 0rem;
+    padding:1rem;
+    font-weight: 900;
+    font-family: "Lucida Console , Monaco, monospace";
+    width: 100%;
+    bottom:0px; 
+    position: relative;
+
 
     
 }
@@ -182,14 +189,17 @@ div#logo {
 }
 #logo h1{
     /* color: rgb(233, 92, 92);  */
-    color:#b48c36;
-    color:#c53211;
-    height: 10%; 
+    /* color:#b48c36;
+    color:#c53211; */
+    color:rgb(60, 95, 171);
+    height: 0.2rem; 
     text-align: center; 
     font-size: 2.7rem;
-    font-weight:600;
+    font-weight:300;
     padding:0px;
     width: 100%; 
+    font-family:Trajan !important;
+    
 
 
 }
@@ -203,12 +213,12 @@ div#logo {
     width:100%;
     position:relative;
     overflow:hidden;
-    padding-bottom:10px;
-    border-bottom:2px solid  #040404;
+    /* padding-bottom:15px; */
+    border-bottom:2px solid  rgb(26, 70, 167);
     line-height:1.5;
     margin:20px 0 0 0%;
     display: grid;
-    background-color:rgb(249, 249, 249);
+    background-color:rgba(255, 255, 255);
     grid-template-columns: auto auto;
  
 }
@@ -230,32 +240,34 @@ div#logo {
 
     div#useraccount .nav-item a{
         display:block;
-        font-size:1.3rem;
+        font-size:1.4rem;
         margin-top:7px;
-        font-weight:600;
+        font-weight:400;
         text-decoration: none;
-        text-transform: uppercase;
+        /* text-transform: uppercase; */
     }
     .nav-links .nav-item{
-        margin:0 20px
+        margin:0 20px;
     }
 
     .tab-nav-link{
         font-size:1em;
         color:#040404;
-        padding:5px 25px 23px;
+        padding:5px 25px 0px;
         display:inline-block
     }
     .tab-nav-link:hover,.tab-nav-link:focus{
-        border-bottom:2px solid ;
-        color:#00682f;
+        border-bottom:6.9px solid ;
+        /* padding-bottom: 15px; */
+        color:rgb(26, 70, 167);
+        /* z-index: 1; */
     }
     .container-right{
         float:right;
         margin-top:1.6rem;
         margin-right:0px;
         margin-bottom:0px;
-        margin-left: 30%;
+        margin-left: 40%;
 
     }
     .container-right span{
@@ -283,30 +295,31 @@ div#logo {
     margin-top: 20px;
     margin-bottom: 0px;
     margin-right: 20px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
 }
 .searchbar .btn{
     top:20px;  
     margin-left: 5%;
     float: left;
-    width: 25%;
+    /* width: 25%; */
+    width:auto;
     height: 40px;
     position: relative;
     background-color: #0075b4;
     
 }
 input[type=radio]{
-    transform:scale(1.4);
+    transform:scale(1.2);
   }
 
 .searchoption{
     margin-top: 1%;
-    margin-left: 0px;
+    margin-left: 0.4rem;
     
 }
 .searchoption h4 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color:black;
 }
 
@@ -319,8 +332,18 @@ input[type=radio]{
     margin-left: 0px;
     margin-top: 20px;
     padding: 40px 20px 20px 0px;
-    background-color:rgb(254, 252, 252);
+    background-color:rgb(254, 254, 252);
+    min-height:100%;
+    position:relative;
     
+    
+}
+#reviewresult{
+    height: 500px;
+    
+}
+#reviewresult h4{
+    padding:50px;
     
 }
 .searchmessages h2{
@@ -343,15 +366,19 @@ input[type=radio]{
     margin-top: 20px;
 
 }
-#eachbooks h1{
+/* #eachbooks h1{
    
-    font-size: 30px;
+    font-size: 1.6rem;
     text-align: center;
     margin-top: 0px;
-    color: rgb(41, 41, 41);
+    color: rgb(8, 43, 119);;
+    font-weight: 500;
+
+
     
 
-}
+} */
+
 #eachbooks h2{
     color: rgb(5, 54, 138);
 
@@ -361,8 +388,13 @@ input[type=radio]{
 }
 #eachbooks h2:focus{
     text-decoration: underline;
-    text-decoration:  rgb(84, 82, 82);
+    color:  rgb(84, 82, 82);
     
+}
+div#eachbooks h2{
+    color: rgb(0, 43, 99);
+
+    font-size: 1.7rem;
 }
 #eachbooks h2 a{
     color: rgb(84, 82, 82);
@@ -372,11 +404,11 @@ input[type=radio]{
 
 }
 #eachbooks h3{
-    font-size: 1.4rem;
-    color: rgb(84, 82, 82);
+    font-size: 1.2rem;
+    color: rgb(33, 26, 26);
 }
 #eachbooks h3 a{
-    color: rgb(84, 82, 82);
+    color: rgb(33, 26, 26);
     text-decoration: underline;
     
 }
@@ -385,10 +417,11 @@ input[type=radio]{
 /*myreviews */
 .myreview{
    
-    margin:20px;
+    margin:0px;
     margin-left:0px;
     text-align: left ;
-    background-color: rgb(235, 235, 235);
+    /* background-color: rgb(244, 244, 244); */
+
 }
 .myreview span{
     margin-left: 50px;
@@ -407,7 +440,10 @@ input[type=radio]{
 
 #bookdetails{
     width:100%;
+    height: 100%;
+    background-color: rgb(232, 231, 223);
 }
+
 
 #aboutbook  h1{
     color: rgb(50, 50, 50);
@@ -468,7 +504,10 @@ input[type=radio]{
     background-color: #C06014;
 }
 #aboutbook .header .border{
-    width:100%;
+    
+    margin-left:1rem;
+    margin-right:1rem;
+    position:relative;
     background-color: rgb(255, 253, 253);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     
@@ -494,11 +533,11 @@ text-align: center;
 
 
 
-#aboutbook .ratings h1{
+/* #aboutbook .ratings h1{
     margin-left: 2%;
     font-size: 1.6rem;
     text-align: center;
-}
+} */
 
 #aboutbook .ratings h2{
     margin-left: 0px;
@@ -515,13 +554,15 @@ text-align: center;
     
 } 
 #aboutbook .ratings h2 a{
-     color: rgb(255, 249, 249);;
+    color: rgb(255, 249, 249);;
 
     text-decoration: underline;
 }
 #aboutbook .ratings h2 a:focus{
-    color:green;
+    
+    color: #C06014;
 }
+
 #aboutbook .bookreaders h2{
     text-align: left;
 }
@@ -563,10 +604,10 @@ span.name{
     margin-bottom: 100px;
 }
 .notfound{
-    color: rgb(235, 36, 1);
+    color: rgb(245, 77, 77)  !important;
 } 
 h3.notfound span{
-    color: black
+    color: rgb(245, 77, 77) !important;
 } 
 h4.ratings{
     margin-left: 0px;
@@ -615,7 +656,7 @@ h4.ratings{
 .rating > input:checked + label:hover, 
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, 
-.rating > input:checked ~ label:hover ~ label { color: black; } 
+.rating > input:checked ~ label:hover ~ label { color: #003165  } 
  
 
 
@@ -635,8 +676,8 @@ h4.ratings{
         
     }
     .card h1{
-        font-size: 50px;
-        height: 100%;
+        font-size: 40px;
+        height: 4rem;
         margin-top: 10px;
         position: relative;
     }
@@ -687,7 +728,7 @@ h4.ratings{
         font-size: 17px;
     }
     .searchbar .btn{
-        height: 30px;
+        height: auto;
     }
     .searchoption h4 {
         font-size: 17px;
@@ -752,7 +793,8 @@ h4.ratings{
         
     }
     #aboutbook .ratings h3{
-        margin-left: 50px;
+        /* margin-left: 50px; */
+        
     } 
      /*layout*/
     .detail{
@@ -789,26 +831,29 @@ h4.ratings{
 
 /* Portrait and Landscape */
 @media only screen  and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
-
+    p{
+      
+        font-size: 1rem;
+    }
     .card {
         width:100%;
         height:100%; 
     }
     .card h1{
-        font-size: 5rem;
+        font-size: 4.5rem;
         height: 100%;
         margin-top: 10px;
         position: relative;
     }
     #logo h1{
-        color: rgb(233, 92, 92); 
         /* background: rgb(225, 225, 225);  */
-        height: 15%; 
+        height: 0.2rem; 
         text-align: center; 
         font-size: 50px;
         font-weight:300;
         padding:30px;
         width: 100%; 
+      
     
     
     }
@@ -883,8 +928,616 @@ h4.ratings{
     .btn-lg{
         font-size: 2rem;
     }
-    /*book.html*/
+    
+    /* user account details styles */
 
+
+
+  .global-header{
+    box-sizing:border-box;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    /* padding-bottom:10px; */
+    border-bottom:2px solid  rgb(26, 70, 167);
+    line-height:1.5;
+    margin:20px 0 0 0%;
+    display: grid;
+    background-color:rgba(255, 255, 255);
+    grid-template-columns: auto auto;
+ 
+}
+  #useraccount{
+    /* color: rgb(84, 82, 82); */
+    font-size: 2rem;
+    margin-top: 20px;
+    border-bottom-style:hidden; 
+    
+    
+    
+}
+  div#useraccount .nav-tab{
+      text-transform:none;
+      padding:0;
+      cursor:pointer;
+      margin:0;
+    }
+
+    div#useraccount .nav-item a{
+        display:block;
+        font-size:1.3rem;
+        margin-top:7px;
+        font-weight:200;
+        text-decoration: none;
+    
+    }
+    .nav-links .nav-item{
+        margin:0 20px
+    }
+
+    .tab-nav-link{
+        font-size:1rem;
+        color:#040404;
+        padding:5px 20px 0px;
+        display:inline-block
+    }
+    .tab-nav-link:hover,.tab-nav-link:focus{
+        border-bottom:5px solid ;
+        color:#00682f;
+    }
+    .container-right{
+        float:right;
+        margin-top:1.6rem;
+        margin-right:0px;
+        margin-bottom:0px;
+        margin-left: 30%;
+
+    }
+    .container-right span{
+        color:#040404;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+
+    
+    /*book.html*/
+    #aboutbook h2{
+        color: black;
+        font-size: 1.5rem;
+        text-align: left;
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    #aboutbook .header  ul{
+        list-style-type:none;
+       
+        
+     }
+    #aboutbook .header h2{
+        font-size:1.4rem;
+    }
+    
+    
+    #aboutbook .header li a{
+
+        font-size: 1.4rem;
+       
+    
+    }
+ 
+
+    
+    #aboutbook table{
+        width:100%;
+    }
+
+    #aboutbook .card{
+        width:15rem;
+        height: 12rem;
+        display: grid;
+    
+    }
+    #aboutbook .card h2{
+        text-align: center !important;
+    
+    }
+    #aboutbook .card h3{
+        text-align: center !important;
+    
+    }
+    
+    
+    #aboutbook .ratings h2{
+        margin-left: 0px;
+        font-size: 1.4rem;
+        text-align: center !important;
+        
+      
+    } 
+
+    
+    #aboutbook .bookreaders h2{
+        text-align: left !important;
+    }
+    #aboutbook .bookreaders h3{
+        margin-left:7% !important;
+        text-align: left !important;
+    }
+    span.name{
+        text-transform: uppercase;
+    }
+    #aboutbook .ratings h3{
+        margin-left: 0px;
+        font-size: 1.25rem;
+        text-align: center;
+        
+        
+    } 
+    .reviewabook h2{
+     
+        padding-bottom: 20px; 
+        font-size: 1.4rem;
+    }
+    
+    
+    .reviewabook textarea{
+        width: 100%;
+        height: 200px;
+     }
+    .reviewabook{
+        margin-bottom: 100px;
+    }
+  
+
+    
+
+    #footer  {
+        color: rgb(54, 120, 99);
+        text-align: center;
+        font-size: 1rem;
+        height: 2rem;
+        font-weight: 900;
+        font-family: "Lucida Console , Monaco, monospace";
+        padding: 1.2rem;
+        width: 100%;
+        bottom:0%;
+        position: relative;
+    
+        
+    }
+
+}
+
+
+/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
+
+/* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 568px)
+and (-webkit-min-device-pixel-ratio: 2) {
+    #logo h1{
+        /* background: rgb(225, 225, 225);  */
+        height: .4rem; 
+        text-align: center; 
+        font-size: 35px;
+        font-weight:300;
+        padding:30px;
+        width: 100%; 
+      
+    
+    
+    }
+
+
+    div#useraccount .nav-item a{
+
+        font-size:0.9rem;
+ 
+    
+    }
+
+
+
+
+
+    .container-right span{
+        color:#040404;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+/* ----------- iPhone 6+, 7+ and 8+ ----------- */
+
+
+@media only screen 
+and (min-device-width: 414px) 
+and (max-device-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3) { 
+    p{
+      
+        font-size: 1rem;
+    }
+    .card {
+        width:100%;
+        height:100%; 
+    }
+    .card h1{
+        font-size: 3rem;
+        height: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+    #logo h1{
+        color: rgb(60, 95, 171); 
+        /* background: rgb(225, 225, 225);  */
+        height: 0rem; 
+        text-align: center; 
+        font-size: 40px;
+        font-weight:300;
+        padding:20px;
+        width: 100%; 
+    
+    
+    }
+
+    /*verify account*/
+
+    button.btn.btn-primary.verifysubmit {
+        margin-top: 0px;
+        position: relative;
+        text-align: center;
+        margin-left: 40%;
+        margin-bottom: 0px;
+        margin-right: 40%;
+        font-size: 1.45rem;
+    }
+    /* register page */
+
+    div#register{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        height: 100%;
+        clear: both;  
+           
+    }
+
+
+    #register input{
+        font-size: 1rem;
+    }
+
+    #register h2{
+     
+        font-size: 1.5rem;
+    }
+    #register h3{
+        font-size: 1.3rem;
+    }
+    #register a.btn-link{
+        font-size: 1.5rem;
+        color:rgb(84, 82, 82);
+        text-decoration-line: underline;
+    
+    }
+    .form-group{
+        text-align: left;
+    }
+
+  
+
+ 
+
+    /*signIn*/
+    #signIn a.btn-link{
+        font-size: 1.8rem;
+    }
+
+    button#createaccount{
+        float: right;
+        font-size: auto;
+    
+    }
+
+    div#signIn{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        clear: both;
+        height: 100%; 
+    }
+    #signIn h2{
+        color: rgb(84, 82, 82);
+        font-size: 1.8rem;
+    } 
+
+    #signIn h3{
+        font-size: 1.4rem;
+    }
+    #signIn input{
+        font-size: 1.4rem;
+    }
+
+    .btn-lg{
+        font-size: auto;
+    }
+    .btn{
+        background: rgb(0, 118, 244);
+        font-size: auto;
+    }
+
+
+    /* user account details styles */
+
+
+
+    .global-header{
+        box-sizing:border-box;
+        width:100%;
+        position:relative;
+        overflow:hidden;
+        border-bottom:2px solid  rgb(26, 70, 167);
+        line-height:1.5;
+        margin:20px 0 0 0%;
+        display: grid;
+        background-color:rgba(255, 255, 255);
+        grid-template-columns: auto auto;
+    
+    }
+    #useraccount{
+        /* color: rgb(84, 82, 82); */
+        font-size: 2rem;
+        margin-top: 20px;
+        border-bottom-style:hidden; 
+        
+        
+        
+    }
+
+
+    div#useraccount .nav-tab{
+        text-transform:none;
+        padding:0;
+        cursor:pointer;
+        margin:0;
+      }
+  
+      div#useraccount .nav-item a{
+          display:inline;
+          font-size:0.9rem;
+
+          font-weight:200;
+          text-decoration: none;
+      
+      }
+      .nav-links .nav-item{
+          margin:0 20px
+      }
+  
+      .tab-nav-link{
+          font-size:1rem;
+          color:#040404;
+          padding:5px 25px 0px;
+          display:inline-block
+      }
+      .tab-nav-link:hover,.tab-nav-link:focus{
+          border-bottom:5px solid ;
+          color:#00682f;
+      }
+      .container-right{
+          float:right;
+          margin-top:1.6rem;
+          margin-right:0px;
+          margin-bottom:0px;
+          margin-left: 0%;
+  
+      }
+      .container-right span{
+          color:#040404;
+          font-weight: 600;
+          font-size: 0.7rem;
+      }
+  
+
+
+
+
+    input[type=radio]{
+        transform:scale(1.2);
+      }
+    
+    .searchoption{
+        margin-top: 1%;
+        margin-left: 0.4rem;
+        
+    }
+    .searchoption h4 {
+        font-size: 1.2rem;
+        color:black;
+    }
+    
+    
+    
+    
+    .searchresult{
+        text-align: left;
+        display: grid;
+        margin-left: 0px;
+        margin-top: 20px;
+        padding: 40px 20px 20px 0px;
+        background-color:rgb(254, 254, 252);
+        min-height:100%;
+        position:relative;
+        
+        
+    }
+    #eachbooks h2{
+        color: rgb(5, 54, 138);
+    
+        font-size: 1.7rem;
+        /* text-transform: uppercase; */
+        
+    }
+    #eachbooks h2:focus{
+        text-decoration: underline;
+        color:  rgb(84, 82, 82);
+        
+    }
+    div#eachbooks h2{
+        color: rgb(0, 43, 99);
+    
+        font-size: 1.5rem;
+        
+    }
+    #eachbooks h2 a{
+        color: rgb(84, 82, 82);
+        text-decoration: underline;
+        font-size: 1.4rem;
+    
+    
+    }
+    #eachbooks h3{
+        font-size: 1.2rem;
+        color: rgb(33, 26, 26);
+    }
+    #eachbooks h3 a{
+        color: rgb(33, 26, 26);
+        text-decoration: underline;
+        
+    }
+    /*book.html*/
+    .searchresult{
+        margin-left: 5px;
+        
+    }
+    
+    #aboutbook h2{
+        color: black;
+        font-size: 1.5rem;
+        text-align: left;
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    #aboutbook .header  ul{
+        list-style-type:none;
+       
+        
+     }
+    #aboutbook .header h2{
+        font-size:1.4rem;
+     
+       
+    }
+    
+    
+    #aboutbook .header li a{
+
+        font-size: 1.4rem;
+       
+    
+    }
+
+
+    
+    #aboutbook table{
+        width:100%;
+    }
+
+    #aboutbook .card{
+        width:15rem;
+        height: 12rem;
+        display: grid;
+    
+    }
+    #aboutbook .card h2{
+        text-align: center;
+    
+    }
+
+    
+    #aboutbook .ratings h2{
+        margin-left: 0px;
+        font-size: 1.4rem;
+        text-align: center;
+        
+      
+    } 
+
+    #aboutbook .bookreaders h2{
+        text-align: left;
+    }
+    #aboutbook .bookreaders h3{
+        margin-left:7% !important;
+        text-align: left !important;
+    }
+    span.name{
+        text-transform: uppercase;
+    }
+    #aboutbook .ratings h3{
+        margin-left: 0px;
+        font-size: 1.25rem;
+        text-align: center;
+        
+        
+    } 
+    
+    .reviewabook h2{
+     
+        padding-bottom: 20px; 
+        font-size: 1.4rem;
+    }
+    
+    
+    .reviewabook textarea{
+        width: 100%;
+        height: 200px;
+     }
+    .reviewabook{
+        margin-bottom: 100px;
+    }
+    #footer p {
+        color: rgb(54, 120, 99);
+        text-align: center;
+        font-size: 1rem;
+        height: 3rem;
+        padding:0.5rem;
+        font-weight: 900;
+        font-family: "Lucida Console , Monaco, monospace";
+        width: 100%;
+        bottom:0px;
+        position: relative;
+     
+    
+        
+    }
+    
+
+
+}
+
+
+/* Landscape */
+@media only screen 
+and (min-device-width: 414px) 
+and (max-device-width: 736px) 
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) { 
+    div#useraccount .nav-item a{
+        display:block;
+        font-size:0.8rem;
+        margin-top:7px;
+        font-weight:200;
+        text-decoration: none;
+    
+    }
     .container-right{
         float:right;
         margin-top:1.6rem;
@@ -893,400 +1546,11 @@ h4.ratings{
         margin-left: 40%;
 
     }
-    #aboutbook h2{
-        color: black;
-        font-size: 1.5rem;
-        text-align: left;
-        margin-left: 0px;
-        padding: 10px;
+    .container-right span{
+        color:#040404;
+        font-weight: 600;
+        font-size: 1rem;
     }
-
-    #aboutbook .header  ul{
-        list-style-type:none;
-       
-        
-     }
-    #aboutbook .header h2{
-        font-size:1.4rem;
-    }
-    
-    
-    #aboutbook .header li a{
-
-        font-size: 1.4rem;
-       
-    
-    }
-    #aboutbook .header .border{
-        width:100%;
-        
-    }
-
-    
-    #aboutbook table{
-        width:100%;
-    }
-
-    #aboutbook .card{
-        width:15rem;
-        height: 12rem;
-        display: grid;
-    
-    }
-    #aboutbook .card h2{
-        text-align: center;
-    
-    }
-    
-    #aboutbook .ratings h2{
-        margin-left: 0px;
-        font-size: 1.4rem;
-        text-align: justify;
-        
-      
-    } 
-
-    
-    #aboutbook .bookreaders h2{
-        text-align: left;
-    }
-    #aboutbook .bookreaders h3{
-        margin-left:7% !important;
-    }
-    span.name{
-        text-transform: uppercase;
-    }
-    #aboutbook .ratings h3{
-        margin-left: 0px;
-        font-size: 1.25rem;
-        text-align: justify;
-        
-        
-    } 
-    .reviewabook h2{
-     
-        padding-bottom: 20px; 
-        font-size: 1.4rem;
-    }
-    
-    
-    .reviewabook textarea{
-        width: 100%;
-        height: 200px;
-     }
-    .reviewabook{
-        margin-bottom: 100px;
-    }
-    
-
-
-
-}
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) 
-and (orientation: portrait) 
-and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-  /* ----------- iPhone 4 and 4S ----------- */
-
-/* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 480px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) {
-
-}
-
-/* ----------- iPhone 5, 5S, 5C and 5SE ----------- */
-
-/* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 320px) 
-and (max-device-width: 568px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) {
-
-
-}
-
-/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
-
-/* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2) { 
-
-}
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) { 
-
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) { 
-
-}
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
-
-/* Portrait and Landscape */
-@media only screen 
-and (min-device-width: 414px) 
-and (max-device-width: 736px) 
-and (-webkit-min-device-pixel-ratio: 3) { 
-    .card {
-        width:100%;
-        height:100%; 
-    }
-    .card h1{
-        font-size: 5rem;
-        height: 100%;
-        margin-top: 10px;
-        position: relative;
-    }
-    #logo h1{
-        color: rgb(233, 92, 92); 
-        /* background: rgb(225, 225, 225);  */
-        height: 15%; 
-        text-align: center; 
-        font-size: 50px;
-        font-weight:300;
-        padding:30px;
-        width: 100%; 
-    
-    
-    }
-
-    /*verify account*/
-
-    button.btn.btn-primary.verifysubmit {
-        margin-top: 0px;
-        position: relative;
-        text-align: center;
-        margin-left: 40%;
-        margin-bottom: 0px;
-        margin-right: 40%;
-        font-size: 1.45rem;
-    }
-    /* register page */
-
-    div#register{
-        margin-left: 0%;
-        width:100%;
-        margin-top: 15%;
-        margin-bottom: 5%;
-        height: 100%;
-        clear: both;  
-           
-    }
-
-
-    #register input{
-        font-size: 1.5rem;
-    }
-
-    #register h2{
-     
-        font-size: 2rem;
-    }
-    #register h3{
-        font-size: 1.7rem;
-    }
-
-    /*signIn*/
-    #signIn a.btn-link{
-        font-size: 2rem;
-    }
-
-    button#createaccount{
-        float: right;
-        font-size: 1.45rem;
-    
-    }
-
-    div#signIn{
-        margin-left: 0%;
-        width:100%;
-        margin-top: 15%;
-        margin-bottom: 5%;
-        clear: both;
-        height: 100%; 
-    }
-    #signIn h2{
-        color: rgb(84, 82, 82);
-        font-size: 2rem;
-    } 
-
-    #signIn h3{
-        font-size: 1.7rem;
-    }
-    #signIn input{
-        font-size: 1.5rem;
-    }
-
-    .btn-lg{
-        font-size: 2rem;
-    }
-    /*book.html*/
-
-    
-    #aboutbook h2{
-        color: black;
-        font-size: 1.5rem;
-        text-align: left;
-        margin-left: 0px;
-        padding: 10px;
-    }
-
-    #aboutbook .header  ul{
-        list-style-type:none;
-       
-        
-     }
-    #aboutbook .header h2{
-        font-size:1.4rem;
-    }
-    
-    
-    #aboutbook .header li a{
-
-        font-size: 1.4rem;
-       
-    
-    }
-    #aboutbook .header .border{
-        width:100%;
-        
-    }
-
-    
-    #aboutbook table{
-        width:100%;
-    }
-
-    #aboutbook .card{
-        width:15rem;
-        height: 12rem;
-        display: grid;
-    
-    }
-    #aboutbook .card h2{
-        text-align: center;
-    
-    }
-
-    
-    #aboutbook .ratings h2{
-        margin-left: 0px;
-        font-size: 1.4rem;
-        text-align: justify;
-        
-      
-    } 
-
-    #aboutbook .bookreaders h2{
-        text-align: left;
-    }
-    #aboutbook .bookreaders h3{
-        margin-left:7% !important;
-    }
-    span.name{
-        text-transform: uppercase;
-    }
-    #aboutbook .ratings h3{
-        margin-left: 0px;
-        font-size: 1.25rem;
-        text-align: justify;
-        
-        
-    } 
-    .reviewabook h2{
-     
-        padding-bottom: 20px; 
-        font-size: 1.4rem;
-    }
-    
-    
-    .reviewabook textarea{
-        width: 100%;
-        height: 200px;
-     }
-    .reviewabook{
-        margin-bottom: 100px;
-    }
-    
-
-
-}
-
-/* Portrait */
-@media only screen 
-and (min-device-width: 414px) 
-and (max-device-width: 736px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: portrait) { 
-
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 414px) 
-and (max-device-width: 736px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: landscape) { 
 
 }
 
@@ -1296,24 +1560,304 @@ and (orientation: landscape) {
 @media only screen 
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
-and (-webkit-min-device-pixel-ratio: 3) { 
+and (-webkit-min-device-pixel-ratio: 3) {
+    p{
+      
+        font-size: 1rem;
+    }
+    .card {
+        width:100%;
+        height:100%; 
+    }
+    .card h1{
+        font-size: 3rem;
+        height: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+    #logo h1{
+        color: rgb(60, 95, 171); 
+        /* background: rgb(225, 225, 225);  */
+        height: 0rem; 
+        text-align: center; 
+        font-size: 40px;
+        font-weight:300;
+        padding:20px;
+        width: 100%; 
+    
+    
+    }
+
+    /*verify account*/
+
+    button.btn.btn-primary.verifysubmit {
+        margin-top: 0px;
+        position: relative;
+        text-align: center;
+        margin-left: 40%;
+        margin-bottom: 0px;
+        margin-right: 40%;
+        font-size: 1.45rem;
+    }
+    /* register page */
+
+    div#register{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        height: 100%;
+        clear: both;  
+           
+    }
+
+
+    #register input{
+        font-size: 1rem;
+    }
+
+    #register h2{
+     
+        font-size: 1.5rem;
+    }
+    #register h3{
+        font-size: 1.3rem;
+    }
+    #register a.btn-link{
+        font-size: 1.5rem;
+        color:rgb(84, 82, 82);
+        text-decoration-line: underline;
+    
+    }
+    .form-group{
+        text-align: left;
+    }
+
+  
+
+ 
+
+    /*signIn*/
+    #signIn a.btn-link{
+        font-size: 1.8rem;
+    }
+
+    button#createaccount{
+        float: right;
+        font-size: auto;
+    
+    }
+
+    div#signIn{
+        margin-left: 0%;
+        width:100%;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        clear: both;
+        height: 100%; 
+    }
+    #signIn h2{
+        color: rgb(84, 82, 82);
+        font-size: 1.8rem;
+    } 
+
+    #signIn h3{
+        font-size: 1.4rem;
+    }
+    #signIn input{
+        font-size: 1.4rem;
+    }
+
+    .btn-lg{
+        font-size: auto;
+    }
+    .btn{
+        background: rgb(0, 118, 244);
+        font-size: auto;
+    }
+
+
+    /* user account details styles */
+
+
+
+    .global-header{
+        box-sizing:border-box;
+        width:100%;
+        position:relative;
+        overflow:hidden;
+        border-bottom:2px solid  rgb(26, 70, 167);
+        line-height:1.5;
+        margin:20px 0 0 0%;
+        display: grid;
+        background-color:rgba(255, 255, 255);
+        grid-template-columns: auto auto;
+    
+    }
+    #useraccount{
+        /* color: rgb(84, 82, 82); */
+        font-size: 2rem;
+        margin-top: 20px;
+        border-bottom-style:hidden; 
+        
+        
+        
+    }
+
+
+    div#useraccount .nav-tab{
+        text-transform:none;
+        padding:0;
+        cursor:pointer;
+        margin:0;
+      }
+  
+      div#useraccount .nav-item a{
+          display:block;
+          font-size:1rem;
+          font-weight:200;
+          text-decoration: none;
+      
+      }
+      .nav-links .nav-item{
+          margin:0 20px
+      }
+  
+      .tab-nav-link{
+          font-size:1rem;
+          color:#040404;
+          padding:5px 10px 0px;
+          display:inline-block
+      }
+      .tab-nav-link:hover,.tab-nav-link:focus{
+          border-bottom:5px solid ;
+          color:#00682f;
+      }
+      .container-right{
+          float:right;
+          margin-top:1.6rem;
+          margin-right:0px;
+          margin-bottom:0px;
+          margin-left: 0%;
+  
+      }
+      .container-right span{
+          color:#040404;
+          font-weight: 300;
+          font-size: 1rem;
+      }
+    .searchmessages h2 {
+        font-size: 1rem;
+    }
+    .searchmessages h3 {
+        font-size: 1rem;
+    }
+    
+    .searchresult{
+        margin-left: 5px;
+        
+    }
+    /*book.html*/
+    #aboutbook h2{
+        color: black;
+        font-size: 1.5rem;
+        text-align: left;
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    #aboutbook .header  ul{
+        list-style-type:none;
+       
+        
+     }
+    #aboutbook .header h2{
+        font-size:1.4rem;
+        
+    }
+    
+    
+    #aboutbook .header li a{
+
+        font-size: 1.4rem;
+       
+    
+    }
+
+
+    
+    #aboutbook table{
+        width:100%;
+    }
+
+    #aboutbook .card{
+        width:15rem;
+        height: 12rem;
+        display: grid;
+    
+    }
+    #aboutbook .card h2{
+        text-align: center;
+    
+    }
+
+    
+    #aboutbook .ratings h2{
+        margin-left: 0px;
+        font-size: 1.4rem;
+        text-align: center;
+        
+      
+    } 
+
+    #aboutbook .bookreaders h2{
+        text-align: left;
+    }
+    #aboutbook .bookreaders h3{
+        margin-left:7% !important;
+        text-align: left !important;
+    }
+    span.name{
+        text-transform: uppercase;
+    }
+    #aboutbook .ratings h3{
+        margin-left: 0px;
+        font-size: 1.25rem;
+        text-align: center;
+        
+        
+    } 
+    
+    .reviewabook h2{
+     
+        padding-bottom: 20px; 
+        font-size: 1.4rem;
+    }
+    
+    
+    .reviewabook textarea{
+        width: 100%;
+        height: 200px;
+     }
+    .reviewabook{
+        margin-bottom: 100px;
+    }
+    #footer p {
+        color: rgb(54, 120, 99);
+        text-align: center;
+        font-size: 1rem;
+        height: 3rem;
+        padding:0.5rem;
+        font-weight: 900;
+        font-family: "Lucida Console , Monaco, monospace";
+        width: 100%;
+        bottom:0px;
+        position: relative;
+     
+    
+        
+    }
+    
 
 }
 
-/* Portrait */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 812px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: portrait) { 
-
-}
-
-/* Landscape */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 812px) 
-and (-webkit-min-device-pixel-ratio: 3)
-and (orientation: landscape) { 
-
-}

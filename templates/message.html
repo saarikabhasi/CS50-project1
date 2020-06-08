@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block heading %}
+
+The Book Fair 
+
+{% endblock %}
+
+{% block body %}
+<section>
+    <article id="reviewresult"> 
+        
+            <h4 class="notfound text-center" >{{emptyreview}}</h4>
+            <h4 class="notfound text-center" >{{reviewerr}}</h4>
+        
+            <h4 class="text-success text-center"> {{review_sucess}}</h4>
+    </article>
+    </section>
+    {% endblock %}

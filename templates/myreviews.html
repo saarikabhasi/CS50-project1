@@ -7,9 +7,9 @@ The Book Fair
 
 {% block body %}
 
- 
+
 <div class="myreview" id="eachbooks">
-    <h1> REVIEWS</h1>
+    <!-- <h1> REVIEWS</h1> -->
     <h3 class="notfound text-center" style="margin-top:20px">{{err_msg}}</h3>
 
     {% for review in reviews %}
@@ -32,14 +32,14 @@ The Book Fair
                         {% endif%}
                         {% if 5 - review.rating >=1 %}
                             {% for num in range(0,5 - review.rating|round(0,'ceil')|int)%}
-                        <i class=" fas fa-star" style="color: rgb(203, 202, 202);"></i>
+                        <i class=" fas fa-star" style="color: rgb(154, 152, 152);"></i>
                             {%endfor%}
                         {%endif%}
                         <h3 class= "ratings"> My Rating: {{review.rating}}</h3>
                     {%else %}
                         
                         {% for num in range(0,5)%}
-                            <i class="fas fa-star" style="color: rgb(203, 202, 202);"></i>
+                            <i class="fas fa-star" style="color: rgb(154, 152, 152);"></i>
                         {% endfor %}
                     {%endif%}
                     </h3>
