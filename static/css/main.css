@@ -4,18 +4,18 @@ body{
     font-family: Roboto;
     position:relative;
     width: 100%;
-    height: 100%;   
+    height: 100%; 
+    background-color:rgba(249, 249, 249, 0.865);
 }
 .fa-google{
     color: rgb(0, 28, 139);
 }
 .fa-star,.fa-star-half{
-    color: rgb(255, 158, 13);
+    color: #ff414e;
+    border: black;
    
 }
-/* .txt_center{
-    text-align: center;
-} */
+
 .center{
     float:center;
 }
@@ -49,6 +49,7 @@ p{
     transition: 0s;
     width:500px;
     height:50%;
+   
 }
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -60,9 +61,8 @@ p{
 .card h1{
     font-size: 50px;
     font-family: Roboto;
-    font-weight: 300;
-    color: rgb(131, 9, 9);
-    /* background: rgb(225, 225, 225); */
+    font-weight: 600;
+    color:#c53211;
     text-align: center;
     height: 100px;
     margin-top: 10px;
@@ -163,99 +163,151 @@ div#register{
 }
 /*layout.html*/ 
 
+#footer p {
+    color: rgb(84, 82, 82);
+   text-align: center;
+   margin-top: 20%;
+   font-size: 1.2rem;
+   height: 5rem;
+   padding:2rem;
+   background-color: rgb(255, 200, 170);
 
+    
+}
 /* logo */
 div#logo {
+    padding: 1%;
     
-    margin:2px;
+    
 }
 #logo h1{
-    color: rgb(131, 9, 9); 
-    /* background: rgb(225, 225, 225);  */
-    height: 150px; 
+    /* color: rgb(233, 92, 92);  */
+    color:#b48c36;
+    color:#c53211;
+    height: 10%; 
     text-align: center; 
-    font-size: 50px;
-    font-weight:300;
-    padding:30px;
+    font-size: 2.7rem;
+    font-weight:600;
+    padding:0px;
     width: 100%; 
 
 
 }
-/* #logoSample h1{
-    color: rgb(131, 9, 9); 
-    height: 500px; 
-    text-align: center; 
-    font-size: 100px;
-    font-weight:300;
-    padding:60px;
-    margin-top: 50%;
-    width: 100%; 
 
-
-} */
 /* user account details styles */
-.detail{
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 10px;
-    padding: 10px;
-    float: right;
-    
 
+
+
+  .global-header{
+    box-sizing:border-box;
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    padding-bottom:10px;
+    border-bottom:2px solid  #040404;
+    line-height:1.5;
+    margin:20px 0 0 0%;
+    display: grid;
+    background-color:rgb(249, 249, 249);
+    grid-template-columns: auto auto;
+ 
 }
-
-
-
-#useraccount{
-    color: rgb(84, 82, 82);
+  #useraccount{
+    /* color: rgb(84, 82, 82); */
     font-size: 25px;
     margin-top: 20px;
+    border-bottom-style:hidden; 
+    
+    
+    
 }
+  div#useraccount .nav-tab{
+      text-transform:none;
+      padding:0;
+      cursor:pointer;
+      margin:0;
+    }
 
-div#useraccount .row {
-    display: flex;
-    flex-wrap: wrap;
-}
-div#useraccount .column {
-    flex: 25%;
-    padding: 20px;
-    margin-left: 30px;
-  }
+    div#useraccount .nav-item a{
+        display:block;
+        font-size:1.3rem;
+        margin-top:7px;
+        font-weight:600;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+    .nav-links .nav-item{
+        margin:0 20px
+    }
 
+    .tab-nav-link{
+        font-size:1em;
+        color:#040404;
+        padding:5px 25px 23px;
+        display:inline-block
+    }
+    .tab-nav-link:hover,.tab-nav-link:focus{
+        border-bottom:2px solid ;
+        color:#00682f;
+    }
+    .container-right{
+        float:right;
+        margin-top:1.6rem;
+        margin-right:0px;
+        margin-bottom:0px;
+        margin-left: 30%;
 
+    }
+    .container-right span{
+        color:#040404;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
 
+    
 
 
 /* index.html */
+.container-search{
+    padding: 40px 20px 20px 40px;
+}
 .searchbar{
     display: grid;
     grid-template-columns: auto auto ;
-    grid-gap: 20px;
-    padding: 20px;
+    grid-gap: 0px;
+
 }
 .searchbar input{
     height: 40px;
-    width:  100%;
+    width:  90%;
     margin-top: 20px;
     margin-bottom: 0px;
     margin-right: 20px;
-    font-size: 20px;
+    font-size: 1.5rem;
+
 }
 .searchbar .btn{
     top:20px;  
-    margin-top: -20px;
-    margin-left: 0px;
-    float: right;
-    width: 100%;
+    margin-left: 5%;
+    float: left;
+    width: 25%;
     height: 40px;
     position: relative;
+    background-color: #0075b4;
+    
 }
+input[type=radio]{
+    transform:scale(1.4);
+  }
+
 .searchoption{
-    margin-top: 0px;
-    margin-left: 20px;
+    margin-top: 1%;
+    margin-left: 0px;
+    
 }
 .searchoption h4 {
-    font-size: 20px;
+    font-size: 1.4rem;
+    color:black;
 }
 
 
@@ -264,38 +316,69 @@ div#useraccount .column {
 .searchresult{
     text-align: left;
     display: grid;
-    margin-left: 40px;
+    margin-left: 0px;
     margin-top: 20px;
+    padding: 40px 20px 20px 0px;
+    background-color:rgb(254, 252, 252);
+    
     
 }
 .searchmessages h2{
     
     font-size: 25px;
     margin-top: 20px;  
+   
+   
+    
 }
 .searchmessages h3 {
     font-size: 20px;
     margin-top: 20px;  
+
 }
 
 .searchresult h4{
     color: rgb(235, 36, 1);
     font-size: 20px;
     margin-top: 20px;
+
 }
 #eachbooks h1{
-    color: rgb(84, 82, 82);
+   
     font-size: 30px;
     text-align: center;
     margin-top: 0px;
+    color: rgb(41, 41, 41);
+    
 
 }
 #eachbooks h2{
+    color: rgb(5, 54, 138);
+
+    font-size: 1.7rem;
+    /* text-transform: uppercase; */
+    
+}
+#eachbooks h2:focus{
+    text-decoration: underline;
+    text-decoration:  rgb(84, 82, 82);
+    
+}
+#eachbooks h2 a{
     color: rgb(84, 82, 82);
-    font-size: 25px;
+    text-decoration: underline;
+    font-size: 1.7rem;
+
+
 }
 #eachbooks h3{
-    font-size: 19px;
+    font-size: 1.4rem;
+    color: rgb(84, 82, 82);
+}
+#eachbooks h3 a{
+    color: rgb(84, 82, 82);
+    text-decoration: underline;
+    
 }
 
 
@@ -305,10 +388,11 @@ div#useraccount .column {
     margin:20px;
     margin-left:0px;
     text-align: left ;
+    background-color: rgb(235, 235, 235);
 }
 .myreview span{
     margin-left: 50px;
-
+    float:justify !important;
       
 } 
 .myreview ol {
@@ -363,7 +447,7 @@ div#useraccount .column {
 
  ul.sectionbar {
     list-style-type:none;
-    background-color: rgba(233, 233, 233, 0.995);
+    background-color: #003165;
     width: 100%;
     
  }
@@ -371,16 +455,22 @@ div#useraccount .column {
 
 #aboutbook .header li a{
     display: inline-flex;
-    color: rgb(84, 82, 82);
+    color: whitesmoke;
     padding:1rem;
     text-align: center;
     font-size: 1.5rem;
+    font-weight: 200;
     text-decoration: underline;
    
 
 }
+#aboutbook .header li a:focus{
+    background-color: #C06014;
+}
 #aboutbook .header .border{
     width:100%;
+    background-color: rgb(255, 253, 253);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     
 }
 
@@ -394,33 +484,15 @@ div#useraccount .column {
 text-align: center;
 
 }
-/* #aboutbook .card h3{
-    text-align: center;
-    
-} */
-
-/* #aboutbook table{
-    width:100%;
+#aboutbook .card {
+    background-color: #003165;;
 }
-#aboutbook table,th{
-    border:0px solid black;
-
-    padding:2%;
-    margin: 2%;
-    
-    
-}
-#aboutbook th{
-    text-align: center;
+#aboutbook .card-title  {
+    border-bottom:1px solid black;
 }
 
-#aboutbook th img{
 
-    width:80%;
-    height:20%;
-    position: relative;
 
-} */
 
 #aboutbook .ratings h1{
     margin-left: 2%;
@@ -431,8 +503,7 @@ text-align: center;
 #aboutbook .ratings h2{
     margin-left: 0px;
     font-size: 1.4rem;
-    /* text-align: center; */
-    /* align-self: center; */
+
     
   
 } 
@@ -440,19 +511,24 @@ text-align: center;
     margin-left: 0px;
     font-size: 1.25rem;
     text-align: center;
+    color: rgb(255, 249, 249);;
     
 } 
 #aboutbook .ratings h2 a{
-    color: rgb(0, 37, 187);
+     color: rgb(255, 249, 249);;
+
     text-decoration: underline;
 }
-
+#aboutbook .ratings h2 a:focus{
+    color:green;
+}
 #aboutbook .bookreaders h2{
     text-align: left;
 }
 #aboutbook .bookreaders h3{
     margin-left:7% !important;
     text-align: left;
+    color: black;
 }
 span.name{
     text-transform: uppercase;
@@ -481,6 +557,7 @@ span.name{
     width: 100%;
     height: 200px;
     font-size: 1.3rem;
+    background-color: rgb(255, 255, 255);;
  }
 .reviewabook{
     margin-bottom: 100px;
@@ -516,6 +593,7 @@ h4.ratings{
   font-family: FontAwesome;
   display: inline-block;
   content: "\f005";
+
 }
 
 .rating > .half:before { 
@@ -524,7 +602,7 @@ h4.ratings{
 }
 
 .rating > label { 
-  color: #ddd; 
+  color: rgb(74, 74, 74); 
  float: right; 
 }
 
@@ -532,12 +610,12 @@ h4.ratings{
 
 .rating > input:checked ~ label, 
 .rating:not(:checked) > label:hover, 
-.rating:not(:checked) > label:hover ~ label { color: rgb(10, 80, 38);  } 
+.rating:not(:checked) > label:hover ~ label { color: #ff414e} 
 
 .rating > input:checked + label:hover, 
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, 
-.rating > input:checked ~ label:hover ~ label { color: rgb(245, 238, 36);  } 
+.rating > input:checked ~ label:hover ~ label { color: black; } 
  
 
 
@@ -646,21 +724,6 @@ h4.ratings{
 
     /*layout.html */
 
-    #useraccount{
-        text-align: center;
-        font-size: 20px;
-
-    }
-    div#useraccount .row {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    div#useraccount .column {
-        flex: 25%;
-        padding: 10px;
-        margin-left: 50px;
-      }
-
     #aboutbook{
         margin-top: 20px;
         width: 100%;
@@ -738,7 +801,7 @@ h4.ratings{
         position: relative;
     }
     #logo h1{
-        color: rgb(131, 9, 9); 
+        color: rgb(233, 92, 92); 
         /* background: rgb(225, 225, 225);  */
         height: 15%; 
         text-align: center; 
@@ -822,7 +885,14 @@ h4.ratings{
     }
     /*book.html*/
 
-    
+    .container-right{
+        float:right;
+        margin-top:1.6rem;
+        margin-right:0px;
+        margin-bottom:0px;
+        margin-left: 40%;
+
+    }
     #aboutbook h2{
         color: black;
         font-size: 1.5rem;
@@ -867,22 +937,6 @@ h4.ratings{
         text-align: center;
     
     }
-
-    /* #aboutbook table,th{
-        border:0px solid black;
-        text-align: center;
-        padding:2%;
-        margin: 2%;
-        
-        
-    }
-    #aboutbook th img{
-    
-        width:100%;
-        height:20%;
-        position: relative;
-    } */
-
     
     #aboutbook .ratings h2{
         margin-left: 0px;
@@ -892,10 +946,6 @@ h4.ratings{
       
     } 
 
-    
-    /* #aboutbook .ratings h2 a{
-        color: black;
-    } */
     
     #aboutbook .bookreaders h2{
         text-align: left;
@@ -1048,7 +1098,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
         position: relative;
     }
     #logo h1{
-        color: rgb(131, 9, 9); 
+        color: rgb(233, 92, 92); 
         /* background: rgb(225, 225, 225);  */
         height: 15%; 
         text-align: center; 
@@ -1178,21 +1228,6 @@ and (-webkit-min-device-pixel-ratio: 3) {
     
     }
 
-    /* #aboutbook table,th{
-        border:0px solid black;
-        text-align: center;
-        padding:2%;
-        margin: 2%;
-        
-        
-    }
-    #aboutbook th img{
-    
-        width:100%;
-        height:20%;
-        position: relative;
-    } */
-
     
     #aboutbook .ratings h2{
         margin-left: 0px;
@@ -1202,11 +1237,6 @@ and (-webkit-min-device-pixel-ratio: 3) {
       
     } 
 
-    
-    /* #aboutbook .ratings h2 a{
-        color: black;
-    } */
-    
     #aboutbook .bookreaders h2{
         text-align: left;
     }

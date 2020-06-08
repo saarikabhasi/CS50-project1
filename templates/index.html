@@ -8,9 +8,9 @@ The Book Fair
 
 {% block body %}
 
-<div class = "container">
-    <div class = "row">
-        <div class="col-md-12 ">
+<div class = "container-search"  style="background-color: rgb(252, 252, 252)">
+    <!-- <div class = "row"> -->
+        <!-- <div class="col-lg-12 "> -->
             <form action ="{{ url_for('search') }}" method="post">
                 <form class ="form-inline" >
                     <div class="searchbar">
@@ -54,39 +54,39 @@ The Book Fair
                 </form>
                 
             </form>
-        </div>
-    </div>
-</div>
+        <!-- </div> -->
+    <!-- </div> -->
 
 
-<section>
-    <article class = "searchresult">
-        <div class="searchmessages">
+
+    <section >
+        <article class = "searchresult">
+            <div class="searchmessages">
+                
+                {% if search_msg_no_results != "" %}
+                <h2>{{search_msg}} <span><b>{{bookname}}</b></span> </h2>
+                    <h3 class="notfound">{{search_msg_no_results}} <span><b>{{query}}</b></span></h3>
+                {%endif %}
+                <h4>{{error}}</h4>
+            </div>
+
+            {% for book in books %}
+                <div id="eachbooks">
+                    <a href="{{url_for('books',b=book[1],booksearchby='title') }}"><h2>{{book[1]}}</h2></a>
+                        <span>
+                            <a href="{{url_for('books',b=book[2],booksearchby='author') }}"><h3> by {{book[2]}}</a> 
+                            published in {{book[3]}}</h3>      
+                            <hr>
+                        </span> 
+                </div>
+            {%endfor%}
             
-            {% if search_msg_no_results != "" %}
-            <h2>{{search_msg}} <span><b>{{bookname}}</b></span> </h2>
-                <h3 class="notfound">{{search_msg_no_results}} <span><b>{{query}}</b></span></h3>
-            {%endif %}
-            <h4>{{error}}</h4>
-        </div>
-
-        {% for book in books %}
-            <div id="eachbooks">
-                <a href="{{url_for('books',b=book[1],booksearchby='title') }}"><h2>{{book[1]}}</h2></a>
-                    <span>
-                        <a href="{{url_for('books',b=book[2],booksearchby='author') }}"><h3> by {{book[2]}}</a> 
-                         published in {{book[3]}}</h3>      
-                         <hr>
-                    </span> 
-             </div>
-        {%endfor%}
-           
-       
         
+            
 
-        
-    </article>
-</section>
-
+            
+        </article>
+    </section>
+</div>
 
 {% endblock %}

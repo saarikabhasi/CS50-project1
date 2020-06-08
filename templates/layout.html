@@ -18,11 +18,46 @@
     </head>
     <body>
 
+    
         <div id="logo">         
             <h1> {% block heading %} {% endblock %}</h1>
         </div>
-        
-        <div class = "container"  id="useraccount">
+        <header class="global-header flex-row d-flex bd-highlight mb-3">
+            <div class="container-left  justify-content-start  ">
+                <div class="nav  nav-tabs" id="useraccount">
+                
+                    <div class="nav-item nav-tab  ">
+                        <a class="active tab-nav-link" href="{{url_for('index')}}"
+                        aria-current="page">
+                    Home
+                    </a>
+                    </div>
+                    <div class="nav-item nav-tab">
+                        <a class=" tab-nav-link" href="{{url_for('myreviews')}}"
+                        aria-current="false">
+                    My Reviews
+                    </a>
+                    </div>
+                    <div class="nav-item nav-tab">
+                        <a class=" tab-nav-link" href="{{url_for('logout')}}"
+                        aria-current="false">
+                    Logout
+                    </a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container-right ">
+                <div class="nav" >
+                <a class=" nav-link disabled " href="#" tabindex="-1" aria-disabled="true" aria-current="false">
+                   <span>{{account_details}}</span> </a>
+                </div>
+            </div>
+
+            
+        </header>
+
+        <!-- <div class = "container"  id="useraccount">
             <div class="row">
                 <div class="column">
                     <h3>{{account_details}}</h3>
@@ -49,7 +84,7 @@
                 
                  
             </div>
-        </div>
+        </div> -->
         {% with mesg= get_flashed_messages() %}
             {% if mesg %}
                 <div class=flashes>
@@ -61,5 +96,8 @@
         {% endwith %}
         {%block body %}
         {% endblock %}
+        <div id ="footer">
+            <p> &#169;Created by Nair Saarika Bhasi&#169;</p>
+        </div>
     </body>
 </html>
