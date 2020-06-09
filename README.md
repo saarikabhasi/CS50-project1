@@ -23,7 +23,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
    * isbn is the book isbn number:
        * Example:
             https://the-booklover.herokuapp.com/api/0380753022
-            isbn: 0380753022
+                  isbn: 0380753022
 
 
 ### *File Specific and Feature details:*
@@ -65,20 +65,20 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### Navigation tab on top all page:
 --------------------------------------
 
- #### Home (templates/index.html)
+ #### 5. Home (templates/index.html)
    * Go to search page any point of time.
    
- #### My Reviews (templates/reviews.html)
+ #### 6. My Reviews (templates/reviews.html)
    * On successful login, user can view their reviews by clicking my review tab on top the webpage.
    * Shows all the books rated by the user:
      * Each book has:
        - Book Title, user rating and comments.
     
-#### Logout:
+#### 7. Logout:
 
   * User can Logout from their account at any point of time, by just clicking the Logout button.
    
- #### User details:
+ #### 8. User details:
  
    * On right side of page shows user name.      
    
