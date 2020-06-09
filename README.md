@@ -191,7 +191,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
    * Information about the Python packages that are used by the website.
 
 
-### SETUP:
+### Setup:
 ---------------
   ``` 
     # clone repository
@@ -213,8 +213,8 @@ The Book Fair website allows its user to register, search for a book, see the bo
         export GR_key = Goodreads API Key. Reference#https://www.goodreads.com/api/keys 
    ```
         
- ### DB SCHEMA:
- -----------------
+ ### Database Schema:
+ --------------------
  1) Books( book_id	integer, isbn	varchar, title	varchar, author	varchar, year	integer)  
     * Primary key:
        * isbn
@@ -231,7 +231,8 @@ The Book Fair website allows its user to register, search for a book, see the bo
         * isbn refers to (books:isbn)
         * email_id refers to (users:email_id)	
         
-### BUILT WITH:
+### Built with:
+--------------------
 
 1. [Bootstrap (version: 4.5)](https://getbootstrap.com/)
 
@@ -261,6 +262,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 
 
 
-### AUTHOR:
+### Author:
+------------
 NAIR SAARIKA BHASI
 
