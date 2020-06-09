@@ -195,27 +195,27 @@ The Book Fair website allows its user to register, search for a book, see the bo
 
 ### BUILT WITH:
 
-1. Bootstrap (version: 4.5)
+1. [(Bootstrap (version: 4.5)](https://getbootstrap.com/)
 
-2. Microsoft Visual code (version:1.44)
+2. [Microsoft Visual code (version:1.44)](https://code.visualstudio.com/)
 
-3. Flask (version: 1.1.2)
+3. [Flask (version: 1.1.2)](https://flask.palletsprojects.com/en/1.1.x/)
 
-4. Flask-Session(version: 0.3.2)
+4. [Flask-Session(version: 0.3.2)](https://flask.palletsprojects.com/en/1.1.x/)
 
-5. gunicorn (version: 20.0.4)
+5. [gunicorn (version: 20.0.4)](https://pypi.org/project/gunicorn/)
 
-6. Jinja2 (version: 2.11.2)
+6. [Jinja2 (version: 2.11.2)](https://jinja.palletsprojects.com/en/2.11.x/)
 
-7. psycopg2 (version: 2.8.5)
+7. [psycopg2 (version: 2.8.5)](https://pypi.org/project/psycopg2/)
 
-8. requests (version: 2.23.0)
+8. [requests (version: 2.23.0)](https://pypi.org/project/requests/)
 
-9. SQLAlchemy(version:1.3.17)
+9. [SQLAlchemy(version:1.3.17)](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
 
-10. Werkzeug(version:1.0.1)
+10. [Werkzeug(version:1.0.1)](https://werkzeug.palletsprojects.com/en/1.0.x/)
 
-11. Python(version 3.7.3)
+11. [Python(version 3.7.3)](https://www.python.org/)
 
 12. HTML5
 
