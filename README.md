@@ -19,14 +19,18 @@ The Book Fair website allows its user to register, search for a book, see the bo
 1. Pulls book publisher details, description, book cover thumbnail image  from the Google books API.
 2. Database setup using Heroku and PostgreSQL.
 3. Supports smaller screens.
-4. Users can make a API get request to the website by https://the-booklover.herokuapp.com/api/<isbn>.
+4. Users can make a API get request to the website by https://the-booklover.herokuapp.com/api/isbn.
+   * isbn is the book isbn number:
+       * Example:
+            https://the-booklover.herokuapp.com/api/0380753022
 
-### *Below features are supported by the Book Fair Website:*
+
+### *File Specific and Feature details:*
 
 ### User Authentication
 -------------------------
 
-#### Register
+#### Register:(templates/register.html)
 
 * To view the books, the user has to create an account. 
   * In order to register user has to fill their name, email id, password. 
@@ -38,50 +42,48 @@ The Book Fair website allows its user to register, search for a book, see the bo
          
  * The password is stored in the Database using **Python-werkzeug library for secure user authentication**
 
-#### Login
+#### Login (templates/login.html)
 
  * After successfully registering their account, user can Login with their Email id and Password.
  
-#### Logout:
+ * **Forgot password/ Change password feature** 
+  
+     * User can change their password by clicking forgot password option that is displayed in Sign In page on their first failed attempt of login.  
 
-  * User can Logout from their account at any point of time, by just clicking the Logout button.
   
-#### Forgot password/ Change password Feature:
-  
-  * User can change their password by clicking forgot password option that is displayed in Sign In page on their first failed attempt of login.  
-  
-#### Verify account (required for changing password):
+#### Verify account (required for changing password) (templates/authenticate.html)
 
    * In order to change password, user has to verify their account by providing their name and email id that they have gave while registering their account.
   
-#### Change password:
+#### Change password:(templates/passwordchange.html)
 
    * On verifying the account successfully user can change their password by providing their email id, new password and confirming the new password.
    
-      * The change password follows the same set of password restrictions rules that is used by register page.
+   * The change password follows the same set of password restrictions rules that is used by register page.
       
 ### Navigation tab on top all page:
 --------------------------------------
 
- #### Home:
+ #### Home (templates/index.html)
    * Go to search page any point of time.
    
- #### My Reviews:
+ #### My Reviews (templates/reviews.html)
    * On successful login, user can view their reviews by clicking my review tab on top the webpage.
    * Shows all the books rated by the user:
      * Each book has:
        - Book Title, user rating and comments.
-       
- #### Logout:
- 
-   * Logout button to logout from website.
+    
+#### Logout:
+
+  * User can Logout from their account at any point of time, by just clicking the Logout button.
    
  #### User details:
  
    * On right side of page shows user name.      
    
-### Search a book.
------------------------      
+### Search a book (templates/index.html)
+--------------------------------------------------   
+
 #### Search:
    * A Search bar where user can type their query to find a book.
       - user can search by book isbn or title or author.
@@ -99,8 +101,8 @@ The Book Fair website allows its user to register, search for a book, see the bo
          - if no book found in Database, then displays **No books found**
      * If user submits empty query, displays **No Results**
      
-### Show a Book:
--------------------------
+### Show a Book (templates/book.html)
+--------------------------------------
 
 #### Based on Book title: (when user clicks on book title on search page)
 
