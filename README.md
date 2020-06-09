@@ -78,12 +78,12 @@ The Book Fair website allows its user to register, search for a book, see the bo
       
 ### Layout details for HTML files after successful Login:
 ------------------------------------------------------
- #### 6. templates/layout.html:
+#### 6. templates/layout.html:
    * Base layout for templates/
-          * book.html
-          * index.html
-          * message.html
-          * reviews.html
+        * book.html
+        * index.html
+        * message.html
+        * reviews.html
     * flash messages, display logo, navigation tab and user information on all pages.  
     
    ***Navigation tab on top all page -(from layout.html)***
@@ -92,20 +92,22 @@ The Book Fair website allows its user to register, search for a book, see the bo
    
     * Go to search page any point of time.
 
-   **7. My Reviews (redirects to *templates/reviews.html*)**
+   
+  **Logout**
+
+    * User can Logout from their account at any point of time, by just clicking the Logout button.
+   
+   **User details**
+ 
+    * On right side of page shows user name. 
+   
+  **7. My Reviews (redirects to *templates/reviews.html*)**
    
    * On successful login, user can view their reviews by clicking my review tab on top the webpage.
    * Shows all the books rated by the user:
      * Each book has:
        - Book Title, user rating and comments.
     
-  **Logout**
-
-   * User can Logout from their account at any point of time, by just clicking the Logout button.
-   
-   **User details**
- 
-   * On right side of page shows user name.      
    
 ### Search a book (templates/index.html)
 --------------------------------------------------   
@@ -166,28 +168,27 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ---------------------------------------------
 
 #### 12. application.py :
-
-   i. Python application where the webpage routing, error handling, user session information, api requests, DB connection, and SQL queries to the databases are made.
-      -imports flask, sqlalchemy,requests,json etc.
+   * Python application where the webpage routing, error handling, user session information, api requests, DB connection, and SQL queries to the databases are made.
+   
+   * imports flask, sqlalchemy,requests,json etc.
 
 #### 13. import.py :
+   * Reads a csv file- 'books.csv' that consist of book information and store those information to the table 'books'. 
 
-   i. Reads a csv file- 'books.csv' that consist of book information and store those information to the table 'books'. 
 
-
-#### 14. message.html:
-   i. Displays review messages from book page and application.py
+#### 14. templates/message.html:
+   * Displays review messages from book page. 
 
 
 ### Stylesheets:
 -----------------
 
 #### 15. static/css/main.css:
-    i. Styling format for entire webpage.
+   * Styling format for entire webpage.
       
       
 #### 16. requirements.txt:
-     i. Information about the Python packages that are used by the website.
+   * Information about the Python packages that are used by the website.
 
 
  
