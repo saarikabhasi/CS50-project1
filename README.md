@@ -61,6 +61,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
       * The change password follows the same set of password restrictions rules that is used by register page.
       
 ### Navigation tab on top all page:
+--------------------------------------
 
  #### Home:
    * Go to search page any point of time.
@@ -72,12 +73,15 @@ The Book Fair website allows its user to register, search for a book, see the bo
        - Book Title, user rating and comments.
        
  #### Logout:
+ 
    * Logout button to logout from website.
    
  #### User details:
+ 
    * On right side of page shows user name.      
+   
 ### Search a book.
-      
+-----------------------      
 #### Search:
    * A Search bar where user can type their query to find a book.
       - user can search by book isbn or title or author.
@@ -96,6 +100,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
      * If user submits empty query, displays **No Results**
      
 ### Show a Book:
+-------------------------
 
 #### Based on Book title: (when user clicks on book title on search page)
 
@@ -131,6 +136,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 
    
 ### File Specific details:
+--------------------------
 
 1. application.py :
 
@@ -242,16 +248,16 @@ The Book Fair website allows its user to register, search for a book, see the bo
        - Rating displayed in star
        - Comments.
 12. message.html:
-    i. Displays review messages from book page and application.py
+       i. Displays review messages from book page and application.py
 
 
 # static/css
 
 13. main.css:
-    i. Styling format for entire webpage.
+      i. Styling format for entire webpage.
       
 14. requirements.txt:
-    i. Information about the Python packages that are used by the website.
+        i. Information about the Python packages that are used by the website.
 
 
  
@@ -259,21 +265,33 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### BUILT WITH:
 
 1. Bootstrap (version: 4.5)
+
 2. Microsoft Visual code (version:1.44)
+
 3. Flask (version: 1.1.2)
+
 4. Flask-Session(version: 0.3.2)
+
 5. gunicorn (version: 20.0.4)
+
 6. Jinja2 (version: 2.11.2)
+
 7. psycopg2 (version: 2.8.5)
+
 8. requests (version: 2.23.0)
+
 9. SQLAlchemy(version:1.3.17)
+
 10. Werkzeug(version:1.0.1)
+
 11. Python(version 3.7.3)
+
 12. HTML5
+
 13. Cascading Style Sheets (CSS)
 
 
 
 ### AUTHOR:
-NAIR SAARIKA BHASI# CS50 Web Programming with Python and JavaScript
+NAIR SAARIKA BHASI
 
