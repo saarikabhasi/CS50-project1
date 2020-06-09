@@ -213,10 +213,20 @@ The Book Fair website allows its user to register, search for a book, see the bo
    ```
         
  ### DB SCHEMA:
- 
- 
+ 1) Books( book_id	integer, isbn	varchar, title	varchar, author	varchar, year	integer)  
+    Primary key:
+        * isbn
+    
+ 2) users(user_id	integer,email_id	varchar, password	varchar,name	varchar)
+    Primary key: 
+        * email_id
+     
+ 3) reviews(id	integer,	contents	text NULL	, rating	numeric NULL, isbn	varchar, email_id	varchar)
+    Primary key: id
+    Foreign Key: 
+        * isbn refers to (books:isbn)
+        * email_id refers to (users:email_id)	
         
-
 ### BUILT WITH:
 
 1. [Bootstrap (version: 4.5)](https://getbootstrap.com/)
