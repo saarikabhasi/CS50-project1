@@ -85,12 +85,12 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### Search a book (templates/index.html)
 --------------------------------------------------   
 
-#### Search:
+#### 9. Search:
    * A Search bar where user can type their query to find a book.
       - user can search by book isbn or title or author.
    * Handles Partial, numbers, trailing spaces query.
    
-#### Search Results:
+#### 10. Search Results:
 
    * Shows all books that closely matches to the query with respective to isbn , title,  author and year
    * Shows Book Title, author, published year and Isbn of the book.
@@ -105,7 +105,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### Show a Book (templates/book.html)
 --------------------------------------
 
-#### Based on Book title: (when user clicks on book title on search page)
+#### 11. Based on Book title: (when user clicks on book title on search page)
 
    * Shows Book Title, Book Thumbnail(from Google Books API),Author.
    * Hyperlinks to navigate within book page.
@@ -127,7 +127,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
      - User can not give empty rating and comment.
      - Message is displayed if the user has rated book successfully.
      
-#### Show all books by a author: (when user clicks on book author on search page)
+#### 12. Show all books by a author: (when user clicks on book author on search page)
    * Show all the book by the author.
    * Each book has:
       * Book Title, Book Thumbnail(from Google Books API), Author, Book ISBN.
