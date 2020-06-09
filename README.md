@@ -34,6 +34,14 @@ The Book Fair website allows its user to register, search for a book, see the bo
                 "year":1990
                 }
               ```
+              
+            * 404 error if isbn in not found in the DB:
+              ```
+              {
+              "error":"Invalid isbn number",
+              "status_code":404
+              }
+              ```
 
 
 ### *File Specific and Feature details:*
@@ -237,7 +245,6 @@ The Book Fair website allows its user to register, search for a book, see the bo
  3) reviews(id	integer,	contents	text NULL	, rating	numeric NULL, isbn	varchar, email_id	varchar)
     * Primary key: 
       * id
-      
     * Foreign Key: 
         * isbn refers to (books:isbn)
         * email_id refers to (users:email_id)	
