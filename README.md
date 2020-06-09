@@ -22,16 +22,16 @@ The Book Fair website allows its user to register, search for a book, see the bo
 4. Users can make a API get request to the website by https://the-booklover.herokuapp.com/api/isbn.
    * isbn is the book isbn number:
        * Example:
-            https://the-booklover.herokuapp.com/api/0380753022
-                  isbn: 0380753022
+            * https://the-booklover.herokuapp.com/api/0380753022 (isbn: 0380753022)
 
 
 ### *File Specific and Feature details:*
 
-### User Authentication
+### User Authentication 
 -------------------------
+### File path: templates/:
 
-#### 1. Register(templates/register.html)
+#### 1. Register(register.html)
 
 * To view the books, the user has to create an account. 
   * In order to register user has to fill their name, email id, password. 
@@ -45,7 +45,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
          
  * The password is stored in the Database using **Python-werkzeug library for secure user authentication**
 
-#### 2. Login (templates/login.html)
+#### 2. Login (login.html)
 
  * After successfully registering their account, user can Login with their Email id and Password.
  
@@ -54,20 +54,20 @@ The Book Fair website allows its user to register, search for a book, see the bo
      * User can change their password by clicking forgot password option that is displayed in Sign In page on their first failed attempt of login.  
 
   
-#### 3. Verify account (required for changing password) (templates/authenticate.html)
+#### 3. Verify account (required for changing password) (authenticate.html)
 
    * In order to change password, user has to verify their account by providing their name and email id that they have gave while registering their account.
    
    * Messages are displayed if Name and Email id did not match and also, if name or email id is not found in Database.
   
-#### 4. Change password:(templates/passwordchange.html)
+#### 4. Change password:(passwordchange.html)
 
    * On verifying the account successfully user can change their password by providing their email id, new password and confirming the new password.
    
    * The change password follows the same set of password restrictions rules that is used by register page.
    * Messages are displayed on successful password change, also, if email id is not found in Database and if password did not match.
    
-#### 5. templates/ baselayout.html:
+#### 5. baselayout.html:
    * Base layout for templates/ 
         * register.html
         * login.html 
@@ -76,7 +76,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
         
    * flash messages and displays logo.
       
-### Layout details the for pages after successful Login:
+### Layout details for HTML files after successful Login:
 ------------------------------------------------------
  #### 6. templates/layout.html:
    * Base layout for templates/
@@ -86,36 +86,36 @@ The Book Fair website allows its user to register, search for a book, see the bo
           * reviews.html
     * flash messages, display logo, navigation tab and user information on all pages.  
     
-   #### Navigation tab on top all page -(from layout.html)
+   ***Navigation tab on top all page -(from layout.html)***
    ----------------------------------------------------
-   #### Home (redirects to templates/index.html)
+   **Home (redirects to *templates/index.html*)**
    
-   * Go to search page any point of time.
+    * Go to search page any point of time.
 
-   #### 7.My Reviews (redirects to templates/reviews.html)
+   **7. My Reviews (redirects to *templates/reviews.html*)**
    
    * On successful login, user can view their reviews by clicking my review tab on top the webpage.
    * Shows all the books rated by the user:
      * Each book has:
        - Book Title, user rating and comments.
     
-   #### Logout:
+  **Logout**
 
    * User can Logout from their account at any point of time, by just clicking the Logout button.
    
-   ####  User details:
+   **User details**
  
    * On right side of page shows user name.      
    
 ### Search a book (templates/index.html)
 --------------------------------------------------   
 
-#### 9. Search:
+#### 8. Search:
    * A Search bar where user can type their query to find a book.
       - user can search by book isbn or title or author (displayed in a Radio button).
    * Handles Partial, numbers, trailing spaces query.
    
-#### 10. Search Results:
+#### 9. Search Results:
 
    * Shows all books that closely matches to the query with respective to isbn , title,  author and year
    * Shows Book Title, author, published year and Isbn of the book.
@@ -130,7 +130,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### Show a Book (templates/book.html)
 --------------------------------------
 
-#### 11. Based on Book title: (when user clicks on book title on search page)
+#### 10. Based on Book title: (when user clicks on book title on search page)
 
    * Shows Book Title, Book Thumbnail(from Google Books API),Author.
    * Hyperlinks to navigate within book page.
@@ -152,7 +152,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
      - User can not give empty rating and comment.
      - Message is displayed if the user has rated book successfully.
      
-#### 12. Show all books by a author: (when user clicks on book author on search page)
+#### 11. Show all books by a author: (when user clicks on book author on search page)
    * Show all the book by the author.
    * Each book has:
       * Book Title, Book Thumbnail(from Google Books API), Author, Book ISBN.
@@ -165,28 +165,28 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### Back-end Flask application using Python:
 ---------------------------------------------
 
-#### 13. application.py :
+#### 12. application.py :
 
    i. Python application where the webpage routing, error handling, user session information, api requests, DB connection, and SQL queries to the databases are made.
       -imports flask, sqlalchemy,requests,json etc.
 
-#### 14. import.py :
+#### 13. import.py :
 
    i. Reads a csv file- 'books.csv' that consist of book information and store those information to the table 'books'. 
 
 
-#### 15. message.html:
+#### 14. message.html:
    i. Displays review messages from book page and application.py
 
 
 ### Stylesheets:
 -----------------
 
-#### 13. static/css/main.css:
+#### 15. static/css/main.css:
     i. Styling format for entire webpage.
       
       
-#### 14. requirements.txt:
+#### 16. requirements.txt:
      i. Information about the Python packages that are used by the website.
 
 
