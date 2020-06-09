@@ -1,12 +1,17 @@
-CS50 Web Programming with Python and JavaScript
-Project 0: Homepage
+# CS50 Web Programming with Python and JavaScript
+
+Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/
+
+
+## Project 1: Books
+
 Webpage link: https://the-booklover.herokuapp.com/
 
-Description:
+### Description:
 
 Development of a Book review website 'The Book Fair', which allows a registered user search for a book,leave a review, also view ratings from third party website such as Good Reads and Google Books.
 
-General information:
+### General information:
 
 1. Pulls book publisher details, description, book cover thumbnail image  from the Google books API.
 2. Displays information such ratings and number of reviews from Google Books and Good Reads API
@@ -17,7 +22,8 @@ General information:
 
 
 
-File Specific details:
+### File Specific details:
+
 1. application.py :
 
    i. Back-end code for the website where the DB queries, api requests are made.
@@ -27,7 +33,7 @@ File Specific details:
 
    i. Reads a csv file- 'books.csv' that consist of book information and store those information to the table'books'. 
 
-templates/:
+# templates/:
 
 3. baselayout.html:
 
@@ -75,7 +81,8 @@ templates/:
         - can be partial queries with trailing spaces and numbers.
 
     iii. Radio button to search according to user choice
-    - user can search by book isbn or title or author or all of the above.
+         - user can search by book isbn or title or author or all of the above.
+         
     iv. On submiting the search button. Any of the below step occurs.
         - displays all the books that closely matches to the query with respective to isbn or title or author
         - if query does not closely match, then displays 'search results for'. 
@@ -130,17 +137,18 @@ templates/:
     i. Displays review messages from book page and application.py
 
 
-static/css
+# static/css
 
 13. main.css:
-    i. Styling format for entire webpage.
+      i. Styling format for entire webpage.
+      
 14. requirements.txt:
-    i. Information about the Python packages that are used by the website.
+      i. Information about the Python packages that are used by the website.
 
 
  
 
-BUILT WITH:
+### BUILT WITH:
 
 Bootstrap (version: 4.5)
 Microsoft Visual code (version:1.44)
@@ -158,5 +166,5 @@ Cascading Style Sheets (CSS)
 
 
 
-AUTHOR:
+### AUTHOR:
 NAIR SAARIKA BHASI
