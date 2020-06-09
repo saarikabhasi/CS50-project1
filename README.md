@@ -105,7 +105,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
         * reviews.html
     * flash messages, display logo, navigation tab and user information on all pages.  
     
-   *Navigation tab on top all page -(from layout.html)*
+   #### Navigation tab on top all page -(from layout.html)*
    ----------------------------------------------------
    **Home (redirects to *templates/index.html*)**
    
