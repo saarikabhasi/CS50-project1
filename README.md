@@ -191,11 +191,35 @@ The Book Fair website allows its user to register, search for a book, see the bo
    * Information about the Python packages that are used by the website.
 
 
+### SETUP:
+  ``` 
+    # clone repository
+      git clone https://github.com/saarikabhasi/The-book-Fair--CS50-project1.git
+      
+    # Create a virtualenv(optional)
+      python3 -m venv venv  
+      
+    # Activate the virtualenv
+      source venv/bin/activate or .venv/bin/activate
+      
+    # Install all dependencies
+       pip install -r requirements.txt
+       
+    # ENV Variables
+        export FLASK_APP=application.py 
+        export FLASK_ENV=development  #To enable debug mode. Reference#https://flask.palletsprojects.com/en/1.1.x/config/
+        export DATABASE_URL = Heroku Postgres DB URI 
+        export GR_key = Goodreads API Key. Reference#https://www.goodreads.com/api/keys 
+   ```
+        
+ ### DB SCHEMA:
  
+ 
+        
 
 ### BUILT WITH:
 
-1. [(Bootstrap (version: 4.5)](https://getbootstrap.com/)
+1. [Bootstrap (version: 4.5)](https://getbootstrap.com/)
 
 2. [Microsoft Visual code (version:1.44)](https://code.visualstudio.com/)
 
