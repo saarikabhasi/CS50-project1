@@ -23,6 +23,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
    * isbn is the book isbn number:
        * Example:
             https://the-booklover.herokuapp.com/api/0380753022
+            isbn: 0380753022
 
 
 ### *File Specific and Feature details:*
@@ -30,7 +31,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ### User Authentication
 -------------------------
 
-#### Register:(templates/register.html)
+#### 1. Register(templates/register.html)
 
 * To view the books, the user has to create an account. 
   * In order to register user has to fill their name, email id, password. 
@@ -42,7 +43,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
          
  * The password is stored in the Database using **Python-werkzeug library for secure user authentication**
 
-#### Login (templates/login.html)
+#### 2. Login (templates/login.html)
 
  * After successfully registering their account, user can Login with their Email id and Password.
  
@@ -51,11 +52,11 @@ The Book Fair website allows its user to register, search for a book, see the bo
      * User can change their password by clicking forgot password option that is displayed in Sign In page on their first failed attempt of login.  
 
   
-#### Verify account (required for changing password) (templates/authenticate.html)
+#### 3. Verify account (required for changing password) (templates/authenticate.html)
 
    * In order to change password, user has to verify their account by providing their name and email id that they have gave while registering their account.
   
-#### Change password:(templates/passwordchange.html)
+#### 4. Change password:(templates/passwordchange.html)
 
    * On verifying the account successfully user can change their password by providing their email id, new password and confirming the new password.
    
