@@ -23,6 +23,17 @@ The Book Fair website allows its user to register, search for a book, see the bo
    * isbn is the book isbn number:
        * Example:
             * https://the-booklover.herokuapp.com/api/0380753022 (isbn: 0380753022)
+            
+              ```
+              {
+                "author":"Johanna Lindsey",
+                "average_score":2.67,
+                "isbn":"0380753022",
+                "review_count":4,
+                "title":"Gentle Rogue",
+                "year":1990
+                }
+              ```
 
 
 ### *File Specific and Feature details:*
