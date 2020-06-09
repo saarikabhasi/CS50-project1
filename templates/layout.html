@@ -59,34 +59,6 @@
             
         </header>
 
-        <!-- <div class = "container"  id="useraccount">
-            <div class="row">
-                <div class="column">
-                    <h3>{{account_details}}</h3>
-                </div>
-                <div class="column" style="display: grid;grid-template-columns: 6rem 10rem 10rem;">
-          
-                        <form action="{{url_for('index')}}">
-                            <button class = "btn btn-primary">home</button>
-                            
-                        </form>
-                        <form action="{{url_for('myreviews')}}">
-                            <button class = "btn btn-primary">myreviews</button>
-                            
-                        </form>
-                        
-        
-                       
-                    <form action="{{url_for('logout')}}">
-                        <button class = "btn btn-primary">logout</button>
-                    </form>
-                
-                </div>
-
-                
-                 
-            </div>
-        </div> -->
         {% with mesg= get_flashed_messages() %}
             {% if mesg %}
                 <div class=flashes>

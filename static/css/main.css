@@ -60,13 +60,13 @@ p{
 }
 .card h1{
     font-size: 50px;
-    font-family: Roboto;
     font-weight: 300;
     text-align: center;
     height: 5%;
     margin-top: 10px;
     position: relative;
     color:rgb(60, 95, 171);
+
 }
 .card div h2{
     text-align: center;
@@ -188,9 +188,7 @@ div#logo {
     
 }
 #logo h1{
-    /* color: rgb(233, 92, 92);  */
-    /* color:#b48c36;
-    color:#c53211; */
+
     color:rgb(60, 95, 171);
     height: 0.2rem; 
     text-align: center; 
@@ -198,7 +196,7 @@ div#logo {
     font-weight:300;
     padding:0px;
     width: 100%; 
-    font-family:Trajan !important;
+ 
     
 
 

@@ -305,7 +305,7 @@ def books(b,booksearchby):
         else:
             return render_template("login.html",message="you are not logged in")
 
-        
+   
         b = f"{b}".upper()
         
         if booksearchby =="title":
@@ -495,11 +495,11 @@ def myreviews():
         allreviews = db.execute("select reviews.isbn,rating,contents,title from reviews inner join books on books.isbn=reviews.isbn  where email_id=:email_id",{"email_id":user_email}).fetchall()
         if len(allreviews) ==0:
             no_reviews_found_msg = "No reviews found"
-            return render_template("myreviews.html", account_details=message,err_msg=no_reviews_found_msg)
+            return render_template("reviews.html", account_details=message,err_msg=no_reviews_found_msg)
         else:
             
            
-            return render_template("myreviews.html",reviews=allreviews,account_details=message)
+            return render_template("reviews.html",reviews=allreviews,account_details=message)
     else: 
         return render_template("login.html",message="you are not logged in")
 
