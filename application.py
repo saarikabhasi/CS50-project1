@@ -261,7 +261,7 @@ def search():
                         for i in range(1,len(query)):
                             q2+="%"
                         q2 = f"{q2}".upper()
-
+                        print(f"{q2}")
                         books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q2,"title":q2, "author" :q2}).fetchall() 
                     
                 
@@ -316,10 +316,10 @@ def books(b,booksearchby):
             
             book = db.execute("select isbn,title,author,year from books where upper(author)=:author",{"author":b}).fetchall()
         else:
-            return render_template("index.html",search_err= "Internal error",account_details=message)
+            return render_template("error.html",search_err= "Internal error",account_details=message)
 
         if len(book) == 0:
-            return render_template("index.html",search_err= "Internal error",account_details=message)
+            return render_template("error.html",search_err= "Internal error",account_details=message)
         
         #get reviews for that book
         
@@ -358,59 +358,63 @@ def books(b,booksearchby):
             if googleBookresponse.status_code == 200:
                 googleBookdata =googleBookresponse.json()
 
-                googlebookDict = googleBookdata["items"][0]["volumeInfo"]
-                
-                #description
+                if googleBookdata["totalItems"] > 0 :
 
-                if "description" in googlebookDict:
-                    description=googlebookDict["description"]
-                    googlebookdescription.append(description)
-                else:
-                    googlebookdescription.append("null")
+                    googlebookDict = googleBookdata["items"][0]["volumeInfo"]
+                    
+                    #description
+
+                    if "description" in googlebookDict:
+                        description=googlebookDict["description"]
+                        googlebookdescription.append(description)
+                    else:
+                        googlebookdescription.append("null")
                    
-                #image
-                if "imageLinks" in googlebookDict:
-                    if "thumbnail" in googlebookDict["imageLinks"]:
-                        googlebookimage.append(googlebookDict["imageLinks"]["thumbnail"])
-                    elif "smallThumbnail" in googlebookDict["imageLinks"]:
-                        googlebookimage.append(googlebookDict["imageLinks"]["smallThumbnail"])
+                    #image
+                    if "imageLinks" in googlebookDict:
+                        if "thumbnail" in googlebookDict["imageLinks"]:
+                            googlebookimage.append(googlebookDict["imageLinks"]["thumbnail"])
+                        elif "smallThumbnail" in googlebookDict["imageLinks"]:
+                            googlebookimage.append(googlebookDict["imageLinks"]["smallThumbnail"])
+                        else:
+                            googlebookimage.append("null")
+
                     else:
                         googlebookimage.append("null")
 
-                else:
-                    googlebookimage.append("null")
-
-                #ratings
-                if "averageRating" in googlebookDict:
-                    googlebookavg.append(googlebookDict["averageRating"])
-                else:
-                    googlebookavg.append("null")
-                
-                if "ratingsCount" in googlebookDict:
-                    googlebooknumberofrating.append(googlebookDict["ratingsCount"])
-                else:
-                    googlebooknumberofrating.append("null")
+                    #ratings
+                    if "averageRating" in googlebookDict:
+                        googlebookavg.append(googlebookDict["averageRating"])
+                    else:
+                        googlebookavg.append("null")
+                    
+                    if "ratingsCount" in googlebookDict:
+                        googlebooknumberofrating.append(googlebookDict["ratingsCount"])
+                    else:
+                        googlebooknumberofrating.append("null")
                 
 
-                #publisher
+                    #publisher
                
  
-                if "publisher" in googlebookDict:
+                    if "publisher" in googlebookDict:
+                        
+                        googlebookpublisher.append(googlebookDict["publisher"])
+                    else:
+                        googlebookpublisher.append("null")
+
+                    #googlebookid
+                    if "id" in googleBookdata["items"][0]:
+
+                        googlebookid=googleBookdata["items"][0]["id"]
+                        googlebooklink = "https://books.google.com/books?id="+ f"{googlebookid}"
+                        googlebooklinks.append(googlebooklink)
+                    else:
+                        googlebooklinks.append("#")
+               
                     
-                    googlebookpublisher.append(googlebookDict["publisher"])
-                else:
-                    googlebookpublisher.append("null")
-
-                #googlebookid
-                if "id" in googleBookdata["items"][0]:
-
-                    googlebookid=googleBookdata["items"][0]["id"]
-                    googlebooklink = "https://books.google.com/books?id="+ f"{googlebookid}"
-                    googlebooklinks.append(googlebooklink)
-                else:
-                    googlebooklinks.append("#")
-                
         
+        print(f"{googlebooknumberofrating}")
         return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,lenreview = len(review),average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,googlebookpublisher=googlebookpublisher,googlebooklinks=googlebooklinks,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
