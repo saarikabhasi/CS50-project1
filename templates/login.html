@@ -32,7 +32,7 @@
                         <fieldset>
                     {%else%}
                         <fieldset class="has-error">
-                        <p>{{err_msg}}</p>
+                        <small class="help-block notfound">{{err_msg}}</small>
                     {%endif%}
                             <legend><h3>Enter your email address</h3>
                                 {% if type_err_msg != "WRONG_PASSWORD"%}
@@ -47,12 +47,14 @@
                     <div class="form-group">
                         {% if type_err_msg != "WRONG_PASSWORD" %}
                             <fieldset>
+                            <small class="text-info help-block">Password length must be atleast 6 characters</small>
                         {%else%}
                             <fieldset class="has-error">
-                            <p>{{err_msg}}</p>
+                            <small class="help-block notfound">{{err_msg}}</small>
                         {%endif%}   
                                 <legend><h3>Enter your password</h3>
                                     <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>
+                                    
                                 </legend>
                             </fieldset>
                     </div>
@@ -66,11 +68,7 @@
 
 
                 </div>
-                
-                
-                
-        
-                
+
             </form>
         </legend> 
     </fieldset>

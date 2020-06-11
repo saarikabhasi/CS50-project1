@@ -42,7 +42,7 @@
                     <div class = "form-group">
                         {% if type_err_msg == "email_error" %}  
                             <fieldset class="has-error">
-                                <p>{{err_msg}}</p>
+                                <small class="help-block notfound">{{err_msg}}</small>
                         {%else%}
                             <fieldset>
                         {%endif%}
@@ -59,10 +59,14 @@
                         {% if type_err_msg == "PASSWORD_LENGTH_ERROR"  or type_err_msg == "PASSWORD_NOT_MATCH"%}
                             <fieldset class="has-error">
                                 {% if type_err_msg == "PASSWORD_LENGTH_ERROR" %}
-                                    <p>{{err_msg}}</p>
+                                    <small class="help-block notfound">{{err_msg}}</small>
                                 {%endif%}
                         {% else %}
+                            
                             <fieldset>
+                                {% if type_err_msg != "email_error" %}  
+                                    <small class=" help-block text-info">Password length must be atleast 6 characters</small>
+                                {%endif%}    
                         {% endif %}   
                                 <legend><h3>Enter your Password</h3>
                                     <input type="password" class="form-control form-control-lg" name = "password" id="password" placeholder="Password" required>
@@ -73,10 +77,12 @@
                     
                         {% if type_err_msg == "PASSWORD_NOT_MATCH"%}
                             <fieldset class="has-error">
-                                <p>{{err_msg}}</p>
+                                
+                                <small class="help-block notfound">{{err_msg}}</small>
                                 
                         {% else %}
                             <fieldset>
+                 
                         {% endif %}   
                                 <legend><h3> Confirm your password</h3>
                                     <input type="password" class="form-control form-control-lg" name = "confirmpassword" id="password" placeholder="Confirm Password" required>

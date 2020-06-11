@@ -24,7 +24,7 @@
                         <fieldset>
                     {%else%}
                         <fieldset class="has-error">
-                        <p style="color:red">{{err_msg}}</p>
+                        <small class="help-block notfound">{{err_msg}}</small>
                     {%endif%}
                             <legend><h3>Enter your email address</h3> 
                                 {% if type_err_msg!="EMAIL_NOT_FOUND"  and type_err_msg=="NAME_NOT_FOUND"  %}  
@@ -41,7 +41,7 @@
                         <fieldset>
                     {% else %}
                     <fieldset class="has-error">
-                    <p style="color:red">{{err_msg}}</p>
+                    <small class="help-block notfound">{{err_msg}}</small>
                     {% endif %}
                         <legend><h3>Enter name </h3>
                             {% if type_err_msg=="EMAIL_NOT_FOUND"  and type_err_msg!="NAME_NOT_FOUND"  %}

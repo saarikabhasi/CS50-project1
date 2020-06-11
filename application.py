@@ -28,7 +28,7 @@ gr_key=os.getenv("GR_key")
 
 db = scoped_session(sessionmaker(bind=engine))
 
-
+#index
 @app.route("/")
 def index():
 
@@ -38,11 +38,11 @@ def index():
                 message = 'Logged in as %s' % session['name']
                 return render_template ("index.html",account_details = message)
         else:
-            return render_template("login.html",message="you are not logged in")
+            return render_template("login.html")
     else:
         return render_template("login.html")
 
-
+#register
 @app.route("/register", methods=["GET","POST"])
 def register():
     if 'email_id' in session:
@@ -62,13 +62,13 @@ def register():
             return render_template("register.html",err_msg="email id or password or name is required")
         
 
-
+        #password length check
         if not len(password)>=6:
             password_length_err_msg = "Password length must be atleast 6 characters"
             error ="PASSWORD_LENGTH_ERROR"
             return render_template("register.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,name=name)
         
-        #password match
+        # check if both confirm password and password match
 
         if password!=confirm_password:
             confirm_password_err_msg = "Password did not match"
@@ -76,7 +76,7 @@ def register():
             return render_template("register.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,name=name)
 
         if db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).rowcount==0:
-        # new user
+        # new user so register
 
             hash_password = generate_password_hash(password,"sha256")  
              
@@ -88,7 +88,7 @@ def register():
             return render_template("login.html")
 
         else:
-            
+            # display error message
             session['email_id']=""
             session['name']=""
             email_address_not_available_err_msg = "Sorry,the email address is already registered!"
@@ -98,7 +98,7 @@ def register():
     else:
         return render_template("register.html")
         
-
+#login
 @app.route("/login", methods=["GET","POST"])
 def login():
     if 'email_id' in session:
@@ -116,12 +116,14 @@ def login():
         
         
         users  = db.execute("select email_id,password,name from users where email_id=:email_id",{"email_id": email_id}).fetchall()
-        
+
+        #user not found
         if len(users)== 0:
             email_not_found = 'User not found'
             error ="EMAIL_NOT_FOUND"
             return render_template("login.html",err_msg=email_not_found,type_err_msg= error)
         else:
+            # password check from DB
             for u in users:
                 if u.email_id == email_id and (check_password_hash(u.password, password)):
                     session['name']= u.name 
@@ -135,7 +137,7 @@ def login():
 
         return render_template("login.html")
 
-
+#verify account
 @app.route("/verifyaccount",methods=["GET","POST"])
 def verifyaccount():
     if 'email_id' in session:
@@ -153,11 +155,13 @@ def verifyaccount():
             return render_template("authenticate.html",err_msg="email id and user name is required")
 
         user  = db.execute("select * from users where email_id=:email_id",{"email_id": email_id}).fetchall()
+        # not user found
         if len(user)== 0:
             email_not_found = 'Email address not found'
             error ="EMAIL_NOT_FOUND"
             return render_template("authenticate.html",err_msg=email_not_found,type_err_msg=error,name=user_name)
         else:
+            #verify
             for u in user:
                 if u.email_id==email_id and u.name==user_name:
                     verification_status = 1
@@ -171,6 +175,7 @@ def verifyaccount():
     else:
         return render_template("authenticate.html")
 
+#change password
 @app.route("/changepassword/<int:verification_status>",methods=["GET","POST"])
 def changepassword(verification_status):
     if 'email_id' in session:
@@ -190,24 +195,27 @@ def changepassword(verification_status):
             return render_template("passwordchange.html",err_msg="email id or password is required",verification_status=verification_status)
         
         user = db.execute("select * from users where email_id = :email_id",{"email_id": email_id}).fetchall()
-
+        
+        #email check
         if len(user) == 0:
             email_not_found = 'Email Address not found'
             error ="EMAIL_NOT_FOUND"
             return render_template("passwordchange.html",err_msg=email_not_found,type_err_msg= error,verification_status=verification_status)
-
+        
+        #password check
         if not len(new_password)>=6:
             password_length_err_msg = "Password length must be atleast 6 characters"
             error ="PASSWORD_LENGTH_ERROR"
             return render_template("passwordchange.html",err_msg=password_length_err_msg,type_err_msg= error,email = email_id,verification_status=verification_status)
         
+        #password match
         if new_password!=confirm_password:
             confirm_password_err_msg = "Password did not match"
             error = 'PASSWORD_NOT_MATCH'
             return render_template("passwordchange.html",err_msg=confirm_password_err_msg,type_err_msg= error, email = email_id,verification_status=verification_status) 
 
 
-        
+        #update DB
         for u in user:
             if u.email_id == email_id:
                 hash_password = generate_password_hash(new_password,"sha256") 
@@ -218,6 +226,7 @@ def changepassword(verification_status):
     else:
        return render_template("passwordchange.html")
 
+#logout
 @app.route("/logout")
 def logout():
 
@@ -226,6 +235,7 @@ def logout():
     flash(u'Logged out successfully')
     return redirect(url_for('index'))
 
+#search
 @app.route("/search",methods=["GET","POST"])
 def search():
     if 'email_id' in session:
@@ -236,11 +246,12 @@ def search():
             return render_template("login.html",message="you are not logged in")   
     
 
-    
+ 
         if request.method == 'POST':
             query = request.form["search"]
-            searchby = request.form['searchvia']
+            # searchby = request.form['searchvia']
 
+            #empty query
             if query == "":
                 error ="No results"
                 return render_template("index.html",error = error, account_details=message)
@@ -252,7 +263,8 @@ def search():
                 search_msg_no_results =""
 
                 books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q1,"title":q1, "author" :q1}).fetchall() 
-
+                
+                #Handling partial query
                 if len(books)== 0:
                     search_msg_no_results +='No results found for'
                     q2=""
@@ -261,17 +273,18 @@ def search():
                         for i in range(1,len(query)):
                             q2+="%"
                         q2 = f"{q2}".upper()
-                        print(f"{q2}")
                         books = db.execute("select isbn,title,author,year from books where upper(isbn) like :isbn or upper(title) like :title or upper(author) like :author ",{"isbn": q2,"title":q2, "author" :q2}).fetchall() 
                     
                 
-
+                
                 average=[]
+
+                #No books found
                 if len(books) == 0:
                     error ="No books found"
                     return render_template("index.html",error=error,account_details=message)
                 for b in books:
-
+                    
                     average_rating = db.execute("select cast (avg(rating) AS DECIMAL(10,2)) from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
 
                     bookname =b.title
@@ -285,7 +298,8 @@ def search():
             return redirect(url_for('index'))
     else:
         return render_template("login.html",message="you are not logged in")
-
+        
+#show book details based on author or title
 @app.route("/books/<string:b>/<booksearchby>",methods=["GET"])
 def books(b,booksearchby):  
     average = []
@@ -298,6 +312,7 @@ def books(b,booksearchby):
     goodreadslinks=[]
     googlebookpublisher=[]
     googlebooklinks=[]
+    numberofreviews=[]
     if 'email_id' in session:
         if session['email_id']:
             if session['name']:
@@ -316,17 +331,17 @@ def books(b,booksearchby):
             
             book = db.execute("select isbn,title,author,year from books where upper(author)=:author",{"author":b}).fetchall()
         else:
-            return render_template("error.html",search_err= "Internal error",account_details=message)
+            return render_template("index.html",search_err= " 500 Internal Server Error  ",account_details=message)
 
         if len(book) == 0:
-            return render_template("error.html",search_err= "Internal error",account_details=message)
+            return render_template("index.html",search_err= "500 Internal Server Error",account_details=message)
         
-        #get reviews for that book
+        #get reviews for the book
         
         for b in book:
             average_rating = db.execute("select  avg(reviews.rating) as average_score from reviews where isbn =:isbn", {"isbn":b.isbn}).fetchall()
             review = db.execute("select contents, rating,reviews.email_id,name from reviews inner join users on users.email_id=reviews.email_id  where isbn =:isbn ", {"isbn":b.isbn}).fetchall() 
-            
+            numberofreviews.append(len(review))
             avg = average_rating[0][0]
             
             if avg==None:
@@ -334,7 +349,7 @@ def books(b,booksearchby):
             avg=float('%.2f' %(avg))
             average.append(avg)
 
-            #book reads api
+            #Good Reads  API
             if not os.getenv("GR_key"):
                 raise RuntimeError("Good reads key not set")
 
@@ -350,7 +365,7 @@ def books(b,booksearchby):
                 goodreadslink = "https://www.goodreads.com/search?utf8=%E2%9C%93&q="+ f"{b.title}"
                 goodreadslinks.append(goodreadslink)
             
-            # Google books
+            # Google books API
 
             googleBooksearch= "https://www.googleapis.com/books/v1/volumes?q=" + f"{b.isbn}" + "+" + "isbn"
             googleBookresponse=requests.get(googleBooksearch)
@@ -358,12 +373,13 @@ def books(b,booksearchby):
             if googleBookresponse.status_code == 200:
                 googleBookdata =googleBookresponse.json()
 
+                
+                
+                
                 if googleBookdata["totalItems"] > 0 :
-
                     googlebookDict = googleBookdata["items"][0]["volumeInfo"]
                     
                     #description
-
                     if "description" in googlebookDict:
                         description=googlebookDict["description"]
                         googlebookdescription.append(description)
@@ -395,8 +411,6 @@ def books(b,booksearchby):
                 
 
                     #publisher
-               
- 
                     if "publisher" in googlebookDict:
                         
                         googlebookpublisher.append(googlebookDict["publisher"])
@@ -411,17 +425,15 @@ def books(b,booksearchby):
                         googlebooklinks.append(googlebooklink)
                     else:
                         googlebooklinks.append("#")
-               
-                    
+                
         
-        print(f"{googlebooknumberofrating}")
-        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,lenreview = len(review),average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,googlebookpublisher=googlebookpublisher,googlebooklinks=googlebooklinks,account_details=message)
+        return render_template("book.html",book=book,  booksearchby=booksearchby,review=review,numberofreviews=numberofreviews,average_rating=average,goodreads_avg=goodreads_avg, goodreads_numberofrating=goodreads_numberofrating, googlebookdescription=googlebookdescription,googlebooknumberofrating=googlebooknumberofrating,googlebookimage=googlebookimage,googlebookavg=googlebookavg,goodreadslinks=goodreadslinks,googlebookpublisher=googlebookpublisher,googlebooklinks=googlebooklinks,account_details=message)
     else:
         return render_template("login.html",message="you are not logged in")
 
 
         
-
+#write review
 @app.route("/review/<string:isbn>",methods=["GET","POST"])
 def review(isbn):
     if 'email_id' in session:
@@ -465,15 +477,17 @@ def review(isbn):
             else:
                 return render_template("message.html", reviewerr = "You already gave a review",account_details =message)
         else:
-            return render_template("login.html",message= " please create an account first")
+            session['email_id']=""
+            session['name']=""
+            return render_template("login.html",message= " Please create an account first")
     else: 
         return render_template("login.html",message="you are not logged in")
 
-
+#api
 @app.route("/api/<isbn>",methods=["GET"])
 def book_api(isbn):
    
-    #book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books inner join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn,title,author,year",{"isbn":isbn}).fetchone()
+    
     book =db.execute("select count(reviews.email_id) as review_count,books.isbn,title,author,year,avg(reviews.rating) as average_score from books left join reviews on books.isbn=reviews.isbn where books.isbn=:isbn group by books.isbn",{"isbn":isbn}).fetchone()
     if book == None:
         return jsonify({"error": "Invalid isbn number", "status_code":404}),404
@@ -485,7 +499,8 @@ def book_api(isbn):
     if rating['average_score'] == None:
         rating['average_score']=0
     return jsonify(rating)
-    
+
+#view my reviews
 @app.route("/myreviews")
 def myreviews():
     if 'email_id' in session:

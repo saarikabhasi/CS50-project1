@@ -13,12 +13,9 @@ The Book Fair
         <div class="col-md-12 ">   
             <section>
                 <article> 
-                    
-                        <!-- <h4 class="notfound text-center" >{{emptyreview}}</h4>
-                        <h4 class="notfound text-center" >{{reviewerr}}</h4>
-                    
-                        <h4 class="text-success text-center"> {{review_sucess}}</h4> -->
-                   
+                    {%if booksearchby == 'author' %}
+                        <h3 class="text-center"> Books by {{book[0][2]}} </h3>
+                    {%endif%}
                     {% for details in book %}
                     
                         <div id="aboutbook">
@@ -26,7 +23,13 @@ The Book Fair
                             <div class="title">
                                 
                                 <div class="container">
-                                    <h1>{{details[1]}} </h1>
+                                    {% if booksearchby == 'author'  %}
+                                        
+                                        <h2> # {{loop.index0+1}}</h2>
+                                        <a href="{{url_for('books',b=details[1],booksearchby='title') }}"><h1 ><u>{{details[1]}}</u></h1> </a>
+                                    {%else%}
+                                    <h1 >{{details[1]}} </h1>
+                                    {%endif%}
                                     <div class="row">
                                         
                                         <div class="col-md-4">
@@ -38,7 +41,12 @@ The Book Fair
                                             {%endif%}
                                         </div>
                                         <div class="col-md-6">
-                                            <h2>By {{details[2]}} </h2>
+                                   
+                                            {% if booksearchby == 'title'  %}
+                                                <h2 class="text-left">By</h2>
+                                                <a href="{{url_for('books',b=details[2],booksearchby='author') }}"> <h2> <u>{{details[2]}} </u></h2></a>
+                                           
+                                            {%endif%}    
                                             {% if booksearchby == 'author'  %}
                                             <h2> Published in : {{details[3]}}</h2>
                                             <h2>Isbn: <span class="lead">{{details[0]}}</span></h2>
@@ -98,15 +106,13 @@ The Book Fair
                                     
                                     
                                     <div class = "ratings" id="Reviews">
-                                        <!-- <hr class="hr_divide_separator">  -->
                                         <div class="container-fluid  px-lg-5">
                                             <div class="row mx-lg-n5">
                                                 <div class="col-lg-4 py-3 px-lg-5 ">
                                                     <div class="card ">
-                                                        <!-- <img src = "{{ url_for('static', filename='thebookfair.png') }}" class="card-img-top" alt="thebookfair-logo" > -->
                                                         <div class="card-body " >
-                                                            <h2 class="card-title"><a href ="#"> The Book Fair</a></h2>
-                                                            {% if average_rating[loop.index0] == 0 %}
+                                                            <h2><a href="{{url_for('books',b=details[1],booksearchby='title') }}">The Book Fair</a></h2>
+                                                            {% if numberofreviews[loop.index0] == 0 %}
                                                                 {% if booksearchby == 'title' %}
                                                                     <h3 class="notfound card-text text-center">  No ratings. <span>Be first to give one.</span></h3>
                                                                 {% else %}
@@ -130,7 +136,8 @@ The Book Fair
                                                                         {%endfor%}
                                                                     {%endif%}
                                                                     <h3>Average rating: {{average_rating[loop.index0]}} </h3>
-                                                                    <h3>{{review|length}} Reviews
+                                                                    
+                                                                    <h3>{{numberofreviews[loop.index0]}} Reviews
                                                                 </h3>
                                                                 {% endif %}
                                                      
@@ -140,22 +147,18 @@ The Book Fair
                                                 </div>
                                                 <div class="col-lg-4 py-3 px-lg-5 ">
                                                     <div class="card">
-                                                        <!-- <img src = "{{ url_for('static', filename='Goodreads.jpg') }}" class="card-img-top" alt="thegoodreads-logo" >  -->
                                                         <div class="card-body">
                                                             <h2 class="card-title"><a href ="{{goodreadslinks[loop.index0]}}">Good Reads </a></h2>
 
                                                             {%if goodreads_numberofrating[loop.index0] == null %}
                                                                 <h3 class="notfound card-text"> No ratings found.</h3>
                                                             {% else %}
-                                                                <!-- <h3 class="card-text" >Average Rating: {{goodreads_avg[loop.index0]}}</h3>
-                                                                <h3 class="card-text"> Number of Rating: {{goodreads_numberofrating[loop.index0]}}</h3> -->
                                                                 <h3 class="card-text">
                                                                     
                                                                     {%set val = goodreads_avg[loop.index0]|float%}
                                                                     {% for num in range(0,val|round(0,'floor') |int)%}
                                                                         <i class="fas fa-star"></i>
                                                                     {% endfor %}
-                                                                    <!-- {{val|round(0,'ceil') -val}} -->
                                                                     {% if val|round(0,'ceil') -val>= 0.5 %}
                                                                     <i class="fas fa-star-half"></i>
                                                                     {%else%}
@@ -172,15 +175,6 @@ The Book Fair
                                                                     {%endif%}
                                                                     <h3>Average rating: {{goodreads_avg[loop.index0]}}</h3>
                                                                     <h3>{{goodreads_numberofrating[loop.index0]}} Reviews</h3>
-
-
-                                                                    
-                                                                    <!-- <i class="far fa-star"></i> -->
-                                                          
-                                                                    
-                                                                    <!-- {{ "%.2f"|format(goodreads_avg[loop.index0]|float - goodreads_avg[loop.index0]|float|round(0,'floor'))}} -->
-                                                                    <!-- if the above is between 0.5>=to <0.9 - half fa-star
-                                                                    if the above is between 0.0 >= to < 0.5 - empty fa-star -->
                                                                     
                                                                 </h3>
                                                             {% endif %}
@@ -190,7 +184,7 @@ The Book Fair
                                                 </div>
                                                 <div class="col-lg-4 py-3 px-lg-5 ">
                                                     <div class ="card ">
-                                                        <!-- <img src ="{{ url_for('static', filename='googlebooks.png') }}" class="card-img-top" alt="googlebooks-logo"> -->
+                                                        
                                                         <div class="card-body">
                                                             {% if googlebooklinks[loop.index0] == "#" %}
                                                             <h2 class="card-title"> <a href ="{{googlebooklinks[loop.index0]}}"> Google Books </a></h2>
@@ -208,7 +202,6 @@ The Book Fair
                                                                     {% for num in range(0,googlebookavg[loop.index0]|round(0,'floor') |int)%}
                                                                         <i class="fas fa-star"></i>
                                                                     {% endfor %}
-                                                                    <!-- {{googlebookavg[loop.index0]|round(0,'ceil') - googlebookavg[loop.index0]}} -->
                                                                     {% if googlebookavg[loop.index0]|round(0,'ceil') - googlebookavg[loop.index0] >= 0.5 %}
                                                                     <i class="fas fa-star-half"></i>
                                                                     {% endif%}
