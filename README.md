@@ -7,9 +7,7 @@ Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/cours
 
 Webpage link: https://the-booklover.herokuapp.com/
 
-[!image login]
-
-(https://user-images.githubusercontent.com/55930906/84529412-6b705680-acaf-11ea-98c8-caf2b226b956.png)
+[!alt text](https://user-images.githubusercontent.com/55930906/84529412-6b705680-acaf-11ea-98c8-caf2b226b956.png?raw=true)
 
 ### Description:
 
