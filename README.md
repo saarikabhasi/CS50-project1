@@ -7,6 +7,8 @@ Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/cours
 
 Webpage link: https://the-booklover.herokuapp.com/
 
+[!alt tag](https://user-images.githubusercontent.com/55930906/84529412-6b705680-acaf-11ea-98c8-caf2b226b956.png)
+
 ### Description:
 
 Development of a Book Reviewing website - **'The Book Fair'** 
