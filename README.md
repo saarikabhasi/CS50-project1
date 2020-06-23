@@ -64,7 +64,7 @@ The Book Fair website allows its user to register, search for a book, see the bo
 ---------------
   ``` 
     # clone repository
-      git clone https://github.com/saarikabhasi/CS50-project1.git
+      git clone https://github.com/saarikabhasi/CS50-project1-Books.git
       
     # Create a virtualenv(optional)
       python3 -m venv venv  
