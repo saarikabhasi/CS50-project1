@@ -1,4 +1,6 @@
-https://the-booklover.herokuapp.com/
+deployment: https://the-booklover.herokuapp.com/
+
+youtube: https://www.youtube.com/watch?v=6i0gpEAdXM0&pbjreload=101
 
 <p> 
   
