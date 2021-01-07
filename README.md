@@ -1,9 +1,3 @@
-# CS50 Web Programming with Python and JavaScript
-
-Webpage link: https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/
-
-
-## Project 1: Books
 
 Webpage link: https://the-booklover.herokuapp.com/
 
@@ -27,7 +21,13 @@ Webpage link: https://the-booklover.herokuapp.com/
 
 Development of a Book Reviewing website - **'The Book Fair'** 
 
-The Book Fair website allows its user to register, search for a book, see the book details, and leave comments and rate the book on the scale of 1 to 5 . It also displays the Book's average rating and comments left by other readers in the Book Fair website and pulls Rating information from third-party website such as **Good Reads and Google Books**.  
+The Book Fair website allows its user to,
+1. register
+2. search books,
+3. see the book details
+4. leave comments and rate the book on the scale of 1 to 5.
+5. Book's average rating and comments left by users
+6. pulls Rating information from third-party websites **Good Reads and Google Books**.  
 
 
 ### General information:
