@@ -1,5 +1,4 @@
-
-Webpage link: https://the-booklover.herokuapp.com/
+https://the-booklover.herokuapp.com/
 
 <p> 
   
